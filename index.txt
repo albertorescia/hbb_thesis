@@ -1,0 +1,31 @@
+Indice Preliminare
+
+Ch. 1 - The Standard Model
+Goal is to derive the lagrangian of the standard model
+
+1.1 - Overview of the Standard Model (basic introduction)
+1.2 - Gauge symmetries - discuss fundamental symmetries and derive basic lagrangian for QED & QCD
+1.3 - EW Unification
+1.4 - SSB
+1.5 - Conclusions/final remarks (if necessary)
+
+Ch. 2 - Collider Physics and Jets (contenuto del corso di Dottorato)
+
+2.1 - PDFs/FFs and Factorization
+2.2 - Jet Physics
+
+
+Ch. 3 - Higgs Physics
+
+3.1 - Higgs Production
+3.2 - Decay channels
+
+Ch. 4 - Il mio lavoro
+-definizione tpar, tper, asimmetrie
+-definizione color ring, d2
+-studi + risultati a livello partonico (Pythia analysis)
+-studi + risultati a livello di fast simulation (Delphes analysis)
+-Destructor (deductor), other variables, analytical calculations
+
+
+Serve un capitolo su parton shower event generators? Machine Learning?

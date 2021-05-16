@@ -1,0 +1,238 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{gensymb}
+\usepackage{slashed}
+\usepackage{physics}
+\usepackage{bbold}
+\usepackage{stackengine}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{pdfpages}
+
+\newcolumntype{L}{>{$}c<{$}}
+
+\title{Tesi}
+\author{Alberto L. Rescia}
+\date{\today}
+\begin{document}
+
+
+\chapter{The Standard Model}
+
+$\indent$ At the basis of all physics at the Large Hadron Collider (LHC) lies the Standard Model. This theory describes all fundamental interactions involving the electroweak and strong forces, as well as the fields which partake in said interactions. In this chapter, we will briefly illustrate the main features of this theory and show how together they paint a complete picture of our current understanding of elementary particle physics.
+
+%Gauge Invariance
+%Lagrangians of the SM fields
+%EW unification
+%EW symmetry breaking
+%The (full) Lagrangian of the SM
+
+\section{An Overview of the Theory}
+%Delineo la struttura del modello standard
+%Scrivo la lagrangiana dell'interazione em e forte
+$\indent$ The Standard Model is composed of two sectors: the matter fields and gauge fields. The matter fields are fermionic fields whose excitations lead to the particles which make up ordinary matter, i.e. quarks and leptons. These are intrinsic to the model. The gauge fields, on the other hand, are bosonic fields which arise from symmetries of the model and describe the force-carrying particles, specifically the photon ($\gamma$), gluons (g), W$^{\pm}$ and Z$^0$, as well as the Higgs boson, H$^0$.
+
+%Questa parte ci deve andare, però è noioso scriverla-
+%Introduzione teoria di Dirac, e altre lagrangiane
+%Fenomenologia modello standard
+%Teorema di Noether e simmetrie modello standard
+
+\section{Gauge Symmetries}
+%Questa parte invece è molto più divertente.
+\subsection{QED Lagrangian}
+$\indent$ We shall now begin to construct the Standard Model Lagrangian. Let us start by considering the free Lagrangian for a massive fermion field, given by the Dirac Lagrangian
+
+\begin{equation}
+\mathcal{L}_D = \overline{\psi}(i\slashed{\partial} - m )\psi,
+\label{Dirac lagrangian}
+\end{equation}
+
+where $\psi$ is the fermion field, $\overline{\psi}$ its Dirac adjoint, and, given the Dirac matrices $\gamma^\mu$, $\slashed{\partial}$ is the del operator in Feynman slash notation.  It is easy to show that this Lagrangian is invariant under transformations of the type
+
+\begin{equation}
+\psi \longrightarrow \psi^\prime = \exp(ie\alpha)\psi
+\label{global gauge symmetry}
+\end{equation}
+where $e$ is a parameter which represents the coupling constant and $\alpha$ is, for now, a parameter independent of the space-time coordinate $x$.
+In fact, the analogous transformation for the adjoint field $\overline{\psi}$ is
+\begin{equation}
+\overline{\psi} \longrightarrow \overline{\psi^\prime} = [\exp(ie\alpha)\psi]^\dagger \gamma^0 = \psi^\dagger \exp(-ie\alpha) \gamma^0 = \overline{\psi}\exp(-ie\alpha)
+\end{equation}
+since the operator $\exp(-ie\alpha)$ commutes with $\gamma^0$. When applied to the whole Lagrangian, the transformation has the overall effect of leaving the latter unchanged:
+
+\begin{equation}
+\mathcal{L}_D \longrightarrow \mathcal{L}^\prime_D= \overline{\psi^\prime}(i\slashed{\partial} - m)\psi^\prime = \overline{\psi}(i\slashed{\partial} - m )\psi = \mathcal{L}_D.
+\end{equation}
+Since the Lagrangian is unchanged, so too are the equations of motion. The transformed fields will therefore have the same dynamics. 
+
+We have just shown that the Dirac Lagrangian is invariant under a \emph{global} U(1) gauge symmetry in charge space. At this point, if we want to construct the QED Lagrangian, we must add the kinetic term descrbing the free photon field
+\begin{equation}
+\mathcal{L}_{kin} = -\frac{1}{4}F^{\mu\nu}F_{\mu\nu}
+\label{kinetic term}
+\end{equation}
+where $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$, as well as a term describing the interaction between the two fields. We can do this in two ways. 
+
+\subsubsection{Minimal Coupling}
+
+$\indent$ The first, more direct, prescription calls for applying the minimal coupling rule. This requires substituting the four-momentum of the fermion with an expression which includes the electromagnetic potential
+
+\begin{equation}
+p_\mu \longrightarrow p_\mu - eA_\mu
+\end{equation}
+and the coupling constant $e$. Quantum mechanically, this corresponds to substituting the del operator in the Lagrangian. The Lagrangian thus becomes
+
+\begin{equation}
+\mathcal{L} = -\frac{1}{4}F^{\mu\nu}F_{\mu\nu} + \overline{\psi}(i\slashed{\partial} - e\slashed{A} - m)\psi = \mathcal{L}_{kin} + \mathcal{L}_D - e\overline{\psi}\gamma^\mu \psi A_\mu.
+\label{minimal coupling lagrangian}
+\end{equation}
+This Lagrangian is still invariant under the same global gauge symmetry as before. 
+
+We would like, however, to impose a more stringent symmetry requirement: a \emph{local} gauge symmetry dependent on the space-time coordinate $x$. Whereas a global symmetry establishes the conservation of a conserved quanity, e.g. electric charge, in any closed system, the local symmetry imposes the same requirement in each point $x$. 
+
+If we promote the gauge symmetry to a local symmetry, i.e. we apply the transformation 
+
+\begin{equation}
+\psi \longrightarrow \psi^\prime = \exp[ie\alpha(x)]\psi,
+\label{fermi-field transformation}
+\end{equation} 
+we find that the Lagrangian is no longer invariant under this transformation due to the action of the derivative. In fact, ignoring the terms which remain invariant, we find that
+
+\begin{equation}
+\mathcal{L}^\prime = i\overline{\psi^\prime} \slashed{\partial} \psi^\prime = i\overline{\psi^\prime} \exp[-ie\alpha(x)] \gamma^\mu \partial_\mu \lbrace \exp[ie\alpha(x)]\psi \rbrace = i\overline{\psi}\slashed{\partial}\psi - e\overline{\psi}\gamma^\mu\psi\partial_\mu\alpha(x).
+\label{local gauge}
+\end{equation}
+
+We can use a trick to reobtain the gauge invariance. We know that the electromagnetic tensor $F^{\mu\nu}$ is gauge invariant. This means that if $A_\mu$ undergoes the transformation
+
+\begin{equation}
+A_\mu \longrightarrow A_{\mu}^\prime = A_\mu + \partial_\mu f(x)
+\label{gauge field transformation}
+\end{equation}
+where $f(x)$ is a function such that $\square f = 0$, then
+
+\begin{equation}
+F_{\mu\nu} \longrightarrow F_{\mu\nu}^\prime = \partial_\mu (A_\nu + \partial_\nu f) - \partial_\nu (A_\mu + \partial_\mu f) = F_{\mu\nu}.
+\end{equation}
+If we choose $f$ opportunely, we can cancel out the extra term which appears in (\ref{local gauge}) with the last term in (\ref{minimal coupling lagrangian}). Specifically, the choice $f(x) = -\alpha(x)$ satisfies our request.
+Therefore, by combining the transformations (\ref{fermi-field transformation}) and (\ref{gauge field transformation}), we can obtain an invariant Lagrangian.
+
+\subsubsection{Gauge Principle}
+
+$\indent$ The second, more general, way of adding an interaction term to the Lagrangian is by the Gauge Principle. This principle describes a protocol through which we can obtain the dynamics of QED, or any field theory, starting from the global gauge transformation (\ref{global gauge symmetry}).
+
+We start, once again, from the Lagrangian (\ref{Dirac lagrangian}). Having identified the global gauge symmetry of the Lagrangian and having promoted it to a local symmetry, we define the covariant derivative as 
+
+\begin{equation}
+D_\mu \; \dot{=} \; \partial_\mu + ieA_\mu.
+\end{equation}
+We then require that the term $D_\mu \psi$ transforms as the field $\psi$ itself
+
+\begin{equation}
+D_\mu \psi \longrightarrow (D_\mu \psi)^\prime = D_\mu^\prime \psi^\prime = \lbrace \partial_\mu + ieA^\prime_\mu \rbrace \psi^\prime = \exp[ie\alpha(x)]D_\mu\psi.
+\end{equation}
+By developing the equality, we find that $A^\prime_\mu$ must be given by
+
+\begin{equation}
+A^\prime_\mu = A_\mu - \partial_\mu \alpha(x)
+\end{equation}
+in order for the Lagrangian to remain invariant.
+
+We can then use the covariant derivative to build a term which describes the free propagation of the field $A_\mu$. We do this by computing the commutator. With some basic algebra, we find that 
+
+\begin{equation}
+[D_\mu, D_\nu] = ie \lbrace \partial_\mu A_\nu - \partial_\nu A_\mu \rbrace \equiv ie F_{\mu\nu},
+\end{equation}
+where $F_{\mu \nu}$ is now a generic tensor of the field $A_\mu$. We thus have
+
+\begin{equation}
+F_{\mu \nu} = -\frac{i}{e}[D_\mu, D_\nu].
+\end{equation}
+We can then use the field tensor to construct a normalised, gauge invariant Lorentz scalar which will necessarily take the form (\ref{kinetic term}). We have thus arrived at the QED Lagrangian in a general way, without assuming any prior knowledge about the field $A_\mu$. 
+
+\subsection{QCD Lagrangian}
+
+$\indent$ Armed with the gauge principle, it is now straightforward to derive the QCD Lagrangian. We must note, however, that a few complications arise from the fact that we are now dealing with a non-abelian gauge theory, i.e. a theory whose symmetry group is non-commutative. For a general Yang-Mills theory, the gauge group is $SU(N)$, but in QCD we will be working with $N = 3$. 
+
+The Dirac field for the quark can be indicated as $q_f^\alpha$ where $f$ is the flavour index and $\alpha$ is the color index. We know that each flavour comes in three colours, so we can group the fields for each flavour in a three-component vector
+\begin{equation}
+q_f = 	\begin{bmatrix} 	
+		q^1_f \\ 
+		q^2_f \\
+		q^3_f \\
+		\end{bmatrix}.
+\end{equation}
+We can thus write the free Lagrangian for the quarks as 
+\begin{equation}
+\mathcal{L}_D = \sum_f\overline{q}_f\left(i\slashed{\partial} - m_f\right)q_f
+\end{equation}
+where $m_f$ is a parameter representing the quark mass and $(i\slashed{\partial} - m_f)$ is a 3-dimensional diagonal matrix. The quark mass $m_f$ must be understood as a free parameter of the Lagrangian since it is not directly measurable due to the fact that free quarks do not exist in nature.
+
+The Lagrangian is invariant under the following global gauge transformations in colour space:
+\begin{equation}
+q_f \longrightarrow (q_f)^\prime = \exp[i\theta_a\frac{\lambda^a}{2}]q_f
+\end{equation}
+where $\theta_a$ is a parameter and a = $1, \dots, 8$ since, in general, the fundamental representation of $SU(N)$ has $N^2 - 1$ generators. $\lambda^a$ represents the Gell-Mann matrices, which in the fundamental representation of SU(3) can be written as
+\begin{equation*}
+\lambda_1 = \begin{bmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \qquad
+\lambda_2 = \begin{bmatrix} 0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \qquad
+\lambda_3 = \begin{bmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & 0 & 0 \end{bmatrix},
+\end{equation*}
+\begin{equation}
+\lambda_4 = \begin{bmatrix} 0 & 0 & 1 \\ 0 & 0 & 0 \\ 1 & 0 & 0 \end{bmatrix}, \qquad
+\lambda_5 = \begin{bmatrix} 0 & 0 & -i \\ 0 & 0 & 0 \\ i & 0 & 0 \end{bmatrix},
+\end{equation}
+\begin{equation*}
+\lambda_6 = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & 1 \\ 0 & 1 & 0 \end{bmatrix},\qquad
+\lambda_7 = \begin{bmatrix} 0 & 0 & 0 \\ 0 & 0 & -i \\ 0 & i & 0 \end{bmatrix}, \qquad
+\lambda_8 = \frac{1}{\sqrt{3}} \begin{bmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 2
+\end{bmatrix}.\\
+\end{equation*}
+The Gell-Mann matrices also allow us to define the structure constant of $SU(3),$ $f_{abc}$
+\begin{equation}
+\left[\frac{\lambda_a}{2}, \, \frac{\lambda_b}{2}\right] = if_{abc}\frac{\lambda_c}{2}. 
+\end{equation}
+
+We can now proceed with the gauge principle. We define the covariant derivative as
+\begin{equation}
+D_\mu = \partial_\mu +ig_s\frac{\lambda_a}{2}G^a_\mu
+\end{equation}
+where we have introduced the strong coupling constant $g_s$ and 8 spin-1 vector fields $G^a_\mu$. These are the gluon fields.
+We now promote $\theta_a$ to $\theta_a(x)$ and require that $D_\mu q_f$ transform as $q_f$ so as to fix the interaction term between the quarks and the gauge bosons. We find that
+\begin{equation}
+G^a_\mu \longrightarrow (G^a_\mu)^\prime = G^a_\mu - \frac{1}{g_s}\partial_\mu\theta^a(x) - f^{abc}\partial_\mu\theta_b(x)G_{\mu c}.
+\end{equation}
+Last but not least, using the relation
+\begin{equation}
+-\frac{i}{g_s}[D_\mu, D_\nu] =  \frac{\lambda_a}{2}G^a_{\mu \nu}
+\end{equation}
+we can define the gluon tensor field
+\begin{equation}
+G^a_{\mu\nu} = \partial_\mu G^a_\nu - \partial_\nu G^a_\mu - g_s f^{abc}G_{\mu b}G_{\nu c}
+\end{equation}
+which we use to construct the gauge-invariant kinetic term with proper normalisation.
+We thus find that
+\begin{equation}
+\mathcal{L}_{QCD} = -\frac{1}{4}G^a_{\mu\nu}G^{\mu\nu}_a + \sum_f\overline{q}_f\left(i\slashed{D} - m_f\right)q_f.
+\end{equation}
+
+\section{Electroweak Unification}
+%Can repeat gauge principle for weak interactions, obtain gauge theory based on SU(2)L symmetry
+
+%W3 current obtained would only couple to left (right) handed (anti)fermions
+%Z boson in nature has been observed to couple to RH fermions and LH antifermions
+%
+
+%THEN EW UNIFICATION
+	%In due parole, scrivi la lagrangiana per la sola sim SU(2). Parti da lì per unificazione.
+	
+% To be more precise, the aforementioned symmetry is a vector symmetry since the first-order term of the current obtained is proportional to $\gamma^\mu$.
+
+
+\end{document}
