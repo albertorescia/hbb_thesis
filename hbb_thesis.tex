@@ -15,9 +15,8 @@
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{pdfpages}
+\usepackage{hyperref}
 \usepackage[numbers,sort&compress]{natbib}
-
-
 \newtheorem{theorem}{Theorem}[section]
 \newcolumntype{L}{>{$}c<{$}}
 \newcommand\todo[1]{\textcolor{red}{#1}}
@@ -29,15 +28,20 @@
 
 \title{Tesi}
 \author{Alberto Lorenzo Rescia}
-\date{\today }
+\date{\today}
 
 \begin{document}
 
 \chapter{The Standard Model}
 \subfile{ch1}
 
-\chapter{}
+\chapter{Collisions at the LHC}
+\subfile{ch2}
+
+\chapter{Higgs Physics}
+\subfile{ch3}
 
 \bibliographystyle{unsrt}
 \bibliography{hbb_thesis.bib}
+
 \end{document}
