@@ -37,10 +37,83 @@ $\indent$ At the basis of all physics at the Large Hadron Collider (LHC) lies th
 \section{An Overview of the Theory}
 %Delineo la struttura del modello standard
 %Scrivo la lagrangiana dell'interazione em e forte
-$\indent$ The Standard Model is composed of two sectors: the matter fields and gauge fields. The matter fields are fermionic fields whose excitations lead to the particles which make up ordinary matter, i.e. quarks and leptons. These are intrinsic to the model. The gauge fields, on the other hand, are bosonic fields which arise from symmetries of the model and describe the force-carrying particles, specifically the photon ($\gamma$), gluons (g), W$^{\pm}$ and Z$^0$, as well as the Higgs boson, H$^0$.
+$\indent$ The Standard Model is composed of two sectors: the matter fields and gauge fields. The matter fields are fermionic fields whose excitations lead to the particles which make up ordinary matter, i.e. quarks and leptons, and their corresponding antiparticles. The gauge fields, on the other hand, are bosonic fields which arise from symmetries of the model and describe the force-carrying particles, specifically the photon ($\gamma$), gluons (g), W$^{\pm}$ and Z, as well as the Higgs boson, H.
 
-\todo{Finish introduction (basic description SM). Then add all sections which may be relevant later on, e.g. continuous and discreet symmetries, parity, V-A, CP violations.}
+The matter fields are organized in three generations, as shown in Figure \ref{Standard Model particles}.
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{ch1_images/standard_model}
+\caption{The ``Periodic Table'' of the Standard Model, showing the division between matter fields and gauge bosons, as well as the three different generations of the matter fields. Properties such as mass, charge and spin are also shown \cite{enwiki:1039528522}.}
+\label{Standard Model particles}
+\end{figure}
+The particles in the three generations all have the same properties, with the sole exception of mass which increases with each generation. Neutrinos might be the exception to this rule, since their masses are not yet known to a useful degree of precision. 
 
+The properties of the matter fields determine the interactions in which they participate. All particles can interact via the weak force. The electrically charged particles and participate in electromagnetic interactions, and quarks, the only particles carrying color charge, can also interact via the strong nuclear force.
+
+The interactions with these forces are mediated by the exchange of the gauge bosons. Photons are responsible for electromagnetic interactions, gluons for strong interactions, and the W$^\pm$ and Z for weak interactions. 
+
+The strength of the interactions are determined by the value of the coupling constants, $\alpha$ for electromagnetic interactions, $\alpha_W$ for weak interactions and $\alpha_S$ for strong interactions. Despite their name, the coupling constants are known to run, i.e. they depend on the energy scale $Q^2$ of the process. Figure \ref{running coupling constants} shows how the coupling constants vary with energy. $\alpha$ and $\alpha_W$ increase as $Q^2$ increases, while $\alpha_S$ decreases with increasing energy, a property known as asymptotic freedom. 
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{ch1_images/running}
+\caption{The $\beta$-functions for the three coupling constants included in the Standard Model \cite{wiki:xxx}.}
+\label{running coupling constants}
+\end{figure}
+
+The $\beta$-function determines how the coupling constant varies with energy. At one-loop, the electromagnetic $\beta-$function is given by
+\begin{equation}
+\beta(\alpha) = \frac{2\alpha^2}{3\pi}
+\end{equation}
+while the $\beta$-function for the strong interaction can be written as
+\begin{equation}
+\beta(\alpha_S) = -\left(11 - \frac{2n_f}{3} \right)\frac{\alpha_S^2}{2\pi}
+\end{equation}
+
+This inverse dependence on energy is a direct consequence of the non-Abelian nature of the strong nuclear force, as well as the number of flavors of quarks, $n_f$.  
+
+As mentioned, the gauge bososn originate from symmetries of the Standard Model. Specifically, the Standard Model Lagrangian is invariant under a local SU(3)$_C \otimes$SU(2)$_L \otimes$U(1)$_Y$ gauge symmetry. This means that, when a field $\psi$ transforms under the action of this group, i.e. when
+\begin{equation}
+\psi \rightarrow \psi^\prime = U(x)\psi
+\end{equation}
+the Lagrangian remains unchanged. 
+
+This is an example of invariance under a continuous symmetry. Per N\"{o}ther's theorem, these symmetries lead to conserved quantities, namely the conservation of color, weak isospin and hypercharge in every point of spacetime. There are a number of conserved quantities which arise from symmetries: momentum from translational symmetries, angular momentum from rotational symmetries, and electric charge from a U(1)$_{EM}$ symmetry, just to name a few.
+
+There are also a number of discrete symmetries present in the model. The most significant of these are parity, which inverts the spatial coordinates of a quantity
+\begin{equation}
+\hat{P}\psi(\vec{x}, t) = \psi(-\vec{x}, t),
+\end{equation}
+charge symmetry, which exchanges all particles with the corresponding antiparticles,
+\begin{equation}
+\hat{C}\psi(x) = i\gamma^2\psi^*(x)
+\end{equation}
+and time-reversal symmetry inverts the sign of the temporal coordinate of a quantity
+\begin{equation}
+\hat{T}\psi(\vec{x}, t) = \psi(\vec{x}, -t).
+\end{equation}
+These symmetries are individually present in all processes. For example, QED and QCD are both invariant under transformations of parity. These theories involve vector currents of the form $j^\mu = \overline{\psi}\gamma^\mu \psi$. These tranform as
+\begin{equation}
+\begin{cases}
+\hat{P}j^{0} = \overline{\psi}\gamma^{0}\gamma^{0}\gamma^{0}\psi = \overline{\psi}\gamma^{0}\psi\\
+\hat{P}j^{i} = \overline{\psi}\gamma^{0}\gamma^{i}\gamma^{0}\psi = -\overline{\psi}\gamma^{i}\gamma^{0}\gamma^{0}\psi = -\overline{\psi}\gamma^{i}\psi = -j^{i}.
+\end{cases}
+\end{equation}
+When we consider the matrix element $\mathcal{M}$ for one of these interactions, which is proportional to the scalar product of two currents, we find that
+\begin{equation}
+\hat{P}j_{1} \cdot \hat{P}j_{2} = j^{0}_{1}j^{0}_{2} - \sum_{i}\left(-j^{i}_{1}\right)\left(-j^{i}_{2}\right) = j_{1} \cdot j_{2},
+\end{equation}
+i.e. the interaction is invariant under parity transformations.
+
+On the other hand, weak interactions famously show parity violations \cite{PhysRev.105.1413}. This is due to the fact that the currents involved are of type V-A, i.e. of the form $j^\mu \propto \overline{\psi}\gamma^\mu\left(1 - \gamma_5\right)\psi$. This form mixes a vector current, with an axial vector current of the form $j^\mu_A = \overline{\psi}\gamma^\mu\gamma^5\psi$. In this case, when we consider the matrix element
+\begin{equation}
+\mathcal{M} \propto j_{1} \cdot j_{2} = g^{2}_{V}(j_{V} \cdot j_{V}) + g^{2}_{A}(j_{A} \cdot j_{A}) + g_{V}g_{A}(j_{V} \cdot j_{A} + j_{A} \cdot j_{V})
+\end{equation}
+we will find three terms which conserve parity, and one parity-violating term, since
+\begin{equation}
+\hat{P}j_{V} \cdot \hat{P}j_{A} = -j_{V} \cdot j_{A}.
+\end{equation}
+Overall, only the combination of charge, parity, and time-reversal symmetry is conserved in all Standard Model interactions.
 %Questa parte ci deve andare, però è noioso scriverla-
 %Introduzione teoria di Dirac, e altre lagrangiane
 %Fenomenologia modello standard
@@ -583,7 +656,17 @@ $\indent$ We are now ready to put all the ingredients discussed together and bak
 \end{equation}
 $\mathcal{L}_{QCD}$ describes all strong interactions, $\mathcal{L}_{EW}$ describes electroweak interactions, $\mathcal{L}_{SSB}$ gives mass to the gauge bosons and $\mathcal{L}_Y$ gives mass to the fermions. There are a few additional complications due to quark mixing and neutrino mixing which for the sake of brevity we shall pass over. 
 
-$\mathcal{L}_{SM}$ is invariant under the full $SU_C(3) \otimes SU_L(2) \otimes U_Y(1)$ local gauge symmetry. In this form, the Lagrangian is purely classical: it must then be quantized and renormalized \cite{tHooft:1971qjg} in order to fully describe our quantum world. 
+Figure \ref{Standard Model interactions} shows all the interactions allowed by the $\mathcal{L}_{SM}$. 
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{ch1_images/sm_interactions}
+\caption{They Feynman diagrams of all interactions predicted by the Standard Model \cite{enwiki:1039528522}. \todo{Change image because HHH HHH coupling is missing, for example}}
+\label{Standard Model interactions}
+\end{figure}
+
+We should mention that, in this form, the Lagrangian is purely classical: it must then be quantized and renormalized \cite{tHooft:1971qjg} in order to fully describe our quantum world. 
+
+\todo{Write out full Lagrangian (found online, just need to copy \& paste, or is the image of the diagrams enough?}
 	%In due parole, scrivi la lagrangiana per la sola sim SU(2). Parti da lì per unificazione.
 	
 % To be more precise, the aforementioned symmetry is a vector symmetry since the first-order term of the current obtained is proportional to $\gamma^\mu$.
