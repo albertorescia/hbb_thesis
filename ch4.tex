@@ -16,6 +16,7 @@
 \usepackage{geometry}
 \usepackage{pdfpages}
 \usepackage{hyperref}
+\usepackage{subcaption}
 \usepackage[numbers,sort&compress]{natbib}
 
 \newcommand\todo[1]{\textcolor{red}{#1}}
@@ -187,12 +188,27 @@ p p \rightarrow b\overline{b} \nu_\ell \overline{\nu}_\ell.
 The first process, hereby refered to as the signal, represents the most likely decay of the Higgs, a color singlet. The second process, or the background, contains all QCD diagrams which lead to the same final state as the signal. Figure \ref{zhbb + gbb feynman diagrams} shows the Feynman diagrams constituting signal and the background. The outputs of the parton-level simulations were saved as Les Houches Event Files \cite{Alwall:2006yp}.
 
 \begin{figure}
+\begin{subfigure}{.5\textwidth}
 \centering
 \includegraphics[scale=0.6]{ch4_images/zhbb}
-\includegraphics[scale=0.15]{ch4_images/gbb1}\\
+\caption{}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[scale=0.15]{ch4_images/gbb1}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
 \includegraphics[scale=0.15]{ch4_images/gbb2}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
 \includegraphics[scale=0.15]{ch4_images/gbb3}
-\caption{The Feynman diagrams constituting the signal (upper left) and background. \todo{mettere immagine migliore}.}
+\caption{}
+\end{subfigure}
+\caption{The Feynman diagrams constituting the signal (a) and background (b),(c),(d). \todo{mettere immagine migliore}.}
 \label{zhbb + gbb feynman diagrams}
 \end{figure}
 
@@ -200,20 +216,248 @@ These hard processes were subsequently showered using two programs, \code{PYTHIA
 
 Since every program which simulates the parton shower necessarily includes its own systematic uncertainities, the shower in \code{Herwig} served as an independent check. We wanted to ensure that the results found were independent of the choice of parton shower, and thus that our results were reliable.
 
-Finally, rather than simulating an entire detector, \code{Delphes} v3.5.0 was used to perform a fast detector simulation \cite{Ovyn:2009tx, deFavereau:2013fsa}. This allowed us to understand how our method would perform in reality without having to run the computationally expensive full simulation. From \code{Delphes}, we extracted both the Monte Carlo truth of the event, containing the particle level information, as well as the reconstructed events including the detector effects. 
+Finally, rather than simulating an entire detector, \code{DELPHES} v3.5.0 was used to perform a fast detector simulation \cite{Ovyn:2009tx, deFavereau:2013fsa}. This allowed us to understand how our method would perform in reality without having to run the computationally expensive full simulation. From \code{DELPHES}, we extracted both the Monte Carlo truth of the event, containing the particle level information, as well as the reconstructed events including the detector effects. 
 
-The \code{Delphes} simulation was run using a version of the ATLAS card modified to fit our analysis standards. The output was stored as a \code{ROOT} file, and \code{ROOT} v6.22/06 was used \cite{fons_rademakers_2020_3895852}. 
+The \code{DELPHES} simulation was run using a version of the ATLAS card modified to fit our analysis standards. The output was stored as a \code{ROOT} file, and \code{ROOT} v6.22/06 was used \cite{fons_rademakers_2020_3895852}. 
 
+In total, we simulated 1 M events \todo{insert number of events of final run.}
 
 
 \section{The Analysis}
-Describe analysis steps, show plots of variables, describe statistics and most important cuts
-\begin{enumerate}
-\item Signal vs. Background true
-\item Signal vs. Background reco
-\item Signal Pythia vs. Signal Herwig (true)
-\item Bkg Pythia vs. Bkg Herwig (true)
-\end{enumerate}
+
+We analyzed the simulated data in both the truth case and the reconstructed case. These cases differ in just one aspect: for the truth case, all stable particles with $p_T > 0.5$ GeV were clustered into jets. In the reconstructed case, the jets were clustered using the simulated calorimeter towers. All Electromagnetic Calorimeter towers with energy $E > 0.5$ GeV and Significance $S > 2.0$ and all Hadronic Calorimeter towers with energy $E > 1.0$ GeV and Significance $S > 2.0$ are considered. The jets are clustered using \code{FastJet} v3.3.4 \cite{Cacciari:2011ma}.
+\todo{Tracks are also included, but it is RARE. Most jets consist only of towers, very few have even a single track as constituent. I don't know in what instances they are included - e.g. Lund Plane latest test, 4M bkg events, after all cuts ~50k events left over, 3 of the selected fat jets have a single track as a constituent}
+
+We can now discuss the details of the analysis. First, the constituents are clustered into Large Jets with radius $R=1.0$.  For  each  event,  we  choose  the  Large  Jet  with  the highest $p_T$. We only accept the event if the jet has $p_T > 250$ GeV, $\vert y \vert < 1.5$, and invariant mass $m_J \in [0,500]$ GeV \todo{(in final analysis remove upper limit?)}. The restriction on $y$ comes from experimental considerations: in pratice, it is only possible to tag b-jets within this rapidity range.
+
+We  also  cluster  the  constituents  into  smaller  jets with radius $R = 0.2$. We identify those jets which distance $\Delta R < 0.8$ from the selected Large Jet, and call these subjets. We then proceed to identify the b-subjets which originate from the b-partons, through a process known as b-labelling. We do this by first identifying the b-partons originating from the hard scattering in the event record. For each b-parton, we find the closest unique subjet. If the b-parton has $p_T > 5.0$ GeV and the subjet is within $\Delta R = 0.2$ from the b-parton, we label the subjet as a b-subjet. 
+
+For the event to be accepted, were quire that there be exactly two b-labelled subjets with $p_T > 10$ GeV. The pull variables are calculated on these two b-labelled subjets, and $D_2$ is calculated on the Large Jet. For the color ring to be defined, there must also be a third non-b subjet within $\Delta R = 0.8$ from the Large Jet. In a majority of cases, this third jet is not present. To avoid discarding too many events, in these cases we assign a default value of $\mathcal{O} = -1$ to the color ring. This allows for higher statistics, but also useful information to the machine learning algorithms, since these are events for which only the color ring is not defined.
+
+Table \ref{Efficiencies table} shows the number of events which passed the selections in all cases considered. As is clear, the cuts were more severe on the background events than the signal events in both the truth and reconstructed cases. Two cuts are significantly more important than the rest: the $p_T$ cut on the Large Jet, responsible for about 60\% of all rejections, and the rapidity cut on the Large Jet, responsible for another 10\% \todo{check numbers when running final event, put in table if not the same throughout}.
+
+\begin{table}[!htb]
+    \label{Efficiencies table}
+    \begin{minipage}{.5\linewidth}
+      %\caption{}
+      \centering
+        \begin{tabular}{|c|c|}
+		\hline 
+		\multicolumn{2}{|c|}{\textbf{Truth}} \\ 
+		\hline 
+		\* & Events Passed \\ 
+		\hline 
+		Signal & $\sim 200$k \\ 
+		\hline 
+		Background & $\sim 60$k \\ 
+		\hline 
+		\end{tabular}  
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+        %\caption{}
+        \begin{tabular}{|c|c|}
+		\hline 
+		\multicolumn{2}{|c|}{\textbf{Reco}} \\ 
+		\hline 
+		\* & Events Passed \\ 
+		\hline 
+		Signal & $\sim 140$k \\ 
+		\hline 
+		Background & $\sim 60$k \\ 
+		\hline 
+		\end{tabular} 
+    \end{minipage} 
+    \caption{The approximate efficiencies of the analysis after all cuts were applied \todo{aggiornare tabella con dati finali}.}
+\end{table}
+
+Figure \ref{sgn/bkg true} shows the distrubutions of the 8 variables for the truth case. In Figure \ref{sgn/bkg reco}, the same distributions are shown in the reconstructed case. In both cases, clear differences between signal and background allow for discrimination of the two. Figures \ref{pythia herwig sgn} and \ref{pythia herwig bkg} show the comparison between the signal and background distributions of the eight variables in the truth case obtained after a shower in \code{PYTHIA8} and \code{Herwig}. There is little to no dependence on the parton shower.
+
+\begin{figure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tpar1_sgn_bkg_truth}
+\caption{$t_{\parallel a}$}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tper1_sgn_bkg_truth}
+\caption{$t_{\perp a}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tang1_sgn_bkg_truth}
+\caption{$\theta_{pa}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tpar2_sgn_bkg_truth}
+\caption{$t_{\parallel b}$}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tper2_sgn_bkg_truth}
+\caption{$t_{\perp b}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tang2_sgn_bkg_truth}
+\caption{$\theta_{pb}$}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/d2_sgn_bkg_truth}
+\caption{$D_2$}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/cr_sgn_bkg_truth}
+\caption{$\mathcal{O}$}
+\end{subfigure}
+\caption{The distrubtions of the 8 variables after all selection cuts in the truth case \todo{Mettere plot finali, togliere lettere dalla caption}.}
+\label{sgn/bkg true}
+\end{figure}
+
+
+\begin{figure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tpar1_sgn_bkg_reco}
+\caption{$t_{\parallel a}$}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tper1_sgn_bkg_reco}
+\caption{$t_{\perp a}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tang1_sgn_bkg_reco}
+\caption{$\theta_{pa}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tpar2_sgn_bkg_reco}
+\caption{$t_{\parallel b}$}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tper2_sgn_bkg_reco}
+\caption{$t_{\perp b}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tang2_sgn_bkg_reco}
+\caption{$\theta_{pb}$}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/d2_sgn_bkg_reco}
+\caption{$D_2$}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/cr_sgn_bkg_reco}
+\caption{$\mathcal{O}$}
+\end{subfigure}
+\caption{The distrubtions of the 8 variables after all selection cuts in the reconstructed case \todo{Mettere plot finali, togliere lettere dalla caption}.}
+\label{sgn/bkg reco}
+\end{figure}
+
+
+\begin{figure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tpar1_sgn_bkg_truth}
+\caption{$t_{\parallel a}$}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tper1_sgn_bkg_truth}
+\caption{$t_{\perp a}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tang1_sgn_bkg_truth}
+\caption{$\theta_{pa}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tpar2_sgn_bkg_truth}
+\caption{$t_{\parallel b}$}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tper2_sgn_bkg_truth}
+\caption{$t_{\perp b}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tang2_sgn_bkg_truth}
+\caption{$\theta_{pb}$}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/d2_sgn_bkg_truth}
+\caption{$D_2$}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/cr_sgn_bkg_truth}
+\caption{$\mathcal{O}$}
+\end{subfigure}
+\caption{The signal distrubtions of the 8 variables in the truth case showered in \code{PYTHIA8} and \code{Herwig} \todo{Generare plot, togliere lettere dalla caption}.}
+\label{pythia herwig sgn}
+\end{figure}
+
+
+\begin{figure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tpar1_sgn_bkg_truth}
+\caption{$t_{\parallel a}$}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tper1_sgn_bkg_truth}
+\caption{$t_{\perp a}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tang1_sgn_bkg_truth}
+\caption{$\theta_{pa}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tpar2_sgn_bkg_truth}
+\caption{$t_{\parallel b}$}
+\end{subfigure}
+\begin{subfigure}{0.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tper2_sgn_bkg_truth}
+\caption{$t_{\perp b}$}
+\end{subfigure}
+\begin{subfigure}{.33\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/tang2_sgn_bkg_truth}
+\caption{$\theta_{pb}$}
+\end{subfigure}
+\begin{subfigure}{0.5\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/d2_sgn_bkg_truth}
+\caption{$D_2$}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[scale=0.25]{normalizzati/cr_sgn_bkg_truth}
+\caption{$\mathcal{O}$}
+\end{subfigure}
+\caption{The background distrubtions of the 8 variables in the truth case showered in \code{PYTHIA8} and \code{Herwig} \todo{Generare plot, togliere lettere dalla caption}.}
+\label{pythia herwig bkg}
+\end{figure}
+
+\todo{Mettere anche sgn true vs sgn reco e bkg true vs bkg reco per mostrare effetto della simulazione del rivelatore? Potrei commentare che hanno gli stessi ``general features'', pero' e' un'informazione che puo' essere dedotta anche guardando le prime due figure}
+
 
 \section{Machine Learning}
 Describe architectures
