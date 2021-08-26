@@ -25,11 +25,11 @@
 \begin{document}
 As discussed previously, the $H\rightarrow b\overline{b}$ decay is fundamental to unveiling the properties of the Higgs due to its large branching ratio. In this chapter, we will describe a method that we have developed to discriminate b-jets origating from a color singlet, such as the Higgs boson, from those originating from a color octect. 
 
-We have used simulated data to train two \todo{(three?)} different machine learning algorithms on high-level, color-senstive variables which have been introduced in literature. We will first introduce these variables, and then go on to discuss the details of the simulation, the analysis of the simulated events, and our findings.
+We have used simulated data to train two \todo{(three? Ma forse e' meglio lasciare Keras a Luca)} different machine learning algorithms on high-level, color-senstive variables which have been introduced in literature. We will first introduce these variables, and then go on to discuss the details of the simulation, the analysis of the simulated events, and our findings.
 
-\section{The Variables}
+\section{The Observables}
 In total, this method makes use of 8 variables. These will be described below. 
-\subsection{The pull vector}
+\subsection{The Pull Variables}
 The first variables we will consider are related to the pull vector. With reference to Figure \ref{Pull vector}, consider an event in which two jets, $J_a$ and $J_b$, with centers $(y_a, \phi_a)$ and $(y_b, \phi_b)$, respectively, are emitted.
 \begin{figure}
 \centering
@@ -74,7 +74,7 @@ Of all the variables considered, the pull angle has been shown to be the most ef
 
 The theoretical difficulties in calculating $\theta_p$ stem from the fact that it is not an IRC safe variable. However, $t_\parallel$ and $t_\perp$ \emph{are} IRC safe observables. 
 
-Our method includes these two variables for this purpose. $\theta_p$ is also included since it can be measured at experiments, and its discrimination potential is still good. We consider the variables for both jets, thus 
+Our method includes these two variables for this purpose. $\theta_p$ is also included since it can be measured at experiments, and its discrimination potential is still good. We consider these variables for both jets $J_a$ and $J_b$. 
 
 \subsection{$D_2$}
 
@@ -230,9 +230,9 @@ We analyzed the simulated data in both the truth case and the reconstructed case
 
 We can now discuss the details of the analysis. First, the constituents are clustered into Large Jets with radius $R=1.0$.  For  each  event,  we  choose  the  Large  Jet  with  the highest $p_T$. We only accept the event if the jet has $p_T > 250$ GeV, $\vert y \vert < 1.5$, and invariant mass $m_J \in [0,500]$ GeV \todo{(in final analysis remove upper limit?)}. The restriction on $y$ comes from experimental considerations: in pratice, it is only possible to tag b-jets within this rapidity range.
 
-We  also  cluster  the  constituents  into  smaller  jets with radius $R = 0.2$. We identify those jets which distance $\Delta R < 0.8$ from the selected Large Jet, and call these subjets. We then proceed to identify the b-subjets which originate from the b-partons, through a process known as b-labelling. We do this by first identifying the b-partons originating from the hard scattering in the event record. For each b-parton, we find the closest unique subjet. If the b-parton has $p_T > 5.0$ GeV and the subjet is within $\Delta R = 0.2$ from the b-parton, we label the subjet as a b-subjet. 
+We  also  cluster  the  constituents  into  smaller  jets with radius $R = 0.2$. We identify those jets which distance $\Delta R < 0.8$ from the selected Large Jet, and call these subjets. We then proceed to identify the b-subjets which originate from the b-partons, through a process known as b-labelling. We do this by first identifying the b-partons originating from the hard scattering in the event record. For each b-parton, we find the closest subjet. If the b-parton has $p_T > 5.0$ GeV and the subjet is within $\Delta R = 0.2$ from the b-parton, we label the subjet as a b-subjet. 
 
-For the event to be accepted, were quire that there be exactly two b-labelled subjets with $p_T > 10$ GeV. The pull variables are calculated on these two b-labelled subjets, and $D_2$ is calculated on the Large Jet. For the color ring to be defined, there must also be a third non-b subjet within $\Delta R = 0.8$ from the Large Jet. In a majority of cases, this third jet is not present. To avoid discarding too many events, in these cases we assign a default value of $\mathcal{O} = -1$ to the color ring. This allows for higher statistics, but also useful information to the machine learning algorithms, since these are events for which only the color ring is not defined.
+For the event to be accepted, were quire that there be two unique b-labelled subjets with $p_T > 10$ GeV. The pull variables are calculated on these two b-labelled subjets, and $D_2$ is calculated on the Large Jet. For the color ring to be defined, there must also be a third non-b subjet within $\Delta R = 0.8$ from the Large Jet. In a majority of cases, this third jet is not present. To avoid discarding too many events, in these cases we assign a default value of $\mathcal{O} = -1$ to the color ring. This allows for higher statistics, but also useful information to the machine learning algorithms, since these are events for which only the color ring is not defined.
 
 Table \ref{Efficiencies table} shows the number of events which passed the selections in all cases considered. As is clear, the cuts were more severe on the background events than the signal events in both the truth and reconstructed cases. Two cuts are significantly more important than the rest: the $p_T$ cut on the Large Jet, responsible for about 60\% of all rejections, and the rapidity cut on the Large Jet, responsible for another 10\% \todo{check numbers when running final event, put in table if not the same throughout}.
 
@@ -459,13 +459,171 @@ Figure \ref{sgn/bkg true} shows the distrubutions of the 8 variables for the tru
 \todo{Mettere anche sgn true vs sgn reco e bkg true vs bkg reco per mostrare effetto della simulazione del rivelatore? Potrei commentare che hanno gli stessi ``general features'', pero' e' un'informazione che puo' essere dedotta anche guardando le prime due figure}
 
 
-\section{Machine Learning}
-Describe architectures
+\section{Machine Learning Architecture}
+The output variables were used to train two different machine learning algorithms: a Neural Network (NN) and Boosted Decision Tree (BDT) from the \code{ROOT} Toolkit for Multivariate Analysis (TMVA) library. In this section, we will limit ourselves to describing the architectures of these algorithms. For a more detailed discussion on how they work, see the Appendix \todo{add hyperlink}. 
+
+The NN is made of one hidden layer containing nine neurons. All signal and background events are passed to the network in one batch. The 60\% of the data is used as a training sample and the remaining 40\% as a test sample. The number of epochs is set to 600, and a Rectified Linear Unit activation function is used. The learning rate is set to 0.02. 
+
+The BDT is made up of 50 trees, with a maximum depth of 5 and minimum node size set to 2.5\% \todo{of the total number of events?} Adaptive boosting is used as a boosting model and the number of cuts is set to 80 \todo{cosa e' esattemente questo parametro?}. Also in this case, we use a 60/40 train/test sample, and there is no downsampling.
+
+\todo{E' forse piu' chiaro riassumere tutto in una tabella anziche' a parole?}
 
 \section{Results}
-ROC curves, various cuts and their influences
 
-\section{Further Studies}
+We are now ready to present our findings. In Figure \ref{ROC curves}, the ROC curves from both the NN and BDT are shown for the truth and reconstructed cases. The areas under the ROC curves (AUCs) are reported in Table \ref{AUC table}.
+
+\begin{table}[!htb]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline 
+\* & \multicolumn{2}{c|}{AUC - Test Sample} \\ 
+\hline 
+\* & Truth & Reco \\ 
+\hline 
+BDT & 0.879 & 0.874 \\ 
+\hline 
+NN - TMVA & 0.879 & 0.873 \\ 
+\hline 
+NN - Keras & 0.880 & 0.876 \\ 
+\hline 
+\end{tabular} 
+\caption{The areas under the ROC curves found}
+\label{AUC table}
+\end{table} 
+
+The AUCs show that in the truth case there both machine learning algorithms exhibit good signal/background discrimination. The results are unsurprisingly slightly worse for the reconstructed case due to the introduction of detector effects, but still quite good. This method is thus promising for application to real data.
+
+\begin{figure}[h]
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.7]{ch4_images/ROC_truth}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.7]{ch4_images/ROC_reco}
+\caption{}
+\end{subfigure}
+\caption{The ROC curves showing background rejection as a function of signal efficiency for the truth case (a) and for the reconstructed case (b) for both the BDT and the NN.}
+\label{ROC curves}
+\end{figure} 
+
+The BDT also allows us to rank the variables based on importance. This ranking is reported in Tables \ref{variable ranking true} and \ref{variable ranking reco}. For both the truth and reconstructed cases, $D_2$ and $\mathcal{O}$ are the observables which contribute most to the discrimination of signal events from background events. The pull variables, having a common origin from the pull vector, all have similar importance.
+
+\begin{table}[!htb]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline 
+\multicolumn{3}{|c|}{Variable Ranking - Truth} \\ 
+\hline 
+Rank & Var. & Importance \\ 
+\hline 
+1 & $D_2$ & 4.51$\times 10^{-1}$ \\ 
+\hline 
+2 & $cr$ & 1.82$\times 10^{-1}$ \\ 
+\hline 
+3 & $t_{\parallel a}$ & 6.72$\times 10^{-2}$ \\ 
+\hline 
+4 & $\theta_{pa}$ & 6.59$\times 10^{-2}$ \\ 
+\hline 
+5 & $t_{\perp a}$ & 6.56$\times 10^{-2}$ \\ 
+\hline 
+6 & $\theta_{pb}$  & 5.90$\times 10^{-2}$ \\ 
+\hline 
+7 & $t_{\parallel b}$ & 5.84$\times 10^{-2}$ \\ 
+\hline 
+8 & $t_{\perp b}$& 5.01$\times 10^{-2}$ \\ 
+\hline 
+\end{tabular} 
+\label{variable ranking true}
+\caption{The importance of the variables found by the BDT using the data from the truth case \todo{aggiornare dati}.}
+\end{table}
+
+\begin{table}[!htb]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline 
+\multicolumn{3}{|c|}{Variable Ranking - Reco} \\ 
+\hline 
+Rank & Var. & Importance \\ 
+\hline 
+Rank & Var. & Importance \\ 
+\hline 
+1 & $D_2$ & 3.29$\times 10^{-1}$ \\ 
+\hline 
+2 & $cr$ & 2.29$\times 10^{-1}$ \\ 
+\hline 
+3 & $\theta_{pb}$ & 8.56$\times 10^{-2}$ \\ 
+\hline 
+4 & $t_{\parallel b}$ & 8.18$\times 10^{-2}$ \\ 
+\hline 
+5 & $t_{\perp b}$ & 7.45$\times 10^{-2}$ \\ 
+\hline 
+6 & $t_{\perp a}$  & 6.87$\times 10^{-2}$ \\ 
+\hline 
+7 & $\theta_{pa}$ & 6.71$\times 10^{-2}$ \\ 
+\hline 
+8 & $t_{\parallel a}$ & 6.38$\times 10^{-2}$ \\ 
+\hline 
+\end{tabular} 
+\label{variable ranking reco}
+\caption{The importance of the variables found by the BDT using the data from the reconstructed case \todo{aggiornare dati}.}
+\end{table}
+
+Figure \ref{correlation reco} shows the correlation between the variables for the signal and for the background in the reconstructed case \todo{add truth?} found by the NN \todo{is it only the NN?}. Unsurprisingly, $t_{\parallel a}$ is correlated with $\theta_{pa}$ and $t_{\parallel b}$ is correlated with $\theta_{pb}$, as they are related to each other by definition. There is also some correlation present between $D_2$ and $\mathcal{O}$ in the background \todo{pensare al motivo}. 
+
+\begin{figure}[h]
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.55]{ch4_images/Corr_matrix_reco_sgn}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.55]{ch4_images/Corr_matrix_reco_bkg}
+\caption{}
+\end{subfigure}
+\caption{The correlation matrix found by the NN in the reconstructed case for the signal (a) and for the background (b).}
+\label{correlation reco}
+\end{figure} 
+
+Finally, Figures ... shows the result of a Kolmogorov-Smirnov test \cite{10.2307/2280095} performed on the NN and the BDT to check for overfitting. Since the test probability $\rho_{KS} > 0.01$ in all cases, no overtraining has occured. 
+
+\begin{figure}[h]
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.7]{ch4_images/MLP_overtraining_truth.pdf}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.7]{ch4_images/MLP_overtraining_reco.pdf}
+\caption{}
+\end{subfigure}
+\caption{The result of a Kolmogorov-Smirnov test performed on the NN in the truth case (a) and the reconstructed case (b).}
+\label{correlation reco}
+\end{figure} 
+
+\begin{figure}[h]
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.7]{ch4_images/BDT_overtraining_truth}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.7]{ch4_images/BDT_overtraining_reco}
+\caption{}
+\end{subfigure}
+\caption{The result of a Kolmogorov-Smirnov test performed on the BDT in the truth case (a) and the reconstructed case (b).}
+\label{correlation reco}
+\end{figure} 
+
+
+
+\todo{aggiungere altri plot/test?}
+
+\section{Mass Bias}
 Mass bias \\
 show that method works also for $Z\rightarrow b\overline{b}$?
 
