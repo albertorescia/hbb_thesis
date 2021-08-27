@@ -177,7 +177,8 @@ $\mathcal{O}$ is the definition of the jet color ring. This variable gets its na
 
 Unfortunately, without any sort of momentum-weighting, (\ref{color ring}) cannot be IRC safe. However, if we assume that the emission of the soft gluon leads to a distinct subjet within a larger jet, then IRC safety is recovered.
 
-\section{The Simulation}
+\section{Simulation}
+\label{Simulation}
 
 The aforementioned variables were produced via Monte Carlo simulation. Using \code{MadGraph5\_aMC} v2.8.3.2 \cite{Alwall:2014hca}, we generated two hard processes:
 \begin{gather}
@@ -223,7 +224,7 @@ The \code{DELPHES} simulation was run using a version of the ATLAS card modified
 In total, we simulated 1 M events \todo{insert number of events of final run.}
 
 
-\section{The Analysis}
+\section{Analysis}
 
 We analyzed the simulated data in both the truth case and the reconstructed case. These cases differ in just one aspect: for the truth case, all stable particles with $p_T > 0.5$ GeV were clustered into jets. In the reconstructed case, the jets were clustered using the simulated calorimeter towers. All Electromagnetic Calorimeter towers with energy $E > 0.5$ GeV and Significance $S > 2.0$ and all Hadronic Calorimeter towers with energy $E > 1.0$ GeV and Significance $S > 2.0$ are considered. The jets are clustered using \code{FastJet} v3.3.4 \cite{Cacciari:2011ma}.
 \todo{Tracks are also included, but it is RARE. Most jets consist only of towers, very few have even a single track as constituent. I don't know in what instances they are included - e.g. Lund Plane latest test, 4M bkg events, after all cuts ~50k events left over, 3 of the selected fat jets have a single track as a constituent}
@@ -234,7 +235,7 @@ We  also  cluster  the  constituents  into  smaller  jets with radius $R = 0.2$.
 
 For the event to be accepted, were quire that there be two unique b-labelled subjets with $p_T > 10$ GeV. The pull variables are calculated on these two b-labelled subjets, and $D_2$ is calculated on the Large Jet. For the color ring to be defined, there must also be a third non-b subjet within $\Delta R = 0.8$ from the Large Jet. In a majority of cases, this third jet is not present. To avoid discarding too many events, in these cases we assign a default value of $\mathcal{O} = -1$ to the color ring. This allows for higher statistics, but also useful information to the machine learning algorithms, since these are events for which only the color ring is not defined.
 
-Table \ref{Efficiencies table} shows the number of events which passed the selections in all cases considered. As is clear, the cuts were more severe on the background events than the signal events in both the truth and reconstructed cases. Two cuts are significantly more important than the rest: the $p_T$ cut on the Large Jet, responsible for about 60\% of all rejections, and the rapidity cut on the Large Jet, responsible for another 10\% \todo{check numbers when running final event, put in table if not the same throughout}.
+Table \ref{Efficiencies table} shows the percentage of events which passed the selections in all cases considered. As is clear, the cuts were more severe on the background events than the signal events in both the truth and reconstructed cases. Two cuts are significantly more important than the rest: the $p_T$ cut on the Large Jet, responsible for about 60\% of all cuts, and the rapidity cut on the Large Jet, responsible for another 10\% \todo{check numbers when running final event, put in table if not the same throughout}.
 
 \begin{table}[!htb]
     \label{Efficiencies table}
@@ -247,9 +248,9 @@ Table \ref{Efficiencies table} shows the number of events which passed the selec
 		\hline 
 		\* & Events Passed \\ 
 		\hline 
-		Signal & $\sim 200$k \\ 
+		Signal & 20\% \\ 
 		\hline 
-		Background & $\sim 60$k \\ 
+		Background & 1.5\% \\ 
 		\hline 
 		\end{tabular}  
     \end{minipage}%
@@ -262,9 +263,9 @@ Table \ref{Efficiencies table} shows the number of events which passed the selec
 		\hline 
 		\* & Events Passed \\ 
 		\hline 
-		Signal & $\sim 140$k \\ 
+		Signal & 14\% \\ 
 		\hline 
-		Background & $\sim 60$k \\ 
+		Background & 1.3\% \\ 
 		\hline 
 		\end{tabular} 
     \end{minipage} 
@@ -472,7 +473,7 @@ The BDT is made up of 50 trees, with a maximum depth of 5 and minimum node size 
 
 We are now ready to present our findings. In Figure \ref{ROC curves}, the ROC curves from both the NN and BDT are shown for the truth and reconstructed cases. The areas under the ROC curves (AUCs) are reported in Table \ref{AUC table}.
 
-\begin{table}[!htb]
+\begin{table}
 \centering
 \begin{tabular}{|c|c|c|}
 \hline 
@@ -508,67 +509,67 @@ The AUCs show that in the truth case there both machine learning algorithms exhi
 \label{ROC curves}
 \end{figure} 
 
-The BDT also allows us to rank the variables based on importance. This ranking is reported in Tables \ref{variable ranking true} and \ref{variable ranking reco}. For both the truth and reconstructed cases, $D_2$ and $\mathcal{O}$ are the observables which contribute most to the discrimination of signal events from background events. The pull variables, having a common origin from the pull vector, all have similar importance.
+The BDT also allows us to rank the variables based on importance. This ranking is reported in Table \ref{variable ranking}. For both the truth and reconstructed cases, $D_2$ and $\mathcal{O}$ are the observables which contribute most to the discrimination of signal events from background events. The pull variables, having a common origin from the pull vector, all have similar importance.
 
-\begin{table}[!htb]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline 
-\multicolumn{3}{|c|}{Variable Ranking - Truth} \\ 
-\hline 
-Rank & Var. & Importance \\ 
-\hline 
-1 & $D_2$ & 4.51$\times 10^{-1}$ \\ 
-\hline 
-2 & $cr$ & 1.82$\times 10^{-1}$ \\ 
-\hline 
-3 & $t_{\parallel a}$ & 6.72$\times 10^{-2}$ \\ 
-\hline 
-4 & $\theta_{pa}$ & 6.59$\times 10^{-2}$ \\ 
-\hline 
-5 & $t_{\perp a}$ & 6.56$\times 10^{-2}$ \\ 
-\hline 
-6 & $\theta_{pb}$  & 5.90$\times 10^{-2}$ \\ 
-\hline 
-7 & $t_{\parallel b}$ & 5.84$\times 10^{-2}$ \\ 
-\hline 
-8 & $t_{\perp b}$& 5.01$\times 10^{-2}$ \\ 
-\hline 
-\end{tabular} 
-\label{variable ranking true}
-\caption{The importance of the variables found by the BDT using the data from the truth case \todo{aggiornare dati}.}
+\begin{table}
+    \begin{minipage}{.5\linewidth}
+      %\caption{}
+      \centering
+        \begin{tabular}{|c|c|c|}
+	\hline 
+	\multicolumn{3}{|c|}{Variable Ranking - Truth} \\ 
+	\hline 
+	Rank & Var. & Importance \\ 
+	\hline 
+	1 & $D_2$ & 4.51$\times 10^{-1}$ \\ 
+	\hline 
+	2 & $cr$ & 1.82$\times 10^{-1}$ \\ 
+	\hline 
+	3 & $t_{\parallel a}$ & 6.72$\times 10^{-2}$ \\ 
+	\hline 
+	4 & $\theta_{pa}$ & 6.59$\times 10^{-2}$ \\ 
+	\hline 
+	5 & $t_{\perp a}$ & 6.56$\times 10^{-2}$ \\ 
+	\hline 
+	6 & $\theta_{pb}$  & 5.90$\times 10^{-2}$ \\ 
+	\hline 
+	7 & $t_{\parallel b}$ & 5.84$\times 10^{-2}$ \\ 
+	\hline 
+	8 & $t_{\perp b}$& 5.01$\times 10^{-2}$ \\ 
+	\hline 
+	\end{tabular} 
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+        %\caption{}
+        \begin{tabular}{|c|c|c|}
+	\hline 
+	\multicolumn{3}{|c|}{Variable Ranking - Reco} \\ 
+	\hline 
+	Rank & Var. & Importance \\ 
+	\hline 
+	1 & $D_2$ & 3.29$\times 10^{-1}$ \\ 
+	\hline 
+	2 & $cr$ & 2.29$\times 10^{-1}$ \\ 
+	\hline 
+	3 & $\theta_{pb}$ & 8.56$\times 10^{-2}$ \\ 
+	\hline 
+	4 & $t_{\parallel b}$ & 8.18$\times 10^{-2}$ \\ 
+	\hline 
+	5 & $t_{\perp b}$ & 7.45$\times 10^{-2}$ \\ 
+	\hline 
+	6 & $t_{\perp a}$  & 6.87$\times 10^{-2}$ \\ 
+	\hline 
+	7 & $\theta_{pa}$ & 6.71$\times 10^{-2}$ \\ 
+	\hline 
+	8 & $t_{\parallel a}$ & 6.38$\times 10^{-2}$ \\ 
+	\hline 
+	\end{tabular}  
+    \end{minipage} 
+    \caption{The importance of the variables found by the BDT using the data from the truth case and the reconstructed case \todo{aggiornare dati}.}
+    \label{variable ranking}
 \end{table}
 
-\begin{table}[!htb]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline 
-\multicolumn{3}{|c|}{Variable Ranking - Reco} \\ 
-\hline 
-Rank & Var. & Importance \\ 
-\hline 
-Rank & Var. & Importance \\ 
-\hline 
-1 & $D_2$ & 3.29$\times 10^{-1}$ \\ 
-\hline 
-2 & $cr$ & 2.29$\times 10^{-1}$ \\ 
-\hline 
-3 & $\theta_{pb}$ & 8.56$\times 10^{-2}$ \\ 
-\hline 
-4 & $t_{\parallel b}$ & 8.18$\times 10^{-2}$ \\ 
-\hline 
-5 & $t_{\perp b}$ & 7.45$\times 10^{-2}$ \\ 
-\hline 
-6 & $t_{\perp a}$  & 6.87$\times 10^{-2}$ \\ 
-\hline 
-7 & $\theta_{pa}$ & 6.71$\times 10^{-2}$ \\ 
-\hline 
-8 & $t_{\parallel a}$ & 6.38$\times 10^{-2}$ \\ 
-\hline 
-\end{tabular} 
-\label{variable ranking reco}
-\caption{The importance of the variables found by the BDT using the data from the reconstructed case \todo{aggiornare dati}.}
-\end{table}
 
 Figure \ref{correlation reco} shows the correlation between the variables for the signal and for the background in the reconstructed case \todo{add truth?} found by the NN \todo{is it only the NN?}. Unsurprisingly, $t_{\parallel a}$ is correlated with $\theta_{pa}$ and $t_{\parallel b}$ is correlated with $\theta_{pb}$, as they are related to each other by definition. There is also some correlation present between $D_2$ and $\mathcal{O}$ in the background \todo{pensare al motivo}. 
 
@@ -587,7 +588,7 @@ Figure \ref{correlation reco} shows the correlation between the variables for th
 \label{correlation reco}
 \end{figure} 
 
-Finally, Figures ... shows the result of a Kolmogorov-Smirnov test \cite{10.2307/2280095} performed on the NN and the BDT to check for overfitting. Since the test probability $\rho_{KS} > 0.01$ in all cases, no overtraining has occured. 
+Finally, Figures \ref{kolmogorov smirnov mlp} \ref{kolmogorov smirnov bdt} shows the result of a Kolmogorov-Smirnov test \cite{10.2307/2280095} performed on the NN and the BDT to check for overfitting. Since the test probability $\rho_{KS} > 0.01$ in all cases, no overtraining has occured. 
 
 \begin{figure}[h]
 \begin{subfigure}{1.0\textwidth}
@@ -601,7 +602,7 @@ Finally, Figures ... shows the result of a Kolmogorov-Smirnov test \cite{10.2307
 \caption{}
 \end{subfigure}
 \caption{The result of a Kolmogorov-Smirnov test performed on the NN in the truth case (a) and the reconstructed case (b).}
-\label{correlation reco}
+\label{kolmogorov smirnov mlp}
 \end{figure} 
 
 \begin{figure}[h]
@@ -616,7 +617,7 @@ Finally, Figures ... shows the result of a Kolmogorov-Smirnov test \cite{10.2307
 \caption{}
 \end{subfigure}
 \caption{The result of a Kolmogorov-Smirnov test performed on the BDT in the truth case (a) and the reconstructed case (b).}
-\label{correlation reco}
+\label{kolmogorov smirnov bdt}
 \end{figure} 
 
 
@@ -624,13 +625,61 @@ Finally, Figures ... shows the result of a Kolmogorov-Smirnov test \cite{10.2307
 \todo{aggiungere altri plot/test?}
 
 \section{Mass Bias}
-Mass bias \\
-show that method works also for $Z\rightarrow b\overline{b}$?
 
-\section{Conclusions}
-Discuss integration with Lund Plane \\
-Measurement and training of real data \\
-Addition to Xbb tagger
+Since our goal is to develop a tagger purely sensitive to the color configuration of the decaying particle, ideally our machine learning algorithms would be insensitive to the invariant mass of system. This however is not the case.
+
+In Figure \ref{bdt with d2} we show how different cuts on the output of the BDT depend on the invariant mass of the system in the truth case. We found that the sensitivity to the invariant mass was introduced mainly through the $D_2$ observable. Figure \ref{bdt w/o d2} shows how the dependence of the output of the invariant mass is eliminated when the BDT is trained without this observable. The same effect was found in the reconstructed case. \todo{show reco plots?}
+
+\begin{figure}[h]
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.35]{ch4_images/bdt_with_d2}
+\caption{}
+\label{bdt with d2}
+\end{subfigure}
+\begin{subfigure}{1.0\textwidth}
+\centering
+\includegraphics[scale=0.35]{ch4_images/bdt_wo_d2}
+\caption{}
+\label{bdt w/o d2}
+\end{subfigure}
+\caption{The distribution of different cuts of the output of the BDT as a function of invariant mass of the system with the inclusion of $D_2$ (a) and without the inclusion of $D_2$ (b)}
+\end{figure} 
+
+Given the fact that the $D_2$ observable is ranked as most important, the removal of this variable comes at the price of the efficiency of the algorithm \todo{show ROC curves?}. Focusing again on the truth case, Table ... shows how AUCs of the NN and BDT change when the algorithms are trained without the $D_2$ observable.
+
+\begin{table}
+\begin{tabular}{|c|c|}
+\hline 
+\* & AUC w/o $D_2$ \\ 
+\hline 
+BDT & 0.775 \\ 
+\hline 
+NN - TMVA & 0.773 \\ 
+\hline 
+\end{tabular}
+\end{table}
+
+In an attempt to reduce the mass bias while still training the algorithms with $D_2$, we generated 100k new events for the signal and artificially varied the mass of the Higgs. Specifically, we generated 20k events with mass $m_H = 25$ GeV ,$m_H = 50$ GeV, $m_H = 75$, $m_H = 100$ GeV and $m_H = 125$ GeV. After showering these events in \code{PYTHIA8} and running the analysis, we used the output to train the machine learning algorithms. For the training, 100k background events were also generated in the same manner as described in \ref{Simulation}.
+
+In Figure \ref{bdt inv mass} we again show how the output of the BDT depends on the invariant mass of the system. The dependence on the mass is noticeably reduced. However, with the reduction of the mass bias came a reduction of efficiency. The AUC of the BDT reduced to \todo{inserire cifra}, despite the fact that $D_2$ was still included.
+\begin{figure}
+\centering
+\includegraphics[scale=0.5]{ch4_images/bdt_inv_mass}
+\caption{The distribution of different cuts of the output of the BDT as a function of invariant mass of the system when this has been varied when generating hard scattering events.}
+\label{bdt inv mass}
+\end{figure}
+
+We have been able to find the reason for the reduction of the AUC. Figure \ref{d2 inv mass} shows the distribution of the $D_2$ variable in the truth case when generating events with and without varying the mass of the Higgs. When the mass of the Higgs is varied, the $D_2$ distrubtion of the signal noticeably shifts towards that of the background. Effectively, the discrimination potential of the $D_2$ observable is reduced, explaining the reduction of the AUC.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{ch4_images/d2_inv_mass}
+\caption{The effect of varying the invariant mass of the Higgs on the signal distribution of $D_2$.}
+\label{d2 inv mass}
+\end{figure}
+
+\todo{migliorare immagine}
 
 %Descrivere la simulazione (aggiungere diagrammi di feynman)
 %Descrivere l'analisi + mostrare plot (entro mercoledì)
