@@ -16,6 +16,7 @@
 \usepackage{geometry}
 \usepackage{pdfpages}
 \usepackage{hyperref}
+\usepackage{imakeidx}
 \usepackage{url}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{subcaption}
@@ -33,7 +34,11 @@
 \author{Alberto Lorenzo Rescia}
 \date{\today}
 
+\makeindex
+
 \begin{document}
+
+\tableofcontents
 
 \chapter{The Standard Model}
 \subfile{ch1}
@@ -43,9 +48,22 @@
 
 \chapter{Higgs Physics}
 \subfile{ch3}
+%Aggiungere Properties of the Higgs as measured at colliders
+%mass, width, ecc. 
 
-\chapter{A Machine learning study of color sensitive variables}
+\chapter{A Machine Learning Study of Color Sensitive Observables}
 \subfile{ch4}
+
+\chapter*{Conclusions and Outlook}
+\addcontentsline{toc}{chapter}{Conclusions and Outlook} 
+
+In this thesis, we have illustrated a machine learning based method capable of distinguishing decays originating from color singlets from those originating from color octects. Given the high value of the AUC found when using simulated particle-level data and simulated data including detector effects, we can conclude that the method is not only effective in theory, but also shows promising prospects for application to experiment. 
+
+The ATLAS Xbb Tagger group has already expressed interest in this work. In the future, we plan to run a full simulation of the ATLAS detector, to then test the performance of the method using real data. At that point, the method can be integrated into the existing   b-tagging algorithms used at ATLAS, and can provide additional information regarding the partonic origin of jets.
+
+We also hope to improve this method by introducing other variables. In particular, we would like to include the Lund Jet Plane \cite{Dreyer:2018nbf}, a phase-space representation of jet substructure which has already been successfully measured at ATLAS \cite{ATLAS:2020bbn}.
+
+In the coming years, the increased statistics as a result of the LHC luminosity upgrade promise to provide us with more insight on the properties of the Higgs. With luck, precision studies led by both theoretical and experimental efforts will lead to new discoveries.
 
 %Appendix where we discuss NN and BDT
 %Chapter about ATLAS
