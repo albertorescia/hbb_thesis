@@ -25,7 +25,7 @@
 
 \begin{document}
 
-At the basis of all physics at the Large Hadron Collider (LHC) lies the Standard Model. This theory describes all fundamental interactions involving the electroweak and strong forces, as well as the fields which partake in these interactions. In this chapter, we will briefly illustrate the main features of this theory and show how together they paint a complete picture of our current understanding of elementary particle physics.
+Since 2009, the Large Hadron Collider (LHC) has been exploring particle physics at the high energy frontier in the hope of discovering new physics, including, but not limited to, the Higgs boson, supersymmetry, flavor violations, and much more. At the basis of all physics at the LHC lies the Standard Model. This theory describes all fundamental interactions involving the electroweak and strong forces, as well as the fields which partake in these interactions. In this chapter, we will briefly illustrate the main features of this theory and show how together they paint a complete picture of our current understanding of elementary particle physics.
 
 
 %Gauge Invariance
@@ -43,7 +43,7 @@ The matter fields are organized in three generations, as shown in Figure \ref{St
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{ch1_images/standard_model}
-\caption{The ``Periodic Table'' of the Standard Model, showing the division between matter fields and gauge bosons, as well as the three different generations of the matter fields. Properties such as mass, charge and spin are also shown \cite{enwiki:1039528522}.}
+\caption{The ``Periodic Table'' of the Standard Model, showing the division between matter fields and gauge bosons, as well as the three different generations of the matter fields. Properties such as mass, charge and spin are also shown \cite{sm_particles}.}
 \label{Standard Model particles}
 \end{figure}
 The particles in the three generations all have the same properties, with the sole exception of mass which increases with each generation. Neutrinos might be the exception to this rule, since their masses are not yet known to a useful degree of precision. 
@@ -61,13 +61,13 @@ The strength of the interactions are determined by the value of the coupling con
 \label{running coupling constants}
 \end{figure}
 
-The running of the coupling constants is determined by the $\beta$-function, a renormalization group equation which can be solved in perturbation theory. At one-loop, the electromagnetic $\beta-$function is given by
+The running of the coupling constants is determined by the $\beta$-function, a renormalization group equation which can be solved in perturbation theory. At one-loop, the electromagnetic $\beta-$function is given by \cite{pinkbook}
 \begin{equation}
-\beta(\alpha) = \frac{2\alpha^2}{3\pi}
+\beta(\alpha) = \frac{\alpha^2}{3\pi} + \mathcal{O}(\alpha^3),
 \end{equation}
 while the $\beta$-function for the strong interaction can be written as
 \begin{equation}
-\beta(\alpha_S) = -\left(11 - \frac{2n_f}{3} \right)\frac{\alpha_S^2}{2\pi}
+\beta(\alpha_S) = -\left(11 - \frac{2n_f}{3} \right)\frac{\alpha_S^2}{2\pi} + \mathcal{O}(\alpha_S^3)
 \end{equation}
 
 This inverse dependence on energy is a direct consequence of the non-Abelian nature of the strong nuclear force, as well as the number of flavors of quarks, $n_f$ which enters the loops.  
@@ -78,7 +78,7 @@ As mentioned, the gauge bosons originate from symmetries of the Standard Model. 
 \end{equation}
 the Lagrangian remains unchanged. 
 
-This is an example of invariance under a continuous symmetry. Per N\"{o}ther's theorem, these symmetries lead to conserved quantities, namely the conservation of color, weak isospin and hypercharge in every point of spacetime. There are a number of conserved quantities which arise from symmetries: momentum from translational symmetries, angular momentum from rotational symmetries, and electric charge from a U(1)$_{EM}$ symmetry, just to name a few.
+This is an example of invariance under a continuous symmetry. Per N\"{o}ther's theorem, these symmetries lead to conserved quantities, namely the conservation of color, weak isospin and hypercharge in every point of spacetime. There are a number of conserved quantities which arise from symmetries: momentum from translational symmetries, angular momentum from rotational symmetries, and electric charge from a $U(1)_{EM}$ symmetry, just to name a few.
 
 There are also a number of discrete symmetries present in the model. The most significant of these are \emph{parity}, which inverts the spatial coordinates of a quantity
 \begin{equation}
@@ -92,7 +92,7 @@ and \emph{time-reversal symmetry} inverts the sign of the temporal coordinate of
 \begin{equation}
 \hat{T}\psi(\vec{x}, t) = \psi(\vec{x}, -t).
 \end{equation}
-These symmetries are not individually present in all processes. For example, QED and QCD are both invariant under transformations of parity. These theories involve vector currents of the form $j^\mu = \overline{\psi}\gamma^\mu \psi$. These tranform as
+These symmetries are not individually present in all processes. For example, QED and QCD are both invariant under transformations of parity. These theories involve vector currents of the form $j^\mu = \overline{\psi}\gamma^\mu \psi$. These transform as
 \begin{equation}
 \begin{cases}
 \hat{P}j^{0} = \overline{\psi}\gamma^{0}\gamma^{0}\gamma^{0}\psi = \overline{\psi}\gamma^{0}\psi\\
@@ -148,7 +148,7 @@ Since the Lagrangian is unchanged, so too are the equations of motion. The trans
 
 We have just shown that the Dirac Lagrangian is invariant under a \emph{global} $U(1)$ gauge symmetry in charge space. 
 
-At this point, if we want to construct the QED Lagrangian, we must add the kinetic term descrbing the free photon field
+At this point, if we want to construct the QED Lagrangian, we must add the kinetic term describing the free photon field
 \begin{equation}
 \mathcal{L}_{kin} = -\frac{1}{4}F^{\mu\nu}F_{\mu\nu}
 \label{kinetic term}
@@ -170,7 +170,7 @@ and the coupling constant $e$. Quantum mechanically, this corresponds to substit
 \end{equation}
 This Lagrangian is still invariant under the same global gauge symmetry as before. 
 
-We would like, however, to impose a more stringent symmetry requirement: a \emph{local} gauge symmetry dependent on the space-time coordinate $x$. Whereas a global symmetry establishes the conservation of a conserved quanity, e.g. electric charge, in any closed system, the local symmetry imposes the same requirement in each point $x$. 
+We would like, however, to impose a more stringent symmetry requirement: a \emph{local} gauge symmetry dependent on the space-time coordinate $x$. Whereas a global symmetry establishes the conservation of a conserved quantity, e.g. electric charge, in any closed system, the local symmetry imposes the same requirement in each point $x$. 
 
 If we promote the gauge symmetry to a local symmetry, i.e. we apply the transformation 
 \begin{equation}
@@ -224,7 +224,7 @@ where $F_{\mu \nu}$ is now a generic tensor of the field $A_\mu$. We thus have
 \begin{equation}
 F_{\mu \nu} = -\frac{i}{e}[D_\mu, D_\nu].
 \end{equation}
-We can then use the field tensor to construct a normalised, gauge invariant Lorentz scalar which will necessarily take the form (\ref{kinetic term}).
+We can then use the field tensor to construct a normalized, gauge invariant Lorentz scalar which will necessarily take the form (\ref{kinetic term}).
 
 We have thus arrived at the QED Lagrangian in a general way, without assuming any prior knowledge about the field $A_\mu$. 
 
@@ -232,7 +232,7 @@ We have thus arrived at the QED Lagrangian in a general way, without assuming an
 
 $\indent$ Armed with the gauge principle, it is now straightforward to derive the QCD Lagrangian. We must note, however, that a few complications arise from the fact that we are now dealing with a non-abelian gauge theory, i.e.\ a theory whose symmetry group is non-commutative. For a general Yang-Mills theory, the gauge group is $SU(N)$, but in QCD we will be working with $N = 3$. 
 
-The Dirac field for the quark can be indicated as $q_f^\alpha$ where $f$ is the flavour index and $\alpha$ is the color index. We know that each flavour comes in three colours, so we can group the fields for each flavour in a three-component vector
+The Dirac field for the quark can be indicated as $q_f^\alpha$ where $f$ is the flavor index and $\alpha$ is the color index. We know that each flavor comes in three colors, so we can group the fields for each flavor in a three-component vector
 \begin{equation}
 q_f = 	\begin{bmatrix} 	
 		q^1_f \\ 
@@ -246,11 +246,11 @@ We can thus write the free Lagrangian for the quarks as
 \end{equation}
 where $m_f$ is a parameter representing the quark mass and $(i\slashed{\partial} - m_f)$ is a 3-dimensional diagonal matrix. The quark mass $m_f$ must be understood as a free parameter of the Lagrangian since it is not directly measurable, as free quarks do not exist in nature.
 
-The Lagrangian is invariant under the following global gauge transformations in colour space:
+The Lagrangian is invariant under the following global gauge transformations in color space:
 \begin{equation}
 q_f \rightarrow (q_f)^\prime = \exp[i\theta_a\frac{\lambda^a}{2}]q_f
 \end{equation}
-where $\theta_a$ is a parameter and a = $1, \dots, 8$ since, in general, the fundamental representation of $SU(N)$ has $N^2 - 1$ generators. $\lambda^a$ represents the Gell-Mann matrices, which in the fundamental representation of SU(3) can be written as
+where $\theta_a$ is a parameter and a = $1, \dots, 8$ since, in general, the fundamental representation of $SU(N)$ has $N^2 - 1$ generators. $\lambda^a$ represents the Gell-Mann matrices, which in the fundamental representation of $SU(3)$ can be written as
 \begin{equation*}
 \lambda^1 = \begin{bmatrix} 0 & 1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \qquad
 \lambda^2 = \begin{bmatrix} 0 & -i & 0 \\ i & 0 & 0 \\ 0 & 0 & 0 \end{bmatrix}, \qquad
@@ -288,7 +288,7 @@ we can define the gluon tensor field
 \begin{equation}
 G^a_{\mu\nu} = \partial_\mu G^a_\nu - \partial_\nu G^a_\mu - g_s f^{abc}G_{\mu b}G_{\nu c}
 \end{equation}
-which we use to construct the gauge-invariant kinetic term with proper normalisation.
+which we use to construct the gauge-invariant kinetic term with proper normalization.
 We thus find that the complete Lagrangian takes the following form:
 \begin{equation}
 \mathcal{L}_{QCD} = -\frac{1}{4}G^a_{\mu\nu}G^{\mu\nu}_a + \sum_f\overline{q}_f\left(i\slashed{D} - m_f\right)q_f.
@@ -296,7 +296,7 @@ We thus find that the complete Lagrangian takes the following form:
 
 \section{Electroweak Unification}
 \subsection{Lagrangian for Pure Weak Interactions}
-$\indent$ The gauge principle can also be applied to weak interactions. In this case, the fundamental symmetry is $SU_L(2)$, labelled as such because it only applies to left-handed particle states or right-handed anti-particle states. From here on we will consider only particle states, though analagous considerations hold for anti-particle states. 
+$\indent$ The gauge principle can also be applied to weak interactions. In this case, the fundamental symmetry is $SU_L(2)$, labelled as such because it only applies to left-handed particle states or right-handed anti-particle states. From here on we will consider only particle states, though analogous considerations hold for anti-particle states. 
 
 The symmetry acts on a weak-isospin doublet, e.g.\
 \begin{equation}
@@ -351,7 +351,7 @@ To this aim, we start by introducing \emph{hypercharge}, defined as
 \label{def hypercharge}
 Y = 2(Q-I^{(3)}_W)
 \end{equation} 
-This is a quantity meant to replace electric charge, so that the $U(1)$ local gauge symmetry of QED, becoming $U_Y(1)$. In this way, we have identified a quantum number capable of distinguishing the states composing the left-handed doublet from the the one composing the right-handed singlet, since, for example the states considered in (\ref{weak doublet}) both have hypercharge $Y=-1$ according to this definition, whereas the $SU_L(2)$ singlet state $\ell^-_R$ has hypercharge $Y=-2$. 
+This is a quantity meant to replace electric charge. It is a quantum number capable of distinguishing the states composing the left-handed doublet from the the one composing the right-handed singlet. The states considered in (\ref{weak doublet}) both have hypercharge $Y=-1$ according to this definition, whereas the $SU_L(2)$ singlet state $\ell^-_R$ has hypercharge $Y=-2$. 
 
 We can now consider the full gauge symmetry for electroweak interactions, $SU_L(2) \otimes U_Y(1)$. Under this new gauge symmetry, the transformations (\ref{weak gauge transformations}) become
 \begin{gather}
@@ -414,7 +414,7 @@ By specifying $\tau_3$ and $Y(\psi_e)$ to the appropriate component of $\psi$, i
 \begin{equation}
 g\sin\theta_W = g^\prime \cos\theta_W = e.
 \end{equation}
-$\theta_W$ is the \emph{weak mixing angle}, corresponding to the angle of rotation in neutral sector necessary to achieve the desired mapping. Experimentally, $\sin^2\theta_W$ has been measured to be $0.22290 \pm 0.00030$, though theoretically it can be parametrized in terms of other quantities as we shall see in the next section.
+$\theta_W$ is the \emph{weak mixing angle}, corresponding to the angle of rotation in neutral sector necessary to achieve the desired mapping. Experimentally, $\sin^2\theta_W$ has been measured to be $0.22290 \pm 0.00030$ \cite{NIST}, though theoretically it can be parametrized in terms of other quantities as we shall see in the next section.
 
 
 \begin{table} 
@@ -426,7 +426,7 @@ fermion & $Q$ & $I^{(3)}_W$ & $Y_L$ & $Y_R$ \\
 $\nu_\ell$ & 0 & $+\frac{1}{2}$ & -1 & 0 \\ 
 $\ell^-$ & -1 & $-\frac{1}{2}$ & -1 & -2 \\ 
 \end{tabular}
-\caption{Values of parameters}
+\caption{The quantum numbers associated to charged leptons and neutrinos.}
 \end{center}
 \end{table}
 
@@ -453,7 +453,7 @@ The Lagrangian thus becomes
 \label{NC Ze projection}
 \mathcal{L}_{NC}^{Ze} = \frac{e}{\sin\theta_W\cos\theta_W}\left\lbrace \overline{e}\gamma_\mu\frac{1}{2}(Q^L_Z + Q^R_Z)e + \overline{e}\gamma_\mu\frac{1}{2}(Q^L_Z - Q^R_Z)e  \right\rbrace Z^\mu.
 \end{equation}
-$Q_Z^{L/R}$ can be specified directly from (\ref{NC - Z}) using the values from Table (1.1). We can use those values to speciy the couplings which appear in (\ref{NC Ze projection}). The Lagrangian simplifies to
+$Q_Z^{L/R}$ can be specified directly from (\ref{NC - Z}) using the values from Table (1.1). We can use those values to specify the couplings which appear in (\ref{NC Ze projection}). The Lagrangian simplifies to
 \begin{equation}
 \mathcal{L}^{Ze}_{NC} = \frac{e}{2\sin\theta_W\cos\theta_W} \overline{e}\gamma_\mu \left\lbrace v_e - a_e \gamma_5\right\rbrace e Z^\mu
 \end{equation} 
@@ -599,7 +599,7 @@ In accordance with the gauge protocol, this requires a subsequent modification o
 \label{SSB broken}
 (D_\mu\phi)^\dagger(D_\mu\phi) = \frac{g^2}{4}\left(v^2 + 2vH + H^2\right)W^+_\mu W^{- \mu} + \frac{1}{8}(v + H)^2 \left( g^2 W^3_\mu W^{3\mu} - 2gg^\prime W^3_\mu B^\mu + g^{\prime 2}B_\mu B^\mu \right)
 \end{equation}
-which contains all the physically meaningfull terms. In particular, we can see that (\ref{SSB broken}) contains Proca mass terms such as 
+which contains all the physically meaningful terms. In particular, we can see that (\ref{SSB broken}) contains Proca mass terms such as 
 \begin{equation}
 \frac{g^2}{4}v^2 W_\mu^+ W^{-\mu} \equiv M^2_W W_\mu^+ W^{-\mu}.
 \end{equation}
@@ -645,26 +645,32 @@ as well as a term which couples the Higgs to the fermion field. This term is pro
 
 In contrast to the derivation of the gauge bosons' mass, the derivation of the fermionic masses is ad-hoc. The fermionic mass terms depends on the coupling $k$ which must be measured from experiment. There is no explanation for the observed mass hierarchy of the fermions.
 
-\todo{discutere come i neutrini rimangono fuori}
+It is generally assumed that a different mechanism is responsible for the masses of the neutrinos. Although there is no specific reason as to why neutrinos should not have a Yukawa coupling like the other elementary fermions, given their comparatively small mass, assumed to be of the order of $\sim$meV, they would have to have a coupling orders of magnitude smaller than that of the other fermions. 
+
+Instead, one possible explanation for the mass of the neutrinos is given by the \emph{see-saw mechanism} \cite{zuber}. If the neutrino is a Majorana particle and a sterile, supermassive ($\sim$PeV), right-handed fourth flavor of neutrino exists, it is possible that the large mass of this hypothetical neutrino causes the small mass of the others. Several experiments are currently for evidence which supports this theory.
 \section{The Standard Model Lagrangian}
 
-$\indent$ We are now ready to put all the ingredients discussed together and bake the cake that is the Standard Model. The full Lagrangian for the model is given by
+We are now ready to put all the ingredients discussed together and bake the cake that is the Standard Model. The full Lagrangian for the model, written in compact form, is given by
 \begin{equation}
-\mathcal{L}_{SM} = \mathcal{L}_{QCD} + \mathcal{L}_{EW} + \mathcal{L}_{SSB} + \mathcal{L}_Y.
+\begin{aligned}
+\mathcal{L}_{SM} = &-\frac{1}{4}F^{\mu\nu}F_{\mu\nu}\\ 
+&+ \bar{\psi}\slashed{D}\psi + h.c.\\
+&+ \psi_iy_{ij}\psi_j\phi + h.c. \\
+&+ \vert D_\mu\phi \vert^2 - V(\phi).
+\end{aligned}
 \end{equation}
-$\mathcal{L}_{QCD}$ describes all strong interactions, $\mathcal{L}_{EW}$ describes electroweak interactions, $\mathcal{L}_{SSB}$ gives mass to the gauge bosons and $\mathcal{L}_Y$ gives mass to the fermions. There are a few additional complications due to quark mixing and neutrino mixing which for the sake of brevity we shall pass over. 
 
-Figure \ref{Standard Model interactions} shows all the interactions allowed by the $\mathcal{L}_{SM}$. 
+This Lagrangian describes all possible interactions between all particles, and includes the building blocks described in this Chapter, $\mathcal{L}_{QCD}$, $\mathcal{L}_{EW}$, $\mathcal{L}_{SSB}$ and $\mathcal{L}_Y$ gives mass to the fermions. These interactions are shown in Figure \ref{Standard Model interactions}. 
+
 \begin{figure}
 \centering
-\includegraphics[scale=0.5]{ch1_images/sm_interactions}
-\caption{They Feynman diagrams of all interactions predicted by the Standard Model \cite{enwiki:1039528522}. \todo{Change image because HHH HHH coupling is missing, for example}}
+\includegraphics[width=\linewidth]{ch1_images/sm_interactions}
+\caption{They Feynman diagrams of all interactions predicted by the Standard Model \cite{sm_interactions}.}
 \label{Standard Model interactions}
 \end{figure}
 
 We should mention that, in this form, the Lagrangian is purely classical: it must then be quantized and renormalized \cite{tHooft:1971qjg} in order to fully describe our quantum world. 
 
-\todo{Write out full Lagrangian (found online, just need to copy \& paste, or is the image of the diagrams enough?}
 	%In due parole, scrivi la lagrangiana per la sola sim SU(2). Parti da lì per unificazione.
 	
 % To be more precise, the aforementioned symmetry is a vector symmetry since the first-order term of the current obtained is proportional to $\gamma^\mu$.
