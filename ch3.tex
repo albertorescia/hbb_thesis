@@ -35,61 +35,49 @@ At the LHC, there are four different processes which can produce the Higgs. Thei
 \begin{figure}
 \centering
 \includegraphics[scale=0.6]{ch3_images/higgs_production}
-\caption{The cross sections of various Higgs production mechanisms as a function of $m_H$ at LHC energies \todo{cite twiki}. The thickness of the lines represent various theoretical uncertainties.}
-%https://twiki.cern.ch/twiki/bin/view/LHCPhysics/CrossSectionsHiggs_cross_sections_and_decay_b}
+\caption{The cross sections of various Higgs production mechanisms as a function of $m_H$ at LHC energies. The thickness of the lines represent various theoretical uncertainties \cite{LHCHiggsCrossSectionWorkingGroup:2016ypw}.}
 \label{Higgs production}
 \end{figure}
 
 \subsubsection{Gluon-Gluon Fusion}
 Gluon-gluon fusion is the process which dominates Higgs production at the LHC.
-In the Standard Model, there is no direct coupling between the Higgs and the gluon, though an indirect coupling is possible through a virtual top quark loop, as shown in Figure \ref{gg fusion}. The top quark loop is favored is due the high mass of the top, though there is a small contribution from the bottom.
+In the Standard Model, there is no direct coupling between the Higgs and the gluon, though an indirect coupling is possible through a virtual top quark loop, as shown in Figure \ref{production} (a). The top quark loop is favored is due the high mass of the top, though there is a small contribution from the bottom.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.27]{ch3_images/gluon_fusion}
-\caption{The Feynman diagram for gluon-gluon fusion.}
-\label{gg fusion}
-\end{figure}
 \subsubsection{Vector Boson Fusion}
 Vector boson fusion is the second most important cross section, responsible for about 10\% of the cross section. 
 
-Figure \ref{VBF} shows the Feynman diagram for the process. The initial-state quarks deviate only slightly from their initial direction, leading to two jets near the beam axis in opposite regions of the detector. This provides an experimental signature of the process. 
+Figure \ref{production} (b) shows the Feynman diagram for the process. The initial-state quarks deviate only slightly from their initial direction, leading to two jets near the beam axis in opposite regions of the detector. This provides an experimental signature of the process. 
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.27]{ch3_images/vbf}
-\caption{A Feynman diagram depicting vector boson fusion.}
-\label{VBF}
-\end{figure}
 
 \subsubsection{Higgstrahlung}
-Higgstrahlung, named after bremsstrahlung, is another process which relies on the Higgs coupling to two vector bosons. In this case, the Higgs radiates off a virtual $Z$ or $W$. Experimentally, this channel can be identified by the decay of vector boson into leptons. Figure \ref{higgstrahlung} shows the Feynman diagram for this process.
+Higgstrahlung, named after bremsstrahlung, is another process which relies on the Higgs coupling to two vector bosons. In this case, the Higgs radiates off a virtual $Z$ or $W$. Experimentally, this channel can be identified by the decay of vector boson into leptons. Figure \ref{production} (c) shows the Feynman diagram for this process.
 
-\begin{figure}[h!]
-\centering
-\includegraphics[scale=0.25]{ch3_images/higgstrahlung}
-\caption{A Feynman diagram depicting the Higgstrahlung process.}
-\label{higgstrahlung}
-\end{figure}
 
 \subsubsection{Heavy Quarks Associated Production}
-The last production channel of the Higgs is $q\overline{q}\rightarrow q\overline{q}H$, as shown in Figure \ref{heavy quark production}. Since again the Higgs coupling favors heavy masses, the top quark dominates this channel. However, the coupling is also possible for other heavy quarks, such as the bottom. This channel provides a direct way to measure the Yukawa coupling.
+The last production channel of the Higgs is $q\overline{q}\rightarrow q\overline{q}H$, as shown in Figure \ref{production} (d). Since again the Higgs coupling favors heavy masses, the top quark dominates this channel. However, the coupling is also possible for other heavy quarks, such as the bottom. This channel provides a direct way to measure the Yukawa coupling.
+
 \begin{figure}
 \centering
-\includegraphics[scale=0.25]{ch3_images/qqH}
-\caption{Higgs production in association with heavy quarks \todo{sistemare linea fermionica}.}
-\label{heavy quark production}
+\includegraphics[width=\textwidth]{ch3_images/production}
+\caption{Higgs production in association with heavy quarks.}
+\label{production}
 \end{figure}
 
-\todo{unify diagrams into single figure?}
 \section{Higgs Decay Mechanisms}
-As opposed to the Higgs production mechanisms, which depend in part on the structure of the hadrons used in collisions, Higgs decay mechanisms depend exclusively on the properties of the Higgs. The branching ratios of the various decay channels, again as a function of $m_H$ are shown in Figure \ref{Higgs branching ratios}. Since they are many, we will only focus on a few key processes.
+As opposed to the Higgs production mechanisms, which depend in part on the structure of the hadrons used in collisions, Higgs decay mechanisms depend exclusively on the properties of the Higgs. The branching ratios of the various decay channels, again as a function of $m_H$ are shown in Figure \ref{Higgs branching ratios}, and the Feynman diagrams representing the main decay channels are shown in Figure \ref{decays}. Since they are many, we will only focus on a few key processes.
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.6]{ch3_images/higgs_BR}
-\caption{The branching ratios of the various decay channels of the Higgs boson as a function of $m_H$ \todo{cite Dani}.}
+\includegraphics[width=\textwidth]{ch3_images/higgs_BR}
+\caption{The branching ratios of the various decay channels of the Higgs boson as a function of $m_H$ \cite{LHCHiggsCrossSectionWorkingGroup:2013rie}.}
 \label{Higgs branching ratios}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch3_images/decays}
+\caption{The Feynman diagrams of the principle decay channels of the Higgs boson.}
+\label{decays}
 \end{figure}
 
 \subsubsection{$H\rightarrow b\overline{b}$}
@@ -101,16 +89,23 @@ The extremely large branching ratio means that, experimentally, it is of utmost 
 A jet originating from a heavy quark can be identified based on some unique properties which stem from the high mass of the quark. For example, the relatively long lifetime of b-hadrons, of the order of 1.5 ps, combined with the high energies involved result in the formation of a secondary vertex, which can distance anywhere from a few hundred $\mu$m up to $\sim$ 1 cm from the primary vertex. This secondary vertex gives rise to displaced tracks with respect to the primary vertex, from which the secondary vertex can be recognized. It is also possible to measure the ``mass'' of the secondary vertex, which will be related to the mass of the b-hadron. The decay products of a b-hadron are characterized by a large transverse momentum with respect to jet axis when compared to other jet constituents. In addition to this, in about 20\% of cases, the decay of the b-hadron at the secondary vertex results in an soft electron or muon, whose properties allow for the selection of a pure sample of b-jets. The combination of this information is used as input to algorithms, which can either be classical or make use of machine learning techniques, in order to determine with what likelihood a given jet is a b-jet. Figure \ref{secondary vertex} illustrates the geometry of these secondary vertices.
 \begin{figure}
 \centering
-\includegraphics[scale=0.3]{ch3_images/secondary_vertex}
-\caption{A caption \cite{CMS:2017wtu}}
+\includegraphics[scale=0.25]{ch3_images/secondary_vertex}
+\caption{A schematic diagram of the secondary vertex present in decays of b-hadrons and the variables used for b-tagging \cite{CMS:2017wtu}.}
 \label{secondary vertex}
 \end{figure}
 
-Because these tagging techniques are general, similar considerations hold for $H \rightarrow \tau^+ \tau^-$ and $H \rightarrow c \overline{c}$. Although $H \rightarrow g g$ also leads to two jets, these cannot be effecitively discrimated from the QCD background.
+Because these tagging techniques are general, similar considerations hold for $H \rightarrow \tau^+ \tau^-$ and $H \rightarrow c \overline{c}$. Although $H \rightarrow g g$ also leads to two jets, these cannot be effectively discriminated from the QCD background.
 
 \subsubsection{$H\rightarrow WW, H\rightarrow ZZ, H\rightarrow \gamma\gamma$}
 The large QCD background is the foremost obstacle that physicists must contend with when make discoveries at the LHC. For this reason, the decay channels  
-$H\rightarrow WW, H\rightarrow ZZ$ and $H\rightarrow \gamma\gamma$ were crucial in the discovery of the Higgs boson. These channels are characterized by a clean experimental signal, thanks to the possibility of leptonic decays and the ease with each photons can be identified. Specifically, the channels $H\rightarrow ZZ^{(*)}\rightarrow 4\ell$, $H\rightarrow\gamma\gamma$, $H\rightarrow WW^{(*)} \rightarrow e\nu\mu\nu$, when combined with data from the channels $H\rightarrow b\overline{b}$ and $H \rightarrow \tau^+ \tau^-$ allowed for the discovery of the Higgs in 2012 by the ATLAS and CMS collaborations. The infamous plots are shown in Figure ... \todo{quanti e quali mettere? Ogni canale ha il proprio plot} .
+$H\rightarrow WW, H\rightarrow ZZ$ and $H\rightarrow \gamma\gamma$ were crucial in the discovery of the Higgs boson. These channels are characterized by a clean experimental signal, thanks to the possibility of leptonic decays and the ease with each photons can be identified. Specifically, the channels $H\rightarrow ZZ^{(*)}\rightarrow 4\ell$, $H\rightarrow\gamma\gamma$, $H\rightarrow WW^{(*)} \rightarrow e\nu\mu\nu$, when combined with data from the channels $H\rightarrow b\overline{b}$ and $H \rightarrow \tau^+ \tau^-$ allowed for the discovery of the Higgs in 2012 by the ATLAS and CMS collaborations. The infamous plot showing the discovery of the Higgs in the $\gamma\gamma$ channel is shown in Figure \ref{mgg}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch3_images/mgg}
+\caption{The observation of a signal peak above the background distribution at 125 GeV in the $\gamma\gamma$ channel at ATLAS \cite{ATLAS:2012yve}.}
+\label{mgg}
+\end{figure}
 
 \section{Properties of the Higgs}
 New particles do not come with a label. How can we be certain that the particle discovered in 2012 is the Standard Model Higgs? Weinberg's model predicted several properties of the Higgs, however others such as the particle's mass and width were merely constrained by previous experiments. In this section we shall review the Higgs' properties.
@@ -153,7 +148,7 @@ It is possible to access spin-parity information through the $\gamma\gamma$, $WW
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{ch3_images/ZZ_angle}
-\caption{The angular variables considered in the $ZZ$ channel to measure the spin-pairty state of the parent particle \cite{higgs_review}.}
+\caption{The angular variables considered in the $ZZ$ channel to measure the spin-parity state of the parent particle \cite{higgs_review}.}
 \label{ZZ spin}
 \end{figure}
 
