@@ -1,0 +1,241 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{gensymb}
+\usepackage{slashed}
+\usepackage{physics}
+\usepackage{bbold}
+\usepackage{stackengine}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{pdfpages}
+\usepackage{hyperref}
+\usepackage{imakeidx}
+\usepackage[toc]{appendix}
+\usepackage{url}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{subcaption}
+\newtheorem{theorem}{Theorem}[section]
+\newcolumntype{L}{>{$}c<{$}}
+\newcommand\todo[1]{\textcolor{red}{#1}}
+\def\code#1{\texttt{#1}}
+
+\begin{document}
+
+\section{Machine Learning Basics}
+
+Machine learning is the generic term for a class of algorithms which are able to learn from a series of examples. 
+
+Specifically, in \emph{supervised} machine learning, the type dealt with in this thesis, a set of examples $\left\lbrace (\vec{x}_i, y_i)_{i = 1}^n \right\rbrace$ are provided. $\vec{x}_i$ represents the \emph{feature vector} of the $i$-th event, and $y_i$ is its label. The machine learning algorith is \emph{trained} on these examples. This training involves, in general, the minimization of some quantity. We can then test how well the algorithm performs using a subset of the provided dataset set aside before the training for this specific purpose. This subset is known as the \emph{test set}.
+
+The training is a delicate process. If, for example, the model is not trained on meaninful variables or when it is too simple, there is risk of underfitting. This means that, when presented with an event from the dataset on which it was trained, the model is not able to reliably assign the correct label to that event. On the other hand, if the model is too complex or there are too few training examples, we run the risk of overfitting. The difference between underfitting, a good fit, an overfitting is shown in Figure \ref{overfitting} . 
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{Appendix/overfitting}
+\label{overfitting}
+\caption{An example of underfitting, a good fit, and overfitting of a dataset \cite{burkov2019hundred}.}
+\end{figure}
+
+Once we have developped a model, we must also be able to quantify its performance. Once way of doing so is by looking at the area under the ROC curve (AUC). The ROC, or Receiver Operating Charachteristic, curve, which can be used to assess the performance of classifiers, specifically those classifiers which assign a label with a certain probabilty. These curves are built by varying the threshold above which an event is classified as signal. We then plot the True Positive Rate (TPR) against the False Positive Rate (FPR), where these are defined as
+\begin{gather}
+TPR = \frac{TP}{TP + FN} \\
+FPR = \frac{FP}{FP + FN}
+\end{gather}
+where $TP$ (true positive) stands for the number of events correctly classified as signal, $FP$ (false positive) the number of events correctly classified as background, and $FN$ (false negative) the number of events incorrectly classified as background. The area under the curve built in this manner measures how well the model performs. An example of a ROC curve is shown in Figure \ref{roc example}. A perfect model would have an $AUC = 1$ since, for all possible thresholds, the $TPR = 1$ and $FPR = 0$. On the other hand, a model which guesses randomly would be placed on the diagonal, and the resulting ROC curve would have $AUC = 1/2$.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.25]{Appendix/roc_example}
+\caption{An example of a ROC curve corresponding to a random guesser \cite{burkov2019hundred}.}
+\label{roc example}
+\end{figure}
+
+\section{Neural Networks}
+A neural network is a type of machine learning algorithm inspired by biology. The network is a web in which each node, called a neuron, receives an input from the neurons in the previous layer and transmits and output to those which succeed it. In the final layer, the neuron returns a number between $[0,1]$. If  a decision is made regarding the nature of the event which was given in input.  The neural network described in Chapter 4 of this thesis is shown in Figure ... .
+
+Formally, a neural network is a composite function. If the network contains $p$ layers, the function is of the form
+\begin{equation}
+y = f_{NN}(\vec{x}) = \left( \mathbf{f}_p \circ \cdots \circ \mathbf{f}_1 \circ \mathbf{f}_0\right) (\vec{x}).
+\label{NN equation}
+\end{equation}
+Each function $\mathbf{f}_m$ is of the form
+\begin{equation}
+\mathbf{f}_l (\vec{z}) = \mathbf{g}_l \left(\mathbf{W}_l\vec{z} + \vec{b}_l \right)
+\label{activation function}
+\end{equation}
+where $\mathbf{g}_l$ is an activation function, and $\mathbf{W}_l$ and $\vec{b}_l$ are a matrix and vector paramter, respectively, to be minimized as part of the backpropagation algorithm. We will describe both below. 
+
+\subsection{Backpropagation}
+The neural network is trained to minimize the cost function. This is a function which measures how accurately the network predicts the label of an event belonging to the training set. This function can be minimized by optimizing the parameters $\mathbf{W}_l$ and $\vec{b}_l$. 
+
+We can view $\mathbf{W}_l$ as a matrix composed of column vectors $\vec{W}_{l,u}$, where $u$ is the number of neurons in the $(l-1)$-th layer. The function (\ref{activation function}) gives an output $\vec{y}$, still of dimension $u$, which we can use to define a cost function
+\begin{equation}
+C = \frac{1}{2N} \sum_{l, i} \norm{\mathbf{y}_l(\vec{x}_i) - \mathbf{g}_l(\vec{x})_i}^2
+\label{cost function}
+\end{equation}
+where the sum runs over all layers $l$ and events $i$ and $\mathbf{y}$ is a function which returns the true label of $\vec{x}$.
+
+To avoid the complication which comes when considering multiple indices, we will consider a one-dimensional problem. We wish to minimize (\ref{cost function}), which now takes the form
+\begin{equation}
+C = \frac{1}{2N}\sum_{i = 1}^N (y_i - (Wx_i + b))^2.
+\end{equation}
+To do so, we must calculate the derivatives
+\begin{equation}
+\begin{cases}
+\frac{\partial C}{\partial W} = \frac{1}{N}\sum_{i = 1}^N x_i(y_i - (Wx_i + b)) \\
+\frac{\partial C}{\partial b} = \frac{1}{N}\sum_{i = 1}^N (y_i - (Wx_i + b))
+\end{cases}
+\label{partial derivatives}
+\end{equation}
+These are the components of the gradient of (\ref{activation function}). The gradient is a vector which points in the direction of maximal point of the function. We can follow it ``downhill'' to find a minimum. This process is known as gradient descent. 
+
+The gradient descent algorithm proceeds in multiple iterations known as \emph{epochs}. At the first epoch, the parameters $W$ and $b$ must be initialized. We then calculate the partial derivatives (\ref{partial derivatives}) to find the gradient, and update the parameters accordingly:
+
+\begin{equation}
+\begin{cases}
+W \rightarrow W - \alpha\frac{\partial C}{\partial W} \\
+b \rightarrow b - \alpha\frac{\partial C}{\partial b}
+\end{cases}
+\end{equation}
+where $\alpha$ is a parameter known as the \emph{learning rate} which determines how far downhill we want to go during each epoch.
+
+When dealing with gradient descent in multiple dimensions, we must simply apply the gradient descent algorithm on the singular components of the vectors. Since, in generale, we are dealing with a nested function of the form (\ref{NN equation}), we must apply the chain rule successively, leading to a product of partial derivatives. If these are exceedingly small, their product will be even smaller, leading to a low descent rate, a problem known as the \emph{vanishing gradient problem}. Exceedingly large gradients likewise lead to the \emph{exploding gradient problem}. 
+
+\subsection{Activation Functions}
+The activation function is a nonlinear function which defines the output of the neuron. There are several functions to choose from, but common choices are:
+\begin{enumerate}
+\item $Sigmoid$
+\begin{equation*}
+\sigma(z) = \frac{1}{1 + e^{-z}}
+\end{equation*}
+\item $tanh$
+\begin{equation*}
+tanh(z) = \frac{e^z - e^{-z}}{e^z + e^{-z}}
+\end{equation*}
+\item \emph{Rectified linear unit (ReLU)}
+\begin{equation*}
+ReLU(z) = \begin{cases}
+0, \; \forall z \leq 0 \\
+z, \; \forall z > 0
+\end{cases}.
+\end{equation*}
+\end{enumerate} 
+These functions each have their own advantages and disadvantages. For example, the sigmoid and $\tanh$ functions are continuously differentiable, allowing for the use of methods such as gradient descent during backpropagation. On the other hand, $ReLU$ is both non-differentiable in $z = 0$ and has a step-function as a derivative, making the gradient descent unfeasbile. On the other hand, if the neural network is particularly deep, i.e.\ it contains multiple hidden layers between the input layer and the output layer, the sigmoid and $\tanh$ functions are subject to the \emph{vanishing gradient problem}. This occurs when the product of the repeated partial derivatives taken as part of the backpropagation algorithm become too small. Since $\frac{d}{dz}ReLU(z) = 1 \; \forall z > 0$, this problem is drastically reduced.
+
+\section{Boosted Decision Trees}
+A Boosted Decision Tree (BDT) is a type of Decision Tree which makes use of a boosting algorithm to create a strong classifier by combining the results of several trees (weak learners). 
+
+\subsection{Decision Trees}
+A decision tree relies on successive ramifications to classify an event as signal or background, as shown in Figure \ref{tree}. At each node, the data is split based on a specific criterion. At a terminal node, known as a leaf, a decision is taken regarding the nature of the event.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.275]{Appendix/bdt}
+\caption{The successive splitting of a decision tree based on the threshold $t$ of a feature $x^{(j)}$ \cite{tree_image}.}
+\label{tree}
+\end{figure}
+
+Formally, consider a set $\mathcal{S} \dot{=} \left\lbrace (\vec{x}_i, y_i) \right\rbrace_{i = 1}^N$ of labelled examples, where, as before, $\vec{x}_i \in \mathbb{R}^N$ is a feature vector and $y_i \in \lbrace -1, 1 \rbrace$ is its label. We begin at a start node containing all examples and start with a constant model
+\begin{equation}
+f = \frac{1}{\vert \mathcal{S} \vert} \sum_{(\vec{x},y) \in \mathcal{S}} y
+\end{equation}
+which gives the same prediction for all inputs $\vec{x}$.
+
+A search is run over all features $j = 1, \dots, D$ and all thresholds $t$, and the dataset $\mathcal{S}$ is split into
+\begin{equation}
+\begin{cases}
+\mathcal{S}_{-} \; \dot{=} \left\lbrace (\vec{x},y) \vert (\vec{x},y) \in \mathcal{S}, x^{(j)} < t \right\rbrace \\
+\mathcal{S}_{+} \; \dot{=} \left\lbrace (\vec{x},y) \vert (\vec{x},y) \in \mathcal{S}, x^{(j)} \geq t \right\rbrace
+\end{cases}.
+\end{equation}
+Each subset goes into a new new leaf, however it is necessary to find the optimal splitting. For all pairs $(j, t)$, the algorithm evaluates the optimization criterion. There are various possible criteria, but we will limit ourselves to illustrating two examples.
+
+\begin{enumerate}
+
+\item \textbf{Log-likelihood}
+
+The entropy of a set $\mathcal{S}$ is defined as
+
+\begin{equation}
+H(\mathcal{S}) \dot{=} -f\ln f - (1 - f)\ln (1-f).
+\end{equation}
+When a node is split, the entropy of the split is simply given by the sum of the entropies of the two successive leaves
+\begin{equation}
+H(\mathcal{S}_{-}, S_+) \; \dot{=} \;\frac{\vert \mathcal{S}_{-}\vert }{\vert \mathcal{S}\vert}H(\mathcal{S}_{-}) +\frac{\vert \mathcal{S}_{+}\vert }{\vert \mathcal{S}\vert}H(\mathcal{S}_{+})
+\end{equation}
+
+Since entropy is maximized when all variables are equiprobable and minimized when the variable assumes just one value, by minimizing the node's entropy after the splitting we are guaranteed to find the optimal splitting.
+
+\item \textbf{Gini Index}
+
+Another possible optimization criterion is the Gini index. We start by defining the purity $P$ of a sample in a given node,
+
+\begin{equation}
+P \; \dot{=} \; \frac{\sum_s w_s}{\sum_s w_s + \sum_b w_b}
+\end{equation}
+where the sums run over the signal (s) and background (b) events and $w_i$ indicates a weight given to the event. 
+
+The Gini index $G$ for a given node is then given by 
+\begin{equation}
+G = \left(\sum_{i = 1}^N w_i \right) P(1-P)
+\end{equation}
+where the sum runs over all the events which enter the node.
+
+Since the product $P(1-P) = 0$ when a sample is composed entirely of signal or entirely of background events, the aim is again to minimize the entropy, this time given by the sum of the Gini index in the two leaves formed after a splitting, $G_1 + G_2$.
+\end{enumerate}
+
+Once the splitting has been optimized, the algorithm iterates until one of the following conditions are met at a leaf:
+\begin{itemize}
+\item All examples have been correctly classified
+\item There is no attribute that can split the node
+\item The maximum depth of the tree has been reached
+\item The information gain produced by the splitting is less than some paramter $\varepsilon$.
+\end{itemize}
+
+The decision to split a node is taken \emph{locally}, i.e.\ at the node itself. This makes a decision tree a weak classifier, since there is no guarantee to find an optimal solution. Several techniques, such as boosting, can be used to improve the model. 
+
+\subsection{Boosting}
+The boosting algorithm combines several weak learners to build a stronger predective model. The basic idea is to successively create models which reduce the errors of the previous model. 
+
+AdaBoost, short for Adaptive Boosting \cite{Freund1996ExperimentsWA}, is one of the hottest boosting techniques on the market. In this treatment, we will assume that the Gini index is being used as the optimization criterion.
+
+Staring from the set of all labelled events $(\vec{x}_i, y_i)$, we assign a weight to each member of the training set. Initially, this weight is the same for all events
+\begin{equation}
+w = \frac{1}{N}.
+\end{equation}
+
+For each tree $m$, we can calculate the error made by the classifier
+\begin{equation}
+err_m = \frac{\sum_{i= 1}^N w_i I(y_i \neq T_m(\vec{x}_i))}{\sum_{i =1}^N w_i}
+\label{error}
+\end{equation}
+where $T(\vec{x}_i) = \pm 1$ according to whether the feature vector $\vec{x}_i$ is classified as a signal or background event and the function $I$ depends on the accuracy of the prediction. $I(y_i \neq T_m(\vec{x}_i)) = 1$ if $y_i \neq T_m(\vec{x}_i)$ and $I(y_i \neq T_m(\vec{x}_i)) = 0$ if $y_i = T_m(\vec{x}_i)$.
+From here, and proceed to calculate the quantity
+\begin{equation}
+\alpha_m = \beta \ln \left( \frac{1 - err_m}{err_m} \right)
+\end{equation}
+where $\beta$ is a positive parameter usually set to unity, though $\beta = 1/2$ also appears often in literature. We use $\alpha_m$ to modify the weight assigned to each incorrectly classified event
+\begin{equation}
+w_i \rightarrow w_i \exp\left[\alpha_m I(y_i \neq T_m(\vec{x}_i)) \right].
+\end{equation}
+We normalize the weights to ensure that they still sum to unity
+\begin{equation}
+w_i \rightarrow \frac{w_i}{\sum_{i=1}^N w_i}.
+\end{equation}
+In doing so, we have increased the weight of the incorrectly classified events. 
+
+We then iterate the algorithm, developing a new classifier with the updated weights, until either all events have been correctly labelled or the maximum number of iterations has been reached. 
+%Cite adaboost paper
+%Finire di copiare
+%Leggere 100 page book per NN
+\nocite{Yang2005StudiesOB}
+
+
+\end{document}
