@@ -24,16 +24,16 @@
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 \begin{document}
-One of the best ways to explore the Standard Model is through high-energy particle collisions. The LHC is a 27 km hadron-hadron circular collider where two protons or nucleons interact with each other in a multitude of ways, resulting in a myriad of possible final states. By identifying these final states, and selecting those which correspond to processes of interest, it is possible to study these processes in detail. A number of detectors, including ATLAS and CMS, lie on the beam pipe for this purpose.
+One of the best ways to explore the Standard Model is through high-energy particle collisions. The LHC is a 27 km hadron-hadron circular collider where protons or nucleons interact with each other in a multitude of ways, resulting in a myriad of possible final states. By identifying these final states, and selecting those which correspond to processes of interest, it is possible to study these processes in detail. A number of detectors, including ATLAS and CMS, lie on the beam pipe for this purpose.
 
-The LHC has undergone several phases. During Run 1, the LHC ran at a center of mass energy $\sqrt{s}$ of 7-8 TeV. The energy was increased to $\sqrt{s} = 13$ TeV during Run 2. 
-Run 2 delivered a total integrated luminosity of 156 fb$^{-1}$. During Run 3, set to begin next year, the $\sqrt{s}$ could increase up to 14 TeV, and it is expected that the integrated luminosity will double to 300 fb$^{-1}$. In this chapter, we will describe the physics of hadron colliders.
+The LHC has undergone several phases. During Run 1 (2009-2013), the LHC ran at a center of mass energy $\sqrt{s}$ of 7-8 TeV. The energy was increased to $\sqrt{s} = 13$ TeV during Run 2 (2015-2018). 
+Run 2 delivered a total integrated luminosity of 156 fb$^{-1}$. During Run 3, set to begin next year, the $\sqrt{s}$ could increase up to 14 TeV, and it is expected that the integrated luminosity will double to 300 fb$^{-1}$. In this chapter, we will shortly describe the physics of hadron colliders.
 
 \section{Factorization}
 
 %Walk through a collision in detail, CM energy, set-up of experimental variables, ecc.
   
-$\indent$ The proton is a dyamic system. In a simplistic view, it is composed of three valence quarks, $u, u, d$ but these are bound together by gluons. The gluons interact both with the valence quarks and themselves, leading to a ``sea'' composed of gluons as well as quarks and anti-quarks of all flavors. This sea is dominant at low energies, and suppressed at higher energies. 
+The proton is a dynamic system. In a simplistic view, it is composed of three valence quarks, $u, u, d$ bound together by gluons. The gluons interact both with the valence quarks and themselves, leading to a ``sea'' composed of gluons, quarks and anti-quarks of all flavors, which originate from gluon splitting. The sea is dominant at low energies, and suppressed at higher energies. 
 
 When two hadrons collide at high energies, the resulting interaction does not directly involve the hadrons as a whole but the \emph{partons} which constitute the hadron. Thanks to asymptotic freedom, these partons are quasi-free. This means that, even when the interaction with the hadron as a whole is deeply inelastic, the parton-parton interaction which occurs is instead elastic. 
 
@@ -54,22 +54,24 @@ This discussion can be neatly summarized in a formula:
 \frac{d\sigma}{dX} = \sum_{j,k} \int dx_1 dx_2 \; f_j(x_1, Q^2)f_k(x_2, Q^2) \; \frac{d\hat{\sigma}_{jk}(x_1P_1, x_2P_2, Q^2, \mu_F^2)}{d\hat{X}} \; F(\hat{X}\rightarrow X; Q^2, \mu_F^2).
 \label{master formula}
 \end{equation}
-Here, we are stating that the differential cross section with respect to a hadronic observable $X$ can be written in terms of the parton-level cross section $d\hat{\sigma}/d\hat{X}$, differential in the parton-level observable $\hat{X}$. $f_j(x_1P_1, \mu_F)$ and $f_k(x_2P_2, Q^2)$ are known as Parton Distribution Functions (PDFs) and, at the lowest order in perturbation theory, describe the probability of extracting a parton of type $j$ or $k$ with momentum fraction $x_1$ or $x_2$, respectively from the colliding hadrons with momenta $P_1$ and $P_2$ when probed at energy $Q^2$. We must sum over all possibile partons, and integrate over all momentum fractions. Finally, the function $F(\hat{X}\rightarrow X; Q^2, \mu_F^2)$ describes the (non-perturbative) transition from partonic states to hadronic states and indicates how to relate any partonic observable $\hat{X}$ with the measured hadronic observable $X$. This can be, for example, a Fragmentation Function, used when a single final-state hadron is observed, or a Jet Function, used instead when describing an aggregate transition to hadrons. We will describe all of the involved functions in more detail in subsequent sections. Figure \ref{factorization pion} is a schematic representation of factorization in a proton-proton collision.  
+Here, we are stating that the differential cross section with respect to a hadronic observable $X$ can be written in terms of the parton-level cross section $d\hat{\sigma}/d\hat{X}$, differential in the parton-level observable $\hat{X}$. $f_j(x_1P_1, \mu_F)$ and $f_k(x_2P_2, Q^2)$ are known as Parton Distribution Functions (PDFs) and, at the lowest order in perturbation theory, describe the probability of extracting a parton of type $j$ or $k$ with momentum fraction $x_1$ or $x_2$, respectively from the colliding hadrons with momenta $P_1$ and $P_2$ when probed at energy $Q^2$. We must sum over all possibile partons, and integrate over all momentum fractions. Finally, the function $F(\hat{X}\rightarrow X; Q^2, \mu_F^2)$ describes the (non-perturbative) transition from partonic states to hadronic states and indicates how to relate any partonic observable $\hat{X}$ with the measured hadronic observable $X$. This can be, for example, a Fragmentation Function, used when a single final-state hadron is observed, or a Jet Function, used instead when describing an aggregate transition to hadrons. We will describe all of the involved functions in more detail in subsequent sections. 
+
+Figure \ref{factorization pion} is a schematic representation of factorization in a proton-proton collision described by \ref{master formula}.
 
 \section{Parton Distribution Functions}
 
-$\indent$ As previously stated, Parton Distribution Functions contain information regarding the constituents of a hadron. To better understand them, we shall study in detail the process known as Deep Inelastic Scattering (DIS).
+As previously stated, Parton Distribution Functions contain information regarding the constituents of a hadron. To better understand them, we shall study in detail the process known as Deep Inelastic Scattering (DIS).
 
 \subsection{Deep Inelastic Scattering}
 
-$\indent$ DIS is a process which probes the insides of hadrons using leptonic probes. In this section we will focus on high-energy electron-proton inelastic scattering. In this process, the incoming electron exchanges a virtual photon (if below the production threshold of the massive gauge bosons) with the proton. Specifically, we will look at the proccess
+DIS is a process which investigates the insides of hadrons using leptonic probes. In this section we will focus on high-energy electron-proton inelastic scattering. In this process, the incoming electron exchanges a virtual photon (if below the production threshold of the massive gauge bosons) with the proton. Specifically, we will look at the proccess
 \begin{equation}
 e^- \; p \rightarrow e^- \; X
 \end{equation}
 where X represents an undetermined hadronic final state, mediated by a virtual photon. 
 
 \subsubsection{Kinematics} 
-$\indent$ A number of kinematic variables are needed to fully describe the process. Without loss of generality, we will work in the targert rest frame (TRF), where the struck proton is at rest. With reference to Figure \ref{DIS diagram}, we have
+A number of kinematic variables are needed to fully describe the process. Without loss of generality, we will work in the targert rest frame (TRF), where the struck proton is at rest. With reference to Figure \ref{DIS diagram}, we have
 \begin{equation}
 \begin{cases}
 k^\mu = (E, 0, 0, E)  \\
@@ -114,7 +116,7 @@ it becomes clear that $x$ represents the ``elasticity'' of the process: $x$ is l
  
 \subsubsection{Cross Section}
 
-$\indent$ It is possible to calculate the cross section for the inelastic scattering process described above. The most general Lorentz-invariant cross section for the interaction considered is
+It is possible to calculate the cross section for the inelastic scattering process described above. The most general Lorentz-invariant cross section for the interaction considered is
 \begin{equation}
 \frac{d^2\sigma}{dxdQ^2} = \frac{4\pi\alpha^2}{Q^4}\left[\left(1 - y - \frac{m_p^2 y^2}{Q^2} \right)\frac{F^2(x,Q^2)}{x} + y^2F_1(x,Q^2)\right].
 \end{equation}
@@ -126,25 +128,25 @@ In the deep inelastic limit, this simplifies to
 $F_1$ and $F_2$ are \emph{structure functions}, which describe the internal structure of the proton.
 
 \subsubsection{Bjorken Scaling and the Callan-Gross Relation}
-$\indent$ An important observation involving the aforementioned structure functions is \emph{Bjorken scaling}. This is the observation that, to first order, $F_1$ and $F_2$ are independent of $Q^2$, as shown in Figure \ref{Bjorken scaling}.
+An important observation involving the aforementioned structure functions is \emph{Bjorken scaling}. This is the observation that, to first order, $F_1$ and $F_2$ are independent of $Q^2$, as shown in Figure \ref{Bjorken scaling}.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.5]{ch2_images/bjorken_scaling}
-\caption{The observation of approximate scaling at various experiments. The observed violations are caused by higher-order contributions \cite{Banerjee}.}
+\caption{The observation of approximate scaling of the structure functions at various experiments. The observed violations are caused by higher-order contributions \cite{Banerjee}.}
 \label{Bjorken scaling}
 \end{figure}
 In addition to this scaling, experimental observations also found that, at sufficiently large $Q^2$
 \begin{equation}
 F_2(x) = 2xF_1(x).
 \end{equation}
-This relation is known as the Callan-Gross relation and is shown in Figure \ref{Callan gross}.
+This relation is known as the \emph{Callan-Gross relation} and is shown in Figure \ref{Callan gross}.
 \begin{figure}[h!]
 \centering
 \includegraphics[scale=0.4]{ch2_images/callan_gross}
 \caption{An experimental observation of the Callan-Gross relation - \todo{Needs citation}}
 \label{Callan gross}
 \end{figure}
-We would expect to see scaling if the scattering occured against point-like particles, giving evidence to the composite nature of the proton. In addition to this, the Callan-Gross relation tells us that the constituent partons carry spin-1/2. We therefore have experimental evidence to support the statement that the proton is composed of point-like spin-1/2 particles, namely quarks \footnote{The proton also has a significant gluon component, as will be discussed in a later section}. The incoming electron elastically scatters against these constituents, explaining these observations and justifying the formula (\ref{master formula}).
+We would expect to see scaling if the scattering occured against point-like particles, giving evidence to the composite nature of the proton. In addition to this, the Callan-Gross relation tells us that the constituent partons carry spin-1/2. We therefore have experimental evidence to support the statement that the proton is composed of point-like spin-1/2 particles, namely quarks\footnote{The proton also has a significant gluon component, as will be discussed in a later section.}. The incoming electron elastically scatters against these constituents, explaining these observations and justifying the formula (\ref{master formula}).
 
 If we consider the DIS process in the infinite momentum frame, defined as the frame in which the energy of the proton in the initial state $E_p \gg m_p$, i.e. $p^\mu = (E_p, 0, 0, E_p)$, we can deduce that the four-momentum of the struck quark can be written as
 \begin{equation}
@@ -161,12 +163,12 @@ For this relation to hold, we must have $2\xi p \cdot q + q^2 = 0$, which implie
 We can therefore identify $x$ Bjorken with the momentum fraction of the struck constituent quark.
 
 \subsubsection{Determining PDFs}
-$\indent$ We can now proceed in actually determining the constituents of the proton. Experimentally, this is done using formula (\ref{master formula}), which in the case of DIS becomes
+We can now proceed in actually determining the constituents of the proton. Experimentally, this is done using formula (\ref{master formula}), which in the case of DIS becomes
 \begin{equation}
 \frac{d\sigma}{dE^\prime d\Omega} = \sum_f \int_0^1 dx \; \frac{d\hat{\sigma}}{dE^\prime d\Omega}(xP, q) \; \phi_f(x).
 \label{master formula DIS}
 \end{equation}
-The partonic cross section is easily calculable in QED
+where $\phi_f(x)$ represents the PDF for the (anti)quark of flavor $f$ within the proton. The partonic cross section is easily calculable in QED
 \begin{equation}
 \frac{d\hat{\sigma}}{dE^\prime d\Omega} = \frac{4\alpha^2}{Q^4}E^{\prime 2}\cos^2 \frac{\theta}{2}e_f^2 \frac{2m_fx}{Q^2}\delta \left(x^\prime - x\right) \left[1 + \frac{Q^2}{2m_f^2}\tan^2\frac{\theta}{2}  \right].
 \label{partonic cross section}
@@ -183,7 +185,9 @@ We have managed to describe the structure functions in terms of the PDFs, and in
 
 By experimentally measuring the cross-section (\ref{master formula DIS}), we can deconvolve the PDF contribution. Figure \ref{PDF plot} shows the PDFs of various partons within the proton, measured by ... at $Q^2 = 10$ GeV$^2$. 
 
-PDFs have the notable property of being \emph{universal}. This means that, regardless of what is used to probe them, they will always be the same since they are an intrinsic property of a given hadron. Given this property, determining the proton PDFs is fundamental for making accurate predictions at the LHC. 
+PDFs have the notable property of being \emph{universal}. This means that, regardless of what is used to probe them, they will always be the same since they are an intrinsic property of a given hadron. They are intrisincally non-perturbative, but their evolution with energy is governed by the renormalization group equation obtained in perturbation theory, as described in the below. 
+
+Determining the proton PDFs is fundamental for making accurate predictions at the LHC, as they allow us to to obtain theoretical predictions for inclusive or exclusive variables, as in \ref{master formula}, and compare them to measured rates. 
 \begin{figure}
 \centering
 \includegraphics[scale=0.4]{ch2_images/pdfs}
@@ -193,13 +197,13 @@ PDFs have the notable property of being \emph{universal}. This means that, regar
 
 \subsubsection{Gluon PDF}
 
-$\indent$ The discussion up to now has focused exclusively on quarks, since, within the original framework of the so-called \emph{Quark Parton Model}, did not include gluons. However, Figure \ref{PDF plot} shows that, particularly at small $x$, a significant fraction of the proton's constituents are gluons.
+The discussion up to now has focused exclusively on quarks, since, within the original framework of the so-called \emph{Quark Parton Model}, did not include gluons. However, Figure \ref{PDF plot} shows that, particularly at small $x$, i.e.\ at high energies, a significant fraction of the proton's constituents are gluons.
 
 The gluon PDF can be determined in a manner analogous to the quark PDFs. With DIS, we must, however, consider higher-order QCD corrections to be able to study elementary processes such as $\gamma g \rightarrow q \overline{q}$. This is not ideal since the process of interest is suppressed. Alternatively, we can look at hadron-hadron collisions, where gluon interactions do appear at leading order for some processes.
 
 \subsubsection{PDF Evolution}
 
-$\indent$ In general, PDFs are functions both of the momentum fraction $x$ and the scale of the hard process $Q^2$. To first order, this dependence is negligible, but the inclusion of the gluon leads to higher-order QCD corrections which lead to the scaling violations observed. 
+In general, PDFs are functions both of the momentum fraction $x$ and the scale of the hard process $Q^2$. At first order, this dependence is negligible, but the inclusion of the gluon leads to higher-order QCD corrections which lead to the scaling violations observed. 
 
 PDFs cannot be calculated from first principles; they must be measured from experiment. Thankfully, it is not necessary to perform measurements at different values of $x$ and $Q^2$ to fully determine PDFs.
 
@@ -207,11 +211,11 @@ The Dokshitzer-Gribov-Lipatov-Altarelli-Parisi (DGLAP) Equations \cite{GRIBOV197
 
 For the sake of brevity, we shall limit ourselves to citing this incredible result, rather than deriving the whole equation.
 
-The evolution equation for the parton density is:
+The evolution equation for the quark parton density is:
 \begin{equation}
-\frac{dq_f(x,Q^2)}{d\log Q^2} = \frac{\alpha_s}{2\pi}\int_x^1 \, \frac{dy}{y} \left[q_f(y,Q^2)P_{qq}\left(\frac{x}{y} \right) + g(y,Q^2)P_{gq}\left(\frac{x}{y} \right) \right].
+\frac{dq_f(x,Q^2)}{d\log Q^2} = \frac{\alpha_s}{2\pi}\int_x^1 \, \frac{dy}{y} \left[q_f(y,Q^2)P_{qq}\left(\frac{x}{y} \right) + g(y,Q^2)P_{qg}\left(\frac{x}{y} \right) \right].
 \end{equation}
-This equation states that, to calculate the PDF for a parton of flavor $f$ at a given $x$ and $Q^2$ we need only to integrate the parton and gluon PDFs at $y$ and $Q^2$, along with the splitting functions $P_{qq}$ and $P_{qg}$. $P_{qq}$ gives the probability of finding a real quark $q$ with a certain momentum fraction after the emission of a virtual gluon, and $P_{gq}$ is the analogous function for the emission of a real quark after a gluon splitting.
+This equation states that, to calculate the PDF for a parton of flavor $f$ at a given $x$ and $Q^2$ we need only to integrate the parton and gluon PDFs at $y$ and $Q^2$, along with the splitting functions $P_{qq}$ and $P_{qg}$. $P_{qq}$ gives the probability of finding a real quark $q$ with a certain momentum fraction after the emission of a virtual gluon, and $P_{qg}$ is the analogous function for the emission of a real quark after a gluon splitting.
 \begin{equation}
 \begin{cases}
 P_{qq}(z) = C_F\frac{1 + z^2}{(1 - z)_+} \\
@@ -226,7 +230,7 @@ has been used to regularize the divergent integral.
 
 An analogous function exists for the evolution of the gluon PDF
 \begin{equation}
-\frac{dg(x,Q^2)}{d\log Q^2} = \frac{\alpha_s}{2\pi}\int_x^1 \, \frac{dy}{y} \left[\sum_f q_f(y,Q^2)P_{qg}\left(\frac{x}{y} \right) + g(y,Q^2)P_{gg}\left(\frac{x}{y} \right) \right]
+\frac{dg(x,Q^2)}{d\log Q^2} = \frac{\alpha_s}{2\pi}\int_x^1 \, \frac{dy}{y} \left[\sum_f q_f(y,Q^2)P_{gq}\left(\frac{x}{y} \right) + g(y,Q^2)P_{gg}\left(\frac{x}{y} \right) \right]
 \end{equation}
 where this time
 \begin{equation}
@@ -238,9 +242,9 @@ P_{gg}(z) = 2C_A\left[\frac{1 - z}{z} + \frac{z}{(1 - z)_+} + z(1-z) \right]
 where $C_A$ is the Casimir operator for the adjoint representation of $SU(3)$.
  
 \section{Fragmentation Functions}
-$\indent$ Fragmentation functions play a role similar to that of PDFs, but rather than describing the possibile initial states of the interaction, they describe the possibile final states that may be observed.
+Fragmentation functions play a role similar to that of PDFs, but rather than describing the possibile initial states of the interaction, they describe the possibile final states that may be observed.
 
-To understand Fragmentation Functions, it is the \emph{semi-inclusive} DIS process, where we observe one hadron in the final state. The kimatic variables are the same as in (\ref{kinematics}), though we must now include the four-momentum of the final-state hadron
+To understand Fragmentation Functions, we refer to the \emph{semi-inclusive} DIS process, where we observe one hadron in the final state. The kimatic variables are the same as in (\ref{kinematics}), though we must now include the four-momentum of the final-state hadron
 \begin{equation}
 P_h^\mu = (E_h, \vec{P_h})
 \end{equation} 
@@ -255,18 +259,16 @@ The cross section can again be calculated without difficulty:
 \frac{d\sigma}{dx dy dz} = \frac{4\pi\alpha^2_S}{Q^4}\left(\frac{y}{2} + 1 - y\right)x \; \sum_f e_f^2 \phi_f(x) D_f(z)
 \label{cross section FF}
 \end{equation}
-where the sum over all flavors includes the anti-quarks. In this way, the Fragmentation Function $D_f(z)$ represents the probability of finding a hadron with fraction < of the available energy. The cross section remains factorized, allowing for information on the Fragmentation Functions by comparison with data, as neither they are calculable in QCD. Finally, it should be said that the Fragmentation Functions depend on the quark from which they originate, hence the index. 
-
-\todo{Togliere questa parte sulle Fragmentation functions? Non e' molto pertinente ma faccio un accenno piu' avanti}
+where the sum over all flavors includes the anti-quarks. In this way, the Fragmentation Function $D_f(z)$ represents the probability of finding a hadron with fraction $z$ of the available energy. The cross section remains factorized, allowing for information on the Fragmentation Functions by comparison with data, as neither they are calculable in QCD. Finally, it should be said that the Fragmentation Functions depend on the quark from which they originate, hence the index. 
 
 \section{Jets}
-$\indent$ Due to the non-perturbative nature of the hadronization process and the myriad of particles produced, it is not possible to calculate cross-sections for all of the different possibile hadronic final states. Instead, \emph{jets} are considered in their place. Jets are, as the name suggests, groups of collimated particles. They can be treated as singular objects, allowing for a notable simplification of the calculations. 
+Due to the non-perturbative nature of the hadronization process and the myriad of particles produced, it is not possible to calculate cross-sections for all of the different possibile hadronic final states. Instead, \emph{jets} are considered in their place. Jets are, as the name suggests, groups of collimated particles which all originate from the same parent particle. They can be treated as singular objects, allowing for a notable simplification of the calculations. 
 
 \subsection{Jet Definitions}
-$\indent$ In order to be able to precisely calculate jet cross-sections and confront these with experimental data, it is necessarily to unambiguosly \emph{define} what a jet is. There are multiple possible definitions of jets, and we will briefly some examples of these.  
+In order to be able to precisely calculate jet cross-sections and confront these with experimental data, it is necessarily to unambiguosly \emph{define} what a jet is. There are multiple possible definitions of jets, and we will briefly some examples of these.  
 
 \subsubsection{Cone Algorithms}
-$\indent$ Historically, cone algorithms were the first class of jet algorithms introduced. The very first algorithm was used to classify jets in $e^+e^-$ collisions and depended on two arbitrary parameters, $\delta$ and $\epsilon$. If an event had a fraction of energy of at least $1 - \epsilon$ concentrated within two cones of half-angle $\delta$, then that even was said to contain two jets \cite{Sterman:1977wj}. The fact that the definition relied on arbitrary parameters meant that these had to be specified so that the predictions could be compared to data. This remains a general feature of jet algorithms to this day.
+Historically, cone algorithms were the first class of jet algorithms introduced. The very first algorithm was used to classify jets in $e^+e^-$ collisions and depended on two arbitrary parameters, $\delta$ and $\epsilon$. If an event had a fraction of energy of at least $1 - \epsilon$ concentrated within two cones of half-angle $\delta$, then that even was said to contain two jets \cite{Sterman:1977wj}. The fact that the definition relied on the arbitrary parameters $\delta$ and $epsilon$ meant that these had to be specified so that the predictions could be compared to data. This remains a general feature of jet algorithms to this day.
 
 Cone algorithms have progressed in the years since their inception. Today, two of the most widely used code algorithms are iterative and fixed cone algorithms. In iterative cone algorithms, the direction of the jet is initially set by a particle $i$. All particles within distance $R_{ij}$
 \begin{equation}
@@ -277,7 +279,7 @@ in the rapidity/azimuthal angle plane are then taken as part of the jet, and the
 Fixed cone algorithms function similarly. In this case, rather than iterating the cone direction, a cone is fixed around a seed, and that cone is called a jet. The particles within the radius $R_{ij}$ are assigned to the jet, and removed from the event record. The algorithm proceeds until all possible jets have been identified.
 
 \subsubsection{$k_t$-Algorithms} 
-$\indent$ $k_t$ algorithms are part of a family of algorithms known as sequential recombination jet algorithms. The $kt$ algorithms use a momentum-weighted distance
+$k_t$ algorithms are part of a family of algorithms known as sequential recombination jet algorithms. The $k_t$ algorithms use a momentum-weighted distance
 \begin{equation}
 \begin{cases}
 d_{ij} = min(k_{ti}^{2p}, k_{tj}^{2p})\frac{\Delta_{ij}^2}{R^2} \\
@@ -286,7 +288,7 @@ d_{iB} = k_{ti}^{2p}
 \end{equation}
 to establish which particles $j$ lie closest to the particle $i$. If $d_{ij}$ is less than the distance between $i$ and the beam $d_{iB}$, $i$ and $j$ are combined into a jet. This procedure iterates over all particles. 
 
-These definitions also depend on two parameters: $p$ and $R$. There exist three noteworthy cases: $p = 1$ is known as the $k_t$ algorithm, and weighs the distance $d_{ij}$ using the square of the transverse momentum of the softer particle; $p = 0$ is known as the Cabridge-Aachen algorith, and features no weighting; $p = -1$ is known as the anti-$k_t$ algorithm, and weights the distance using the inverse of the square of the transverse momentum of the harder particle. 
+These definitions also depend on two parameters: $p$ and $R$. There exist three noteworthy cases: $p = 1$ is known as the $k_t$ algorithm, and weighs the distance $d_{ij}$ using the square of the transverse momentum of the softer particle; $p = 0$ is known as the Cambridge-Aachen algorithm, and features no weighting; $p = -1$ is known as the anti-$k_t$ algorithm, and weights the distance using the inverse of the square of the transverse momentum of the harder particle. 
 
 Due to the distance used, the anti-$k_t$ algorithm tends to cluster soft particles together with hard particles. This is a useful property as it tends to lead to jets centered about hard particles, and correctly recombines the soft radiation emitted from the hard seed together with that seed. If the hard particles are well-separated, this also leads to conical jets, as shown in Figure \ref{jet algos}.
 
@@ -299,7 +301,7 @@ Due to the distance used, the anti-$k_t$ algorithm tends to cluster soft particl
 
 \subsection{Jet Cross Sections}
 
-$\indent$ Once we have defined our jets, we can go on to calculate jet cross sections. Without going into too much detail, we will just illustrate a general feature which highlights the usefulness of jets. 
+Once we have defined our jets, we can go on to calculate jet cross sections. Without going into too much detail, we will just illustrate a general feature which highlights the usefulness of jets. 
 
 If we calculate the two-hadron semi-inclusive cross section for $e^+e^-$ into hadrons, we find that
 \begin{equation}
@@ -315,21 +317,21 @@ If rather than observing the two final-state hadrons we observe the jets surroun
  
 \section{Higher Order Corrections}
 
-$\indent$ A number of higher order corrections to the elementary cross section are possible. These include real and virtual corrections in all possibile combinations. In QCD, we currently know how to treat corrections up to $\mathcal{O}(\alpha_S^3)$ for a few select processes \todo{citation}. In this section we will breifly discuss the importance of higher order corrections, as well as some challenges which arise during their calculation.
+A number of higher order corrections to the elementary cross section are possible. These include real and virtual corrections in all possibile combinations. In QCD, we currently know how to treat corrections up to $\mathcal{O}(\alpha_S^3)$ for a few select processes \todo{citation}. In this section we will breifly discuss the importance of higher order corrections, as well as some challenges which arise during their calculation.
 
 \subsection{Infrared and Collinear Divergences}
-$\indent$ The matrix element for a radiative correction in QED and QCD is easily calculable using the Feynman rules. For example, for the diagram shown in Figure \ref{real}, the matrix element for all possible real emissions and all possible photon polarizations is found to be
+The matrix element for a radiative correction in QED and QCD is easily calculable using the Feynman rules. We will consider the example of the emission of a photon \todo{which scattering process} in QED, but all considerations also hold in QCD. The matrix element for all possible real emissions and all possible photon polarizations is found to be
 \begin{figure}
 \centering
 \includegraphics[scale=0.6]{ch2_images/real}
-\caption{A Feynman diagram depicting a real emission in QED.}
+\caption{A Feynman diagram depicting a real emission in QED \todo{better diagrams, subfigure to merge images}.}
 \label{real}
 \end{figure}
 \begin{equation}
-\frac{d\sigma}{d\Omega} = \left(\frac{d\sigma}{d\Omega} \right)_0 \frac{\alpha}{2\pi}\left[2\frac{p_- \cdot p_+}{p_-\cdot k p_+ \cdot k} - \frac{m_e^2}{(p_-\cdot k)^2} - \frac{m_e^2}{(p_+ \cdot k)^2} \right]\frac{d^3k}{\omega}
+\frac{d\sigma}{d\Omega} = \left(\frac{d\sigma}{d\Omega} \right)_0 \frac{\alpha}{2\pi}\left[2\frac{p_- \cdot p_+}{(p_-\cdot k) (p_+ \cdot k)} - \frac{m_e^2}{(p_-\cdot k)^2} - \frac{m_e^2}{(p_+ \cdot k)^2} \right]\frac{d^3k}{\omega}
 \label{infrared}
 \end{equation}
-where $\left(\frac{d\sigma}{d\Omega} \right)_0$ represents the tree-level cross section. In the center-of-mass frame, where the kinematic variables can be expressed as
+where $\left(\frac{d\sigma}{d\Omega} \right)_0$ represents the tree-level cross section, without any emission, $p_-$ and $p_+$ represent the momenta of the outgoing electrons \todo{positron?} and $k^\mu$ the momentum of the radiated photon. In the center-of-mass frame, where the kinematic variables can be expressed as
 \begin{equation}
 \begin{cases}
 p_-^\mu = (E, 0, 0, \beta E)\\
@@ -337,12 +339,13 @@ p_+^\mu = (E, 0, 0, -\beta E)\\
 k^\mu = (\omega, \omega \sin\theta\cos\phi, \omega\sin\theta\sin\phi, \omega\cos\theta)
 \end{cases}
 \end{equation}
-where $\beta = \sqrt{1 - \frac{m_e^2}{E^2}}$, (\ref{infrared}) becomes
+where $\beta = \sqrt{1 - \frac{m_e^2}{E^2}}$ and $\omega$ is the energy of the photon, equation (\ref{infrared}) becomes
 \begin{equation}
 \frac{d\sigma}{d\Omega} = \left(\frac{d\sigma}{d\Omega} \right)_0 \frac{\alpha}{2\pi}\frac{1}{\omega}\frac{\beta^2\sin^2\theta}{(1-\beta^2\cos^2\theta)^2}d\omega \, d\cos\theta
 \end{equation}
-where we have already integrated in $d\phi$
-This expression is divergent in two cases: when the radiated particle is either very soft ($E \ll 1$) or when it is collinear to the lepton from which it is emitted ($\theta \ll 1$). These cases are known as \emph{infrared} and \emph{collinear} divergences, respectively, and they are problematic as they prohibit the calculation of the cross section at next-to-leading order. 
+where we have already integrated in $d\phi$.
+
+This expression is divergent in two cases: when the radiated particle is either very soft ($E \ll 1$) or collinear to the lepton from which it is emitted ($\theta \ll 1$). These cases are known as \emph{infrared} and \emph{collinear} divergences, respectively, and they are problematic as they prohibit the calculation of a finite cross section at next-to-leading order. 
 
 Integrating in $d\cos\theta$ resolves the collinear divergence
 \begin{equation}
@@ -364,7 +367,7 @@ Thankfully, a brilliant solution to this problem exists. If we assign a mass $\l
 \begin{equation}
 \left( \frac{d\sigma}{d\Omega}\right)_{exp} = \left( \frac{d\sigma}{d\Omega}\right)_{elastic} + \left( \frac{d\sigma}{d\Omega}\right)_{\omega < \Delta E}\ln \frac{\Delta E}{\lambda}.
 \end{equation}
-If we also consider the virtual corrections, such as in Figure \ref{virtual} and calculate the relative cross section, which also contributes to (\ref{cross section decomposition}), we find
+If we also consider the virtual corrections, such as in Figure \ref{virtual}, and calculate the relative cross section, which also contributes to (\ref{cross section decomposition}), we find
 \begin{figure}
 \centering
 \includegraphics[scale=0.6]{ch2_images/virtual}
@@ -374,35 +377,39 @@ If we also consider the virtual corrections, such as in Figure \ref{virtual} and
 \begin{equation}
 \frac{d\sigma}{d\Omega} = \left(\frac{d\sigma}{d\Omega}\right)_0 \frac{1}{\omega} \frac{2\alpha}{\pi}\left[\ln\frac{s}{m_e^2} - 1 \right] \ln \frac{\lambda}{E} d\omega
 \end{equation}
-We can sum the real and virtual corrections, and find a total cross section independent from $\lambda$! We can now safely take the limit of $\lambda \rightarrow 0$ and integrate over $\omega$.
+We can sum the real and virtual corrections, and find a total cross section independent from $\lambda$! The Kinoshita–Lee–Nauenberg theorem guarantees that this cancellation occurs at all orders in perturbation thorey \cite{Kinoshita:1962ur}. We can now safely take the limit of $\lambda \rightarrow 0$ and integrate over $\omega$.
 
 \subsection{Infrared and Collinear Saftety for Jets}
-$\indent$ As mentioned in the previous section, infrared and collinear (IRC) divergences will, in theory, exactly cancel. In practice, however, this is not always the case. Depending on the type of jet algorithm used, it may happen that the cancellation breaks and an infinite cross section is calculated. Obviously, this is a problem since the measured cross section will always be finite. It is therefore important from a theoretical standpoint to define in a way that is IRC safe. 
+As mentioned in the previous section, infrared and collinear (IRC) divergences will, in theory, exactly cancel. In practice, however, this is not always the case. Depending on the type of jet algorithm used, it may happen that the cancellation breaks and an infinite cross section is calculated. Obviously, this is a problem since the measured cross section is by definition finite. It is therefore important from a theoretical standpoint to define in a way that is IRC safe. 
 
 An observable $\mathcal{O}$ is said to be IRC safe, respectively, when the following properties are satisfied:
 \begin{gather}
 \mathcal{O}(X; p_1, \dots, p_n, p_{n+1}) \rightarrow 0) \rightarrow  \mathcal{O}(X; p_1, \dots, p_n ) \label{IRC safety}\\
 \mathcal{O}(X; p_1, \dots, p_n \parallel p_{n+1}) \rightarrow \mathcal{O}(X; p_1, \dots, p_n),
 \end{gather}
-i.e. when the observable reduces to that of $n$ particle case, in absence of the soft or collinear emission. An example of an infrared safe and unsafe jet is shown in Figure \ref{Infrared safe jet}, while Figure \ref{collinear safe jet} illustrates an example of a collinear safe and unsafe jet.
+i.e.\ when the observable reduces to that of $n$ particle case, in absence of the soft or collinear emission. An example of infrared safe and unsafe jets is shown in Figure \ref{Infrared safe jet}, while Figure \ref{collinear safe jet} illustrates an example of collinear safe and unsafe jets.
 
 The anti-$k_t$ algorithm is an example of a jet algorithm which is IRC safe. Due to its weighting, when a soft particle is emitted, this will tend to cluster together with the hard center of the jet. On the other hand, when a particle is emitted collinear to another, the distance $\Delta_{ij}$ will be very small, and it will again be clustered together with its parent particle.
 
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.4]{ch2_images/ir_safe}
+\includegraphics[width=\textwidth]{ch2_images/ir_safe}
 \caption{A schematic representation of an IR unsafe jet. The emission of a soft gluon changes the event from a two-jet event to a one-jet event due to its effect on the clustering algorithm \cite{Salam:2010nqg}.}
 \label{Infrared safe jet}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[scale=0.4]{ch2_images/collinear_safe}
+\includegraphics[width=\textwidth]{ch2_images/collinear_safe}
 \caption{A schematic representation of a collinear safe and unsafe jet. The blue lines represent particles, and the length corresponds to the particle's transverse momentum. The horizontal axis represents rapidity. If the emission of a collinear gluon leads to the formation of a second jet, the cancellation is broken and the cross section diverges, as shown on the right. If, on the other hand, it and its parents are treated as a single particle by, for example, summing their momenta, the emission satisfies the definition \ref{IRC safety} \cite{Salam:2010nqg}.}
 \label{collinear safe jet}
 \end{figure}
 
+\section{Conclusions}
+Over the past few decades, colliders have allowed us to study, understand, and ultimately build the Standard Model. Notable achievements include  the discovery of the $Z$ boson through the observation of weak neutral currents at Gargamelle in 1973 \cite{GargamelleNeutrino:1973jyy, HASERT1973121}, the discovery of the $W$ boson by the UA1 and UA2 collaborations in 1983 \cite{UA1:1983crd, UA2:1983tsx}, and the confirmation of the existence of three generations of matter at LEP in 1998 \cite{L3:1998uub}. At the end of the '90s, only one key ingredient of the model had yet to be found: the Higgs boson.
+
+\nocite{Mangano:2018sfp}
 \end{document}
 
 
