@@ -16,12 +16,15 @@
 \usepackage{geometry}
 \usepackage{pdfpages}
 \usepackage{hyperref}
+\usepackage{subcaption}
 \usepackage[numbers,sort&compress]{natbib}
 
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 \begin{document}
-The discovery of the Higgs Boson in 2012 \cite{ATLAS:2012yve} ushered in a new era of physics. Since then, one of the main goals of the ATLAS and CMS programs has been to robustly test the Standard Model by studying the properties of the Higgs. This requires knowledge on the production and decay mechanisms of the Higgs. 
+Over the past several decades, collider physics have allowed us to study and understand the Standard Model. At the turn of the century, only one piece of the puzzle was left: the Higgs boson. The LHC was tasked with finding this elusive particle, and succeeded in 2012 \cite{ATLAS:2012yve, CMS:2012qbp}.
+
+The discovery of the Higgs boson ushered in a new era of physics. Since then, one of the main goals of the ATLAS and CMS programs has been to robustly test the Standard Model by studying the properties of the Higgs. This requires knowledge on the production and decay mechanisms of the Higgs. 
 
 These mechanisms could be studied as a function of the Higgs mass $m_{H}$ even prior to the discovery of the Higgs. Now that $m_{H}$ is known, the cross sections depend exclusively on $\sqrt{s}$. 
 
@@ -108,5 +111,89 @@ Because these tagging techniques are general, similar considerations hold for $H
 \subsubsection{$H\rightarrow WW, H\rightarrow ZZ, H\rightarrow \gamma\gamma$}
 The large QCD background is the foremost obstacle that physicists must contend with when make discoveries at the LHC. For this reason, the decay channels  
 $H\rightarrow WW, H\rightarrow ZZ$ and $H\rightarrow \gamma\gamma$ were crucial in the discovery of the Higgs boson. These channels are characterized by a clean experimental signal, thanks to the possibility of leptonic decays and the ease with each photons can be identified. Specifically, the channels $H\rightarrow ZZ^{(*)}\rightarrow 4\ell$, $H\rightarrow\gamma\gamma$, $H\rightarrow WW^{(*)} \rightarrow e\nu\mu\nu$, when combined with data from the channels $H\rightarrow b\overline{b}$ and $H \rightarrow \tau^+ \tau^-$ allowed for the discovery of the Higgs in 2012 by the ATLAS and CMS collaborations. The infamous plots are shown in Figure ... \todo{quanti e quali mettere? Ogni canale ha il proprio plot} .
+
+\section{Properties of the Higgs}
+New particles do not come with a label. How can we be certain that the particle discovered in 2012 is the Standard Model Higgs? Weinberg's model predicted several properties of the Higgs, however others such as the particle's mass and width were merely constrained by previous experiments. In this section we shall review the Higgs' properties.
+
+\subsubsection{Mass}
+Several channels offer direct access to the mass of the Higgs. In particular, the $ZZ$ and $\gamma\gamma$ decay channels allow physicists to measure the mass with an error of just $0.5$ GeV. Using Run 1 data, ATLAS measured the Higgs' mass to be $m_H = 125.37 \pm 0.37(\text{stat.}) \pm 0.18(\text{syst.})$ \cite{ATLAS:2014euz}, while CMS found $m_H = 125.02^{+0.26}_{-0.27}(\text{stat.})^{+0.14}_{-0.15}(\text{syst.})$ GeV \cite{CMS:2014fzn}. The combination of these measurements is $m_H = 125.09 \pm 0.21(\text{stat.})\pm 0.11(\text{syst.}^)$ GeV \cite{ATLAS:2015yey}.  There was no Standard Model prediction for the mass of the Higgs; this measurement represents a constraint for the model.
+
+\subsubsection{Width}
+The Higgs boson width is accessible from a number of measurements. One of the most recent measurements has been taken by the CMS collaboration. They looked at on-shell and off-shell H production and studied in particular the $4\ell$ final state to find a width of $3.2^{+2.8}_{2.2}$ MeV, assuming Standard Model couplings \cite{CMS:2019ekd}. This measurement is in agreement with the Monte Carlo prediction cited by the collaboration, $4.1^{+5.0}_{-4.0}$ MeV.
+
+\subsubsection{Couplings}
+It is also of interest to measure the couplings of the Higgs bosons to the fermions and vector bosons. The Standard Model predicts the these to be proportion to $m_f$ and $m_{V}^2$, respectively. Loop decays play a special role in determining the fermionic couplings since the decay rate depends on the strength of the coupling. Otherwise, it is also possible to access the couplings to the vector bosons, specifically the $W$, through the branching ratios of $H \rightarrow WW$ decays and interference with $H \rightarrow \gamma\gamma$.
+
+Deviation from the predicted value of the couplings is measured through $\kappa_f$ and $\kappa_V$. These quantities indicate the ratio of the measured coupling to the predicted value
+\begin{equation}
+\kappa^2 = \frac{\Gamma^2}{\Gamma_{SM}^2}.
+\end{equation}
+Figure \ref{scale factor} shows the measured limits of the scale factors by CMS through several different channels using data from Run 1. As can be seen, the measured values are compatible with the Standard Model prediction. Figure \ref{mass dependence} instead shows the mass dependence of the couplings as measured by CMS. This too follows the Standard Model prediction. 
+
+\begin{figure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[scale=0.25]{ch3_images/scale_factor}
+\label{scale factor}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\includegraphics[scale=0.28]{ch3_images/couplings}
+\label{mass dependence}
+\caption{}
+\end{subfigure}
+\caption{The measured limits (a) of the scale factors $\kappa_f$ and $\kappa_V$ and the mass dependence of the Higgs couplings (b) as measured by CMS \cite{higgs_review}. }
+\end{figure}
+
+\subsubsection{Spin-Parity}
+The Standard Model predicts that the Higgs boson has a $0^+$ spin-parity state. Since all observed final states are characterized by integral spin, it is clear that the particle from which they originate must also exhibit this property. However, several models had to be tested to verify the Standard Model prediction, as well as ensure that the observed particle was the same throughout all channels.
+
+It is possible to access spin-parity information through the $\gamma\gamma$, $WW,$ and $ZZ$ channels \cite{ATLAS:2013xga, ATLAS:2015zhl, CMS:2014nkk}. In particular, either the direction of emission of the photons or the angular information from the decays of the vector bosons are considered. Experimentally, the information available from the $WW$ channel is diluted with respect to that available from the $ZZ$ channel due to the momentum lost to the neutrinos. Figure \ref{ZZ spin} shows the angular variables considered in the $pp \rightarrow X \rightarrow ZZ \rightarrow 4\ell$ channel.
+
+\begin{figure}
+\centering
+\includegraphics[scale=0.3]{ch3_images/ZZ_angle}
+\caption{The angular variables considered in the $ZZ$ channel to measure the spin-pairty state of the parent particle \cite{higgs_review}.}
+\label{ZZ spin}
+\end{figure}
+
+All observations are consistent with a particle with spin-parity consistent with the Standard Model prediction. When combined with information coming from the production rate and couplings, physicists and confidently assert that the particle observed in 2012 was indeed the Higgs boson. 
+
+\section{New Discoveries}
+
+Having confirmed the existence of the Higgs, physicists have begun to rigorously test all processes involving the Higgs and search for new, unknown ones. 
+
+\subsubsection{Double Higgs Production}
+
+Within the field of precision physics, some Higgs couplings have yet to be tested. In particular, the Higgs self-coupling remains to be precisely measured at ATLAS and CMS. 
+
+Due to the small Higgs production cross section, double Higgs production is an incredibly rare event. However, it is expected that by the end of Run 3, this process should be observed \cite{Chen:2017khz}. 
+
+The process is of interest due to possible cosmological implications of a deviation from the Standard Model prediction, and because it is a probe of physics beyond the Standard Model. Specifically, there are models which predict 
+decays of spin-2 Kaluza-Klein gravitons or other, heavier Higgs bosons into a Higgs pair. Figure \ref{double Higgs} shows the leading order Feynman diagrams for two Higgs produced via gluon-gluon fusion.
+ 
+Currently, ATLAS has placed limits on the scale factor $\kappa_H$ which measures the deviation from the expected Standard Model couplings. These limits come from constraints placed by single Higgs production. At a 95\% confidence level, $\kappa_H$ is limited to the range $-5.0 < \kappa_H < 12.0$ \cite{ATLAS:2019qdc}.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{ch3_images/double_higgs}
+\label{double Higgs}
+\caption{The leading-order Feynman diagrams for double Higgs production \cite{ATLAS:2019qdc}.}
+\end{figure}
+
+\subsubsection{Dark Matter Searches}
+
+Over the past few decades, cosmological observations have led to the conclusion that visible matter makes up just a small part of our universe. The rest is made up of what is known as dark matter and dark energy.
+
+We are sure of the existence of dark matter because we can see its gravitational influence. The gravitational interactions of dark matter are indicative of the fact that it has mass. There are several theories as to the nature of dark matter, but one of the leading hypotheses is the particle nature of dark matter.
+
+If dark matter is a massive particle, it is natural to assume that it gains mass via the Higgs mechanism. This idea has led to the search for production of unknown, invisible particles at colliders via their interaction with the Higgs. 
+
+Without diving into too much detail, dark matter searches at colliders in general rely on the same principle as precision physics: precise measurements of known cross sections to search for any possible deviations from Standard Model predictions. Given how little we know about dark matter, these Higgs portals are one of the most promising avenues to find out more about the invisible universe \cite{Arcadi:2019lka}.
+
+\section{Conclusions}
+The discovery of the Higgs boson finally completed our understanding of the Standard Model. However, there are still many pieces of the puzzle that are missing, such as dark matter. To gain a full understanding of the model, we must be able to produce, reconstruct and detect the Higgs at current and future colliders. 
+
+Detection of $H\rightarrow b\overline{b}$ decays is an important part of this mission, as it is the main decay channel of the Higgs. Due to the large QCD background of the process, it is hard to discern events containing the Higgs within the QCD haystack. In the next chapter, we will describe a framework which we have developed to help overcome this hurdle.
 
 \end{document}
