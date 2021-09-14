@@ -16,6 +16,7 @@
 \usepackage{geometry}
 \usepackage{pdfpages}
 \usepackage{hyperref}
+\usepackage{subcaption}
 \usepackage[numbers,sort&compress]{natbib}
 
 
@@ -42,7 +43,7 @@ Relativistic considerations also allow us to deduce that the time-scale is such 
 In the case of deep inelastic scattering, after the constituent parton has been struck, the virtual particles emitted by the constituent as part of normal interactions within the hadron can no longer be reabsorbed. This effect is exacerbated at higher $Q$. The end result is a perturbative evolution of the final state particles from the interaction, together with these liberated virtual particles, down to energies of the order of the Landau pole of QCD, $\Lambda_{QCD}$. At these energies, due to the running of the coupling constant $\alpha_S$, it is no longer possible to describe QCD using perturbative physics. What follows is the hadronization process, where final state particles undergo non-perturbative interactions which transform them into relatively long-lived hadrons. Since the time-scale for hadronization is much longer when compared to the elementary process, the cross section for the collision is said to be \emph{factorized} into a hard process described by an elementary cross section and functions describing the non-perturbative physics involved in the hadron before the interaction as well as the hadronization process. 
 
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[scale=1.0]{ch2_images/factorization}
 \caption{A schematic representation of factorization in a process which results in the production of pion in a proton-proton collision \cite{Soffer}.}
@@ -131,8 +132,8 @@ $F_1$ and $F_2$ are \emph{structure functions}, which describe the internal stru
 An important observation involving the aforementioned structure functions is \emph{Bjorken scaling}. This is the observation that, to first order, $F_1$ and $F_2$ are independent of $Q^2$, as shown in Figure \ref{Bjorken scaling}.
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.5]{ch2_images/bjorken_scaling}
-\caption{The observation of approximate scaling of the structure functions at various experiments. The observed violations are caused by higher-order contributions \cite{Banerjee}.}
+\includegraphics[width=\textwidth]{ch2_images/bjorken_scacling}
+\caption{The observation of approximate scaling of the structure functions at various experiments. The observed violations are caused by higher-order contributions \cite{pdg}.}
 \label{Bjorken scaling}
 \end{figure}
 In addition to this scaling, experimental observations also found that, at sufficiently large $Q^2$
@@ -142,8 +143,8 @@ F_2(x) = 2xF_1(x).
 This relation is known as the \emph{Callan-Gross relation} and is shown in Figure \ref{Callan gross}.
 \begin{figure}[h!]
 \centering
-\includegraphics[scale=0.4]{ch2_images/callan_gross}
-\caption{An experimental observation of the Callan-Gross relation - \todo{Needs citation}}
+\includegraphics[scale=0.5]{ch2_images/callan}
+\caption{An experimental observation of the Callan-Gross relation \cite{Griffiths:2008zz}.}
 \label{Callan gross}
 \end{figure}
 We would expect to see scaling if the scattering occurred against point-like particles, giving evidence to the composite nature of the proton. In addition to this, the Callan-Gross relation tells us that the constituent partons carry spin-1/2. We therefore have experimental evidence to support the statement that the proton is composed of point-like spin-1/2 particles, namely quarks\footnote{The proton also has a significant gluon component, as will be discussed in a later section.}. The incoming electron elastically scatters against these constituents, explaining these observations and justifying the formula (\ref{master formula}).
@@ -188,7 +189,7 @@ By experimentally measuring the cross-section (\ref{master formula DIS}), we can
 PDFs have the notable property of being \emph{universal}. This means that, regardless of what is used to probe them, they will always be the same since they are an intrinsic property of a given hadron. They are intrinsically non-perturbative, but their evolution with energy is governed by the renormalization group equation obtained in perturbation theory, as described in the below. 
 
 Determining the proton PDFs is fundamental for making accurate predictions at the LHC, as they allow us to to obtain theoretical predictions for inclusive or exclusive variables, as in \ref{master formula}, and compare them to measured rates. 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[scale=0.4]{ch2_images/pdfs}
 \caption{PDFs of the proton measured at various values of $x$ at $Q^2 = 10$ GeV$^2$ \cite{Metcalfe}.}
@@ -292,9 +293,9 @@ These definitions also depend on two parameters: $p$ and $R$. There exist three 
 
 Due to the distance used, the anti-$k_t$ algorithm tends to cluster soft particles together with hard particles. This is a useful property as it tends to lead to jets centered about hard particles, and correctly recombines the soft radiation emitted from the hard seed together with that seed. If the hard particles are well-separated, this also leads to conical jets, as shown in Figure \ref{jet algos}.
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
-\includegraphics[scale=0.4]{ch2_images/jet_algos}
+\includegraphics[width=\textwidth]{ch2_images/jet_algos}
 \caption{A representation of the jets formed from the same event using the three main $k_t$ algorithms as well as SISCone, a commonly used cone algorithm. The jets clustered using anti-$k_t$ are conical, and centered around the hard particles \cite{Cacciari:2008gp}.}
 \label{jet algos}
 \end{figure}
@@ -317,21 +318,33 @@ If rather than observing the two final-state hadrons we observe the jets surroun
  
 \section{Higher Order Corrections}
 
-A number of higher order corrections to the elementary cross section are possible. These include real and virtual corrections in all possible combinations. In QCD, we currently know how to treat corrections up to $\mathcal{O}(\alpha_S^3)$ for a few select processes \todo{citation}. In this section we will briefly discuss the importance of higher order corrections, as well as some challenges which arise during their calculation.
+A number of higher order corrections to the elementary cross section are possible. These include real and virtual corrections in all possible combinations. In QCD, we currently know how to treat corrections up to next-to-
+next-to-next-to-leading order for a few select processes \cite{DUHR20162128, Anastasiou:2015vya}. In this section we will briefly discuss the importance of higher order corrections, as well as some challenges which arise during their calculation.
 
 \subsection{Infrared and Collinear Divergences}
-The matrix element for a radiative correction in QED and QCD is easily calculable using the Feynman rules. We will consider the example of the emission of a photon \todo{which scattering process} in QED, but all considerations also hold in QCD. The matrix element for all possible real emissions and all possible photon polarizations is found to be
-\begin{figure}
+The matrix element for a radiative correction in QED and QCD is easily calculable using the Feynman rules. We will consider the example of the emission of a photon for $e^+e^- \rightarrow e^+e^-$ in QED, but all considerations also hold in QCD. The matrix element for all possible real emissions and all possible photon polarizations is found to be
+
+\begin{figure}[h!]
+\begin{subfigure}{.5\textwidth}
 \centering
 \includegraphics[scale=0.6]{ch2_images/real}
-\caption{A Feynman diagram depicting a real emission in QED \todo{better diagrams, subfigure to merge images}.}
 \label{real}
+\caption{}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[scale=0.55]{ch2_images/virtual}
+\label{virtual}
+\caption{}
+\end{subfigure}
+\caption{Feynman diagrams representing real (a) and virtual (b) corrections to the final state of $e^+e^-$ annihilation in QED.}
 \end{figure}
+
 \begin{equation}
 \frac{d\sigma}{d\Omega} = \left(\frac{d\sigma}{d\Omega} \right)_0 \frac{\alpha}{2\pi}\left[2\frac{p_- \cdot p_+}{(p_-\cdot k) (p_+ \cdot k)} - \frac{m_e^2}{(p_-\cdot k)^2} - \frac{m_e^2}{(p_+ \cdot k)^2} \right]\frac{d^3k}{\omega}
 \label{infrared}
 \end{equation}
-where $\left(\frac{d\sigma}{d\Omega} \right)_0$ represents the tree-level cross section, without any emission, $p_-$ and $p_+$ represent the momenta of the outgoing electrons \todo{positron?} and $k^\mu$ the momentum of the radiated photon. In the center-of-mass frame, where the kinematic variables can be expressed as
+where $\left(\frac{d\sigma}{d\Omega} \right)_0$ represents the tree-level cross section, without any emission, $p_-$ and $p_+$ represent the momenta of the outgoing electron and positron, and $k^\mu$ the momentum of the radiated photon. In the center-of-mass frame, where the kinematic variables can be expressed as
 \begin{equation}
 \begin{cases}
 p_-^\mu = (E, 0, 0, \beta E)\\
@@ -368,12 +381,7 @@ Thankfully, a brilliant solution to this problem exists. If we assign a mass $\l
 \left( \frac{d\sigma}{d\Omega}\right)_{exp} = \left( \frac{d\sigma}{d\Omega}\right)_{elastic} + \left( \frac{d\sigma}{d\Omega}\right)_{\omega < \Delta E}\ln \frac{\Delta E}{\lambda}.
 \end{equation}
 If we also consider the virtual corrections, such as in Figure \ref{virtual}, and calculate the relative cross section, which also contributes to (\ref{cross section decomposition}), we find
-\begin{figure}
-\centering
-\includegraphics[scale=0.6]{ch2_images/virtual}
-\caption{A Feynman diagram depicting a virtual correction in QED.}
-\label{virtual}
-\end{figure}
+
 \begin{equation}
 \frac{d\sigma}{d\Omega} = \left(\frac{d\sigma}{d\Omega}\right)_0 \frac{1}{\omega} \frac{2\alpha}{\pi}\left[\ln\frac{s}{m_e^2} - 1 \right] \ln \frac{\lambda}{E} d\omega
 \end{equation}
@@ -384,7 +392,7 @@ As mentioned in the previous section, infrared and collinear (IRC) divergences w
 
 An observable $\mathcal{O}$ is said to be IRC safe, respectively, when the following properties are satisfied:
 \begin{gather}
-\mathcal{O}(X; p_1, \dots, p_n, p_{n+1}) \rightarrow 0) \rightarrow  \mathcal{O}(X; p_1, \dots, p_n ) \label{IRC safety}\\
+\mathcal{O}(X; p_1, \dots, p_n, p_{n+1} \rightarrow 0) \rightarrow  \mathcal{O}(X; p_1, \dots, p_n ) \label{IRC safety}\\
 \mathcal{O}(X; p_1, \dots, p_n \parallel p_{n+1}) \rightarrow \mathcal{O}(X; p_1, \dots, p_n),
 \end{gather}
 i.e.\ when the observable reduces to that of $n$ particle case, in absence of the soft or collinear emission. An example of infrared safe and unsafe jets is shown in Figure \ref{Infrared safe jet}, while Figure \ref{collinear safe jet} illustrates an example of collinear safe and unsafe jets.
@@ -392,14 +400,14 @@ i.e.\ when the observable reduces to that of $n$ particle case, in absence of th
 The anti-$k_t$ algorithm is an example of a jet algorithm which is IRC safe. Due to its weighting, when a soft particle is emitted, this will tend to cluster together with the hard center of the jet. On the other hand, when a particle is emitted collinear to another, the distance $\Delta_{ij}$ will be very small, and it will again be clustered together with its parent particle.
 
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{ch2_images/ir_safe}
 \caption{A schematic representation of an IR unsafe jet. The emission of a soft gluon changes the event from a two-jet event to a one-jet event due to its effect on the clustering algorithm \cite{Salam:2010nqg}.}
 \label{Infrared safe jet}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=\textwidth]{ch2_images/collinear_safe}
 \caption{A schematic representation of a collinear safe and unsafe jet. The blue lines represent particles, and the length corresponds to the particle's transverse momentum. The horizontal axis represents rapidity. If the emission of a collinear gluon leads to the formation of a second jet, the cancellation is broken and the cross section diverges, as shown on the right. If, on the other hand, it and its parents are treated as a single particle by, for example, summing their momenta, the emission satisfies the definition \ref{IRC safety} \cite{Salam:2010nqg}.}
