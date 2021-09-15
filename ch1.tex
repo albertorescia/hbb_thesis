@@ -69,7 +69,7 @@ while the $\beta$-function for the strong interaction can be written as
 \beta(\alpha_S) = -\left(11 - \frac{2n_f}{3} \right)\frac{\alpha_S^2}{2\pi} + \mathcal{O}(\alpha_S^3)
 \end{equation}
 
-This inverse dependence on energy is a direct consequence of the non-Abelian nature of the strong nuclear force, as well as the number of flavors of quarks, $n_f$ which enter the loops.  
+This inverse dependence on energy is a direct consequence of the non-abelian nature of the strong nuclear force, as well as the number of flavors of quarks, $n_f$ which enter the loops.  
 
 As mentioned, the gauge bosons originate from symmetries of the Standard Model. Specifically, the Standard Model Lagrangian is invariant under a local $SU(3)_C \otimes SU(2)_L \otimes U(1)_Y$ gauge symmetry. This means that, when a field $\psi$ transforms under the action of this group, i.e. when
 \begin{equation}
@@ -152,7 +152,7 @@ At this point, if we want to construct the QED Lagrangian, we must add the kinet
 \mathcal{L}_{kin} = -\frac{1}{4}F^{\mu\nu}F_{\mu\nu}
 \label{kinetic term}
 \end{equation}
-where $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$, as well as a term describing the interaction between the two fields. We can do this in two ways. 
+where $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$, as well as a term describing the interaction between the two fields. We can do this in two ways: 
 
 \subsubsection{Minimal Coupling}
 
@@ -312,6 +312,7 @@ As before, by applying the local gauge transformations
 \label{weak gauge transformations}
 \psi_L \rightarrow \psi_L^\prime = \exp\left[i \frac{\tau_j}{2}\alpha^j (x) \right]\psi_L \\
 \ell_R \rightarrow \ell_R^\prime = \ell_R
+\label{weak gauge transformations 2}
 \end{gather}
 where i=1,2,3 and $\tau^i$ are the generators of $SU(2)$, usually chosen to be the Pauli spin matrices
 
@@ -352,7 +353,7 @@ Y = 2(Q-I^{(3)}_W)
 \end{equation} 
 This is a quantity meant to replace electric charge. It is a quantum number capable of distinguishing the states composing the left-handed doublet from the the one composing the right-handed singlet. The states considered in (\ref{weak doublet}) both have hypercharge $Y=-1$ according to this definition, whereas the $SU_L(2)$ singlet state $\ell^-_R$ has hypercharge $Y=-2$. 
 
-We can now consider the full gauge symmetry for electroweak interactions, $SU_L(2) \otimes U_Y(1)$. Under this new gauge symmetry, the transformations (\ref{weak gauge transformations}) become
+We can now consider the full gauge symmetry for electroweak interactions, $SU_L(2) \otimes U_Y(1)$. Under this new gauge symmetry, the transformations (\ref{weak gauge transformations}) and (\ref{weak gauge transformations 2}) become
 \begin{gather}
 \label{electroweak gauge transformations}
 \psi_L \rightarrow \psi_L^\prime = \exp\left[iy_1\beta(x)\right]\exp\left[i\frac{\tau_j}{2} \alpha^j (x)\right]\psi_L \\
@@ -366,7 +367,7 @@ D_\mu \ell_R = \left[\partial_\mu ig^\prime \frac{y_2}{2} B_\mu(x)\right]\ell_R(
 \end{gather}
 where $g$ and $g^\prime$ are the two coupling constants, in general different from one another.
 
-We now have four different gauge bosons, $W^j_\mu(x)$ and $B(x)$, which must be identified with the physical gauge bosons $W^\pm$, $Z^0$ and $\gamma$. The physical W bosons can be identified through the relation in (\ref{W pm}). The mapping from $W^3_\mu$ and $B_\mu$ to $Z_\mu$ and $A_\mu$ can be achieved through a rotation in the neutral sector the gauge bosons
+We now have four different gauge bosons, $W^j_\mu(x)$ and $B(x)$, which must be identified with the physical gauge bosons $W^\pm$, $Z^0$ and $\gamma$. The physical W bosons can be identified through the relation in (\ref{W pm}). The mapping from $W^3_\mu$ and $B_\mu$ to $Z_\mu$ and $A_\mu$ can be achieved through a rotation in the neutral sector of the gauge bosons
 \begin{equation}
 \label{mapping}
 \begin{bmatrix}
@@ -409,11 +410,11 @@ By inspection, we find that
 \begin{equation}
 -e = g\sin\theta_W \frac{\tau_3}{2} + g^\prime \cos\theta_W \frac{Y(\psi_{e})}{2}.
 \end{equation}
-By specifying $\tau_3$ and $Y(\psi_e)$ to the appropriate component of $\psi$, in accordance with Table (1.1), we find that
+By specifying $\tau_3$ and $Y(\psi_e)$ to the appropriate component of $\psi$, in accordance with Table \ref{quantum numbers}, we find that
 \begin{equation}
 g\sin\theta_W = g^\prime \cos\theta_W = e.
 \end{equation}
-$\theta_W$ is the \emph{weak mixing angle}, corresponding to the angle of rotation in neutral sector necessary to achieve the desired mapping. Experimentally, $\sin^2\theta_W$ has been measured to be $0.22290 \pm 0.00030$ \cite{NIST}, though theoretically it can be parametrized in terms of other quantities as we shall see in the next section.
+$\theta_W$ is the \emph{weak mixing angle}, corresponding to the angle of rotation in the neutral sector necessary to achieve the desired mapping. Experimentally, $\sin^2\theta_W$ has been measured to be $0.22290 \pm 0.00030$ \cite{NIST}, though theoretically it can be parametrized in terms of other quantities as we shall see in the next section.
 
 
 \begin{table} 
@@ -428,6 +429,7 @@ $\ell^-$ & -1 & $-\frac{1}{2}$ & -1 & -2 \\
 \end{tabular}
 \caption{The quantum numbers associated to charged leptons and neutrinos.}
 \end{center}
+\label{quantum numbers}
 \end{table}
 
 We can also see that the second neutral current in (\ref{neutral current lagrangian}) does indeed correspond to the $Z$ current. It is easy to show that it can be written as
@@ -478,7 +480,7 @@ which, when combined with the rotation in (\ref{mapping}), gives a correct descr
 \section{Spontaneous Symmetry Breaking}
 \label{Higgs section}
 
-So far, we have only considered Lagrangians which contain massless gauge bosons. This is for a very precise reason: mass terms vary under gauge transformations. If we consider, for example, the Proca action for a generic massive bosonic field in an abelian gauge theory
+So far, we have only considered Lagrangians which contain massless gauge bosons. This is for a very precise reason: mass terms vary under gauge transformations. If we consider, for example, the Proca action for a generic massive bosonic field in an abelian gauge theory,
 
 \begin{equation}
 \mathcal{L} = -\frac{1}{4}F_{\mu\nu}F^{\mu\nu} - m^2 A_\mu A^\mu
@@ -533,7 +535,7 @@ If $m^2 > 0$ and $\lambda > 0$, the minimum occurs when $\phi = 0$. However, if 
 \begin{figure}
 \centering
 \includegraphics[scale=0.1]{ch1_images/sombrero}
-\caption{The ``Mexican hat'' Higgs Potential for an Abelian gauge theory.}
+\caption{The ``Mexican hat'' Higgs Potential for an abelian gauge theory.}
 \label{Higgs Potential}
 \end{figure}
 The quantum vacuum has thus shifted, as represented in Figure \ref{Higgs Potential}. The vacuum is \emph{degenerate} since there are infinite values of $\phi^\dagger\phi$ which minimize $V$. The gauge symmetry is said to be spontaneously broken, the choice of parameters causes the vacuum state and the Lagrangian to no longer share the same symmetry. Since $\lambda$ is an adimensional quantity, it has the dimensions of energy.
@@ -573,7 +575,7 @@ Q = \frac{\tau_3}{2} - \frac{Y}{2} \\
 Q^\prime = \frac{\tau_3}{2} + \frac{Y}{2}.
 \end{cases}
 \end{equation}
-It is easy to show that $Q$ is an unbroken generator and $Q^\prime$ is broken. In this way we have obtained 3 broken generators ($\tau_1, \tau_2, Q^\prime$) and 1 unbroken ($Q$).
+It is easy to show that $Q$ is an unbroken generator and $Q^\prime$ is broken. In this way we have obtained three broken generators ($\tau_1, \tau_2, Q^\prime$) and one unbroken ($Q$).
 
 We can now proceed to study the vacuum fluctuations of $\phi$. Naively, these can be written as
 \begin{equation}
