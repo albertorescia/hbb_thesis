@@ -25,10 +25,12 @@
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 \begin{document}
-One of the best ways to explore the Standard Model is through high-energy particle collisions. The LHC is a 27 km hadron-hadron circular collider where protons or nucleons interact with each other in a multitude of ways, resulting in a myriad of possible final states. By identifying these final states, and selecting those which correspond to processes of interest, it is possible to study these processes in detail. A number of detectors, including ATLAS and CMS, lie on the beam pipe for this purpose.
+One of the best ways to test the Standard Model is through high-energy particle collisions. The LHC is a 27 km hadron-hadron circular collider where protons or nucleons interact with each other in a multitude of ways, resulting in a myriad of possible final states involving particles which do not exist in our cold universe. By identifying these final states, and selecting those which correspond to processes of interest, it is possible to study these processes in detail. A number of detectors, including ATLAS and CMS, lie on the beam pipe for this purpose.
 
 The LHC has undergone several phases. During Run 1 (2009-2013), the LHC ran at a center of mass energy $\sqrt{s}$ of 7-8 TeV. The energy was increased to $\sqrt{s} = 13$ TeV during Run 2 (2015-2018). 
-Run 2 delivered a total integrated luminosity of 156 fb$^{-1}$. During Run 3, set to begin next year, the $\sqrt{s}$ could increase up to 14 TeV, and it is expected that the integrated luminosity will double to 300 fb$^{-1}$. In this chapter, we will shortly describe the physics of hadron colliders.
+Run 2 delivered a total integrated luminosity of 156 fb$^{-1}$. During Run 3, set to begin next year, the center of mass energy could increase up to 14 TeV, and it is expected that the integrated luminosity will double to 300 fb$^{-1}$. 
+
+In this chapter, we will shortly describe the physics of hadron colliders.
 
 \section{Factorization}
 
@@ -57,11 +59,11 @@ This discussion can be neatly summarized in a formula:
 \end{equation}
 Here, we are stating that the differential cross section with respect to a hadronic observable $X$ can be written in terms of the parton-level cross section $d\hat{\sigma}/d\hat{X}$, differential in the parton-level observable $\hat{X}$. $f_j(x_1P_1, \mu_F)$ and $f_k(x_2P_2, Q^2)$ are known as Parton Distribution Functions (PDFs) and, at the lowest order in perturbation theory, describe the probability of extracting a parton of type $j$ or $k$ with momentum fraction $x_1$ or $x_2$, respectively from the colliding hadrons with momenta $P_1$ and $P_2$ when probed at energy $Q^2$. We must sum over all possible partons, and integrate over all momentum fractions. Finally, the function $F(\hat{X}\rightarrow X; Q^2, \mu_F^2)$ describes the (non-perturbative) transition from partonic states to hadronic states and indicates how to relate any partonic observable $\hat{X}$ with the measured hadronic observable $X$. This can be, for example, a Fragmentation Function, used when a single final-state hadron is observed, or a Jet Function, used instead when describing an aggregate transition to hadrons. We will describe all of the involved functions in more detail in subsequent sections. 
 
-Figure \ref{factorization pion} is a schematic representation of factorization in a proton-proton collision described by \ref{master formula}.
+Figure \ref{factorization pion} is a schematic representation of factorization in a proton-proton collision described by Equation (\ref{master formula}).
 
 \section{Parton Distribution Functions}
 
-As previously stated, Parton Distribution Functions contain information regarding the constituents of a hadron. To better understand them, we shall study in detail the process known as Deep Inelastic Scattering (DIS).
+As previously stated, Parton Distribution Functions contain information regarding the constituents of a hadron. To better understand them, we shall study in detail a benchmark process, known as Deep Inelastic Scattering (DIS).
 
 \subsection{Deep Inelastic Scattering}
 
@@ -130,7 +132,7 @@ $F_1$ and $F_2$ are \emph{structure functions}, which describe the internal stru
 
 \subsubsection{Bjorken Scaling and the Callan-Gross Relation}
 An important observation involving the aforementioned structure functions is \emph{Bjorken scaling}. This is the observation that, to first order, $F_1$ and $F_2$ are independent of $Q^2$, as shown in Figure \ref{Bjorken scaling}.
-\begin{figure}[h!]
+\begin{figure}[hp]
 \centering
 \includegraphics[width=\textwidth]{ch2_images/bjorken_scacling}
 \caption{The observation of approximate scaling of the structure functions at various experiments. The observed violations are caused by higher-order contributions \cite{pdg}.}
@@ -141,7 +143,7 @@ In addition to this scaling, experimental observations also found that, at suffi
 F_2(x) = 2xF_1(x).
 \end{equation}
 This relation is known as the \emph{Callan-Gross relation} and is shown in Figure \ref{Callan gross}.
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.5]{ch2_images/callan}
 \caption{An experimental observation of the Callan-Gross relation \cite{Griffiths:2008zz}.}
@@ -184,12 +186,12 @@ F_2 (x) = x \sum_f e_f^2 \phi_f (x).
 \end{equation}
 We have managed to describe the structure functions in terms of the PDFs, and in turn found the Callan-Gross relation!
 
-By experimentally measuring the cross-section (\ref{master formula DIS}), we can deconvolve the PDF contribution. Figure \ref{PDF plot} shows the PDFs of various partons within the proton, measured by ... at $Q^2 = 10$ GeV$^2$. 
+By experimentally measuring the cross-section (\ref{master formula DIS}), we can deconvolve the PDF contribution. Figure \ref{PDF plot} shows the PDFs of various partons within the proton at $Q^2 = 10$ GeV$^2$. 
 
 PDFs have the notable property of being \emph{universal}. This means that, regardless of what is used to probe them, they will always be the same since they are an intrinsic property of a given hadron. They are intrinsically non-perturbative, but their evolution with energy is governed by the renormalization group equation obtained in perturbation theory, as described in the below. 
 
 Determining the proton PDFs is fundamental for making accurate predictions at the LHC, as they allow us to to obtain theoretical predictions for inclusive or exclusive variables, as in \ref{master formula}, and compare them to measured rates. 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \centering
 \includegraphics[scale=0.4]{ch2_images/pdfs}
 \caption{PDFs of the proton measured at various values of $x$ at $Q^2 = 10$ GeV$^2$ \cite{Metcalfe}.}
@@ -269,7 +271,7 @@ Due to the non-perturbative nature of the hadronization process and the myriad o
 In order to be able to precisely calculate jet cross-sections and confront these with experimental data, it is necessarily to unambiguously \emph{define} what a jet is. There are multiple possible definitions of jets, and we will briefly some examples of these.  
 
 \subsubsection{Cone Algorithms}
-Historically, cone algorithms were the first class of jet algorithms introduced. The very first algorithm was used to classify jets in $e^+e^-$ collisions and depended on two arbitrary parameters, $\delta$ and $\epsilon$. If an event had a fraction of energy of at least $1 - \epsilon$ concentrated within two cones of half-angle $\delta$, then that even was said to contain two jets \cite{Sterman:1977wj}. The fact that the definition relied on the arbitrary parameters $\delta$ and $epsilon$ meant that these had to be specified so that the predictions could be compared to data. This remains a general feature of jet algorithms to this day.
+Historically, cone algorithms were the first class of jet algorithms introduced. The very first algorithm was used to classify jets in $e^+e^-$ collisions and depended on two arbitrary parameters, $\delta$ and $\epsilon$. If an event had a fraction of energy of at least $1 - \epsilon$ concentrated within two cones of half-angle $\delta$, then that even was said to contain two jets \cite{Sterman:1977wj}. The fact that the definition relied on the arbitrary parameters $\delta$ and $\epsilon$ meant that these had to be specified so that the predictions could be compared to data. This remains a general feature of jet algorithms to this day.
 
 Cone algorithms have progressed in the years since their inception. Today, two of the most widely used code algorithms are iterative and fixed cone algorithms. In iterative cone algorithms, the direction of the jet is initially set by a particle $i$. All particles within distance $R_{ij}$
 \begin{equation}
@@ -293,7 +295,7 @@ These definitions also depend on two parameters: $p$ and $R$. There exist three 
 
 Due to the distance used, the anti-$k_t$ algorithm tends to cluster soft particles together with hard particles. This is a useful property as it tends to lead to jets centered about hard particles, and correctly recombines the soft radiation emitted from the hard seed together with that seed. If the hard particles are well-separated, this also leads to conical jets, as shown in Figure \ref{jet algos}.
 
-\begin{figure}[h!]
+\begin{figure}[hp]
 \centering
 \includegraphics[width=\textwidth]{ch2_images/jet_algos}
 \caption{A representation of the jets formed from the same event using the three main $k_t$ algorithms as well as SISCone, a commonly used cone algorithm. The jets clustered using anti-$k_t$ are conical, and centered around the hard particles \cite{Cacciari:2008gp}.}
@@ -324,7 +326,7 @@ next-to-next-to-leading order for a few select processes \cite{DUHR20162128, Ana
 \subsection{Infrared and Collinear Divergences}
 The matrix element for a radiative correction in QED and QCD is easily calculable using the Feynman rules. We will consider the example of the emission of a photon for $e^+e^- \rightarrow e^+e^-$ in QED, but all considerations also hold in QCD. The matrix element for all possible real emissions and all possible photon polarizations is found to be
 
-\begin{figure}[h!]
+\begin{figure}[ht]
 \begin{subfigure}{.5\textwidth}
 \centering
 \includegraphics[scale=0.6]{ch2_images/real}
@@ -380,7 +382,7 @@ Thankfully, a brilliant solution to this problem exists. If we assign a mass $\l
 \begin{equation}
 \left( \frac{d\sigma}{d\Omega}\right)_{exp} = \left( \frac{d\sigma}{d\Omega}\right)_{elastic} + \left( \frac{d\sigma}{d\Omega}\right)_{\omega < \Delta E}\ln \frac{\Delta E}{\lambda}.
 \end{equation}
-If we also consider the virtual corrections, such as in Figure \ref{virtual}, and calculate the relative cross section, which also contributes to (\ref{cross section decomposition}), we find
+If we also consider the virtual corrections and calculate the relative cross section, which also contributes to (\ref{cross section decomposition}), we find
 
 \begin{equation}
 \frac{d\sigma}{d\Omega} = \left(\frac{d\sigma}{d\Omega}\right)_0 \frac{1}{\omega} \frac{2\alpha}{\pi}\left[\ln\frac{s}{m_e^2} - 1 \right] \ln \frac{\lambda}{E} d\omega
@@ -400,17 +402,17 @@ i.e.\ when the observable reduces to that of $n$ particle case, in absence of th
 The anti-$k_t$ algorithm is an example of a jet algorithm which is IRC safe. Due to its weighting, when a soft particle is emitted, this will tend to cluster together with the hard center of the jet. On the other hand, when a particle is emitted collinear to another, the distance $\Delta_{ij}$ will be very small, and it will again be clustered together with its parent particle.
 
 
-\begin{figure}[h!]
+\begin{figure}[p]
 \centering
 \includegraphics[width=\textwidth]{ch2_images/ir_safe}
 \caption{A schematic representation of an IR unsafe jet. The emission of a soft gluon changes the event from a two-jet event to a one-jet event due to its effect on the clustering algorithm \cite{Salam:2010nqg}.}
 \label{Infrared safe jet}
 \end{figure}
 
-\begin{figure}[h!]
+\begin{figure}[p]
 \centering
 \includegraphics[width=\textwidth]{ch2_images/collinear_safe}
-\caption{A schematic representation of a collinear safe and unsafe jet. The blue lines represent particles, and the length corresponds to the particle's transverse momentum. The horizontal axis represents rapidity. If the emission of a collinear gluon leads to the formation of a second jet, the cancellation is broken and the cross section diverges, as shown on the right. If, on the other hand, it and its parents are treated as a single particle by, for example, summing their momenta, the emission satisfies the definition \ref{IRC safety} \cite{Salam:2010nqg}.}
+\caption{A schematic representation of a collinear safe and unsafe jet. The blue lines represent particles, and the length corresponds to the particle's transverse momentum. The horizontal axis represents rapidity. If the emission of a collinear gluon leads to the formation of a second jet, the cancellation is broken and the cross section diverges, as shown on the right. If, on the other hand, it and its parents are treated as a single particle by, for example, summing their momenta, the emission satisfies the definition given by Equation (\ref{IRC safety}) \cite{Salam:2010nqg}.}
 \label{collinear safe jet}
 \end{figure}
 
