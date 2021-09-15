@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 \usepackage{amsmath}
+\usepackage{amsthm}
 \usepackage{mathtools}
 \usepackage{array}
 \usepackage{booktabs}
@@ -18,14 +19,14 @@
 \usepackage[numbers,sort&compress]{natbib}
 
 
-\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
 \newcolumntype{L}{>{$}c<{$}}
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 
 \begin{document}
 
-Since 2009, the Large Hadron Collider (LHC) has been exploring particle physics at the high energy frontier in the hope of discovering new physics, including, but not limited to, the Higgs boson, supersymmetry, flavor violations, and much more. At the basis of all physics at the LHC lies the Standard Model. This theory describes all fundamental interactions involving the electroweak and strong forces, as well as the fields which partake in these interactions. In this chapter, we will briefly illustrate the main features of this theory and show how together they paint a complete picture of our current understanding of elementary particle physics.
+Since 2009, the Large Hadron Collider (LHC) has been exploring particle physics at the highest energy frontier in the hope of discovering new physics, including, but not limited to, the Higgs boson, supersymmetry, flavor violations, and much more. At the basis of all physics at the LHC lies the Standard Model. This theory describes all fundamental interactions involving the electroweak and strong forces, as well as the fields which partake in these interactions. In this chapter, we will briefly illustrate the main features of this theory and show how together they paint a complete picture of our current understanding of elementary particle physics.
 
 
 %Gauge Invariance
@@ -48,9 +49,7 @@ The matter fields are organized in three generations, as shown in Figure \ref{St
 \end{figure}
 The particles in the three generations all have the same properties, with the sole exception of mass which increases with each generation. Neutrinos might be the exception to this rule, since their masses are not yet known to a useful degree of precision. 
 
-The properties of the matter fields determine the interactions in which they participate. All fermions can interact via the weak force. The electrically charged particles participate in electromagnetic interactions, and quarks, the only particles carrying color charge, can also interact via the strong nuclear force.
-
-The interactions with these forces are mediated by the exchange of the gauge bosons. Photons are responsible for electromagnetic interactions, gluons for strong interactions, and the W$^\pm$ and Z for weak interactions. 
+The properties of the matter fields determine the interactions in which they participate. All fermions can interact via the weak force. The electrically charged particles participate in electromagnetic interactions, and quarks, the only particles carrying color charge, can also interact via the strong nuclear force. The interactions with these forces are mediated by the exchange of the gauge bosons. Photons are responsible for electromagnetic interactions, gluons for strong interactions, and the W$^\pm$ and Z for weak interactions. 
 
 The strength of the interactions are determined by the value of the coupling constants, $\alpha$ for electromagnetic interactions, $\alpha_W$ for weak interactions and $\alpha_S$ for strong interactions. Despite their name, the coupling constants are known to run, i.e. they depend on the energy scale $Q^2$ of the process. Figure \ref{running coupling constants} shows how the coupling constants vary with energy. As can be seen, $\alpha$ and $\alpha_W$ increase as $Q^2$ increases, while $\alpha_S$ decreases with increasing energy, a property known as asymptotic freedom. 
 
@@ -70,7 +69,7 @@ while the $\beta$-function for the strong interaction can be written as
 \beta(\alpha_S) = -\left(11 - \frac{2n_f}{3} \right)\frac{\alpha_S^2}{2\pi} + \mathcal{O}(\alpha_S^3)
 \end{equation}
 
-This inverse dependence on energy is a direct consequence of the non-Abelian nature of the strong nuclear force, as well as the number of flavors of quarks, $n_f$ which enters the loops.  
+This inverse dependence on energy is a direct consequence of the non-Abelian nature of the strong nuclear force, as well as the number of flavors of quarks, $n_f$ which enter the loops.  
 
 As mentioned, the gauge bosons originate from symmetries of the Standard Model. Specifically, the Standard Model Lagrangian is invariant under a local $SU(3)_C \otimes SU(2)_L \otimes U(1)_Y$ gauge symmetry. This means that, when a field $\psi$ transforms under the action of this group, i.e. when
 \begin{equation}
@@ -425,6 +424,7 @@ fermion & $Q$ & $I^{(3)}_W$ & $Y_L$ & $Y_R$ \\
 \hline 
 $\nu_\ell$ & 0 & $+\frac{1}{2}$ & -1 & 0 \\ 
 $\ell^-$ & -1 & $-\frac{1}{2}$ & -1 & -2 \\ 
+\hline
 \end{tabular}
 \caption{The quantum numbers associated to charged leptons and neutrinos.}
 \end{center}
@@ -476,6 +476,7 @@ The full Lagrangian for electroweak interactions can thus be written as
 \end{equation}
 which, when combined with the rotation in (\ref{mapping}), gives a correct description of the observed phenomenology.
 \section{Spontaneous Symmetry Breaking}
+\label{Higgs section}
 
 So far, we have only considered Lagrangians which contain massless gauge bosons. This is for a very precise reason: mass terms vary under gauge transformations. If we consider, for example, the Proca action for a generic massive bosonic field in an abelian gauge theory
 
@@ -558,10 +559,10 @@ Specifically, the invariance is lost due to the action of the generators $\tau_j
 
 Before continuing the discussion, we must first introduce an important theorem involving broken generators.
 
-\begin{theorem}[Goldstone Theorem]
+\begin{theorem*}[Goldstone Theorem]
 \label{Goldstone Theorem}
 For all continuous global symmetries which do not leave the vacuum state unchanged, there exist corresponding massless particles equal in number to the number of broken generators.
-\end{theorem}
+\end{theorem*}
 
 The theorem holds for global symmetries, however it is also relevant when dealing with local symmetries. In this case, the massless bosons which appear cannot be interpreted as physical particles. They can be gauged away, leading to Higgs-Kibble ghosts which result in \emph{massive} bosons and allow for a physical interpretation of the theory. These ghosts are crucial for our ultimate goal: to give mass to the $W^\pm$ and $Z$ while leaving $\gamma$ massless.
 
@@ -660,7 +661,7 @@ We are now ready to put all the ingredients discussed together and bake the cake
 \end{aligned}
 \end{equation}
 
-This Lagrangian describes all possible interactions between all particles, and includes the building blocks described in this Chapter, $\mathcal{L}_{QCD}$, $\mathcal{L}_{EW}$, $\mathcal{L}_{SSB}$ and $\mathcal{L}_Y$ gives mass to the fermions. These interactions are shown in Figure \ref{Standard Model interactions}. 
+This Lagrangian describes all possible interactions between all particles, and includes the building blocks described in this Chapter, $\mathcal{L}_{QCD}$, $\mathcal{L}_{EW}$, $\mathcal{L}_{SSB}$ and $\mathcal{L}_Y$ gives mass to the fermions. The elementary vertices are summarized in Figure \ref{Standard Model interactions}. 
 
 \begin{figure}
 \centering
