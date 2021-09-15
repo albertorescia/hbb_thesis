@@ -39,11 +39,11 @@ The training is a delicate process. If, for example, the model is not trained on
 \begin{figure}
 \centering
 \includegraphics[scale=0.3]{Appendix/overfitting}
-\label{overfitting}
 \caption{An example of underfitting, a good fit, and overfitting of a dataset \cite{burkov2019hundred}.}
+\label{overfitting}
 \end{figure}
 
-Once we have developped a model, we must also be able to quantify its performance. Once way of doing so is by looking at the area under the ROC curve (AUC). The ROC, or Receiver Operating Charachteristic, curve, which can be used to assess the performance of classifiers, specifically those classifiers which assign a label with a certain probabilty. These curves are built by varying the threshold above which an event is classified as signal. We then plot the True Positive Rate (TPR) against the False Positive Rate (FPR), where these are defined as
+Once we have developped a model, we must also be able to quantify its performance. Once way of doing so is by looking at the area under the ROC curve (AUC). The ROC curve, or Receiver Operating Charachteristic curve, can be used to assess the performance of classifiers, specifically those classifiers which assign a label with a certain probabilty. These curves are built by varying the threshold above which an event is classified as signal. We then plot the True Positive Rate (TPR) against the False Positive Rate (FPR), where these are defined as
 \begin{gather}
 TPR = \frac{TP}{TP + FN} \\
 FPR = \frac{FP}{FP + FN}
@@ -58,7 +58,12 @@ where $TP$ (true positive) stands for the number of events correctly classified 
 \end{figure}
 
 \section{Neural Networks}
-A neural network is a type of machine learning algorithm inspired by biology. The network is a web in which each node, called a neuron, receives an input from the neurons in the previous layer and transmits and output to those which succeed it. In the final layer, the neuron returns a number between $[0,1]$. If  a decision is made regarding the nature of the event which was given in input.  The neural network described in Chapter 4 of this thesis is shown in Figure ... .
+A neural network is a type of machine learning algorithm inspired by biology. The network is a web in which each node, called a neuron, receives an input from the neurons in the previous layer and transmits and output to those which succeed it. In the final layer, the neuron returns a number between $[0,1]$. If  a decision is made regarding the nature of the event which was given in input.  A schematic representation of a neural network is shown in Figure ... .
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth]{Appendix/nn}
+\caption{The neurons composing an artificial neural network and the connections between them \cite{nn_image}.}
+\end{figure}
 
 Formally, a neural network is a composite function. If the network contains $p$ layers, the function is of the form
 \begin{equation}
