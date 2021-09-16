@@ -41,16 +41,17 @@
 
 \begin{document}
 
-\includepdf[page=-]{frontespizio.pdf}
+\includepdf[page=-]{frontespizio_italiano.pdf}
 
 \chapter*{Abstract}
-$\indent$ In recent years, $H \rightarrow b\overline{b}$ decays in association with $VH$ production have been observed at the LHC. For a Higgs mass of 125 GeV, this decay channel has by far the largest branching ratio. It is therefore imperative to be able to correctly identify the resulting b-jets from this decay as having originated from the Higgs, as opposed to one of the many processes constituting the QCD background.
 
-To this aim, we focus on the problem of distinguishing b-jets originating from the decay of a color singlet from those originating from a color octet by means of a combination of color-sensitive variables introduced in literature. 
-We simulate 13 TeV pp collisions at the LHC and evaluate color-sensitive observables before and after a fast simulation of the detector response. These variables are used to feed several machine learning algorithms. Results are given in terms of performance of single variables and of their combination.\\
+$\indent$ In 2012, the Higgs boson was discovered at CERN. This discovery marked the beginning of the era of precision physics. In recent years, $H \rightarrow b\overline{b}$ decays in association with $VH$ production have been observed at the LHC. For a Higgs mass of 125 GeV, this decay channel has by far the largest branching ratio. It is therefore imperative to be able to correctly identify the resulting b-jets from this decay as having originated from the Higgs, as opposed to one of the many processes constituting the QCD background, so as to conduct precision studies of the Higgs.
+
+To this aim, we focus on the problem of distinguishing b-jets originating from the decay of a color singlet from those originating from a color octet by means of a combination of color sensitive variables introduced in literature. 
+We simulate 13 TeV proton-proton collisions at the LHC and evaluate color sensitive observables before and after a fast simulation of the detector response. These variables are used to feed several machine learning algorithms. Results are given in terms of performance of single variables and of their combination.\\
 
 \bigskip
-Negli anni recenti, il decadimento $H\rightarrow b\overline{b}$ in associazione con la produzione $VH$ \`{e} stato osservato al LHC. Per una massa dell'Higgs pari a 125 GeV, questo canale di decadimento ha di gran lunga il pi\`{u} grande branching ratio: \`{e} quindi importante essere in grado di identificare correttamente i b-jet risultanti da questo decadimento come originatisi dal bosone di Higgs, differentemente da uno dei tanti processi che costituiscono il fondo di QCD.
+Nel 2012, il bosone di Higgs \`{e} stato scoperto al CERN. Questa scoperta ha segnato l'inizio di un'era di fisica di precisione. Negli anni recenti, il decadimento $H\rightarrow b\overline{b}$ in associazione con la produzione $VH$ \`{e} stato osservato al LHC. Per una massa dell'Higgs pari a 125 GeV, questo canale di decadimento ha di gran lunga il pi\`{u} grande branching ratio: \`{e} quindi importante essere in grado di identificare correttamente i b-jet risultanti da questo decadimento come originatisi dal bosone di Higgs, differentemente da uno dei tanti processi che costituiscono il fondo di QCD, in modo da condurre studi di precisione sul bosone di Higgs.
 
 A questo scopo, ci focalizziamo sul problema di distinguere b-jet originatisi da un decadimento di un singoletto di colore da quelli originatisi da un ottetto di colore attraverso una combinazione di variabili sensibili al colore introdotte in letteratura. Simuliamo collisioni protone-protone a 13 TeV al LHC e valutiamo le osservabili sensibili al colore prima e dopo una simulazione ``fast'' della risposta del rivelatore. Queste variabili sono poi utilizzate per allenare diversi algoritmi di machine learning. I risultati sono dati in termini della performance delle singole variabili e della loro combinazione. 
 
@@ -71,7 +72,7 @@ Chapter 2 focuses on the physics of colliders. Over the past 50 years, colliders
 
 Chapter 3 discusses Higgs physics from an experimental point of view. We describe the main production and decay mechanisms, examine the infamous 2012 discovery, and briefly describe the role that the Higgs sector will play moving forward.
 
-Finally, in Chapter 4, we discuss the framework that we have developed to distinguish decays of color singlets from those of color octects. We begin by describing eight high-level, color-sensitive variables which can be measured at colliders. We proceed by describing our simulation of proton-proton collisions at 13 TeV, and the analysis used to extract these variables. We conclude by discussing the details of the architectures of the machine learning algorithms used to identify the two different color configurations, and illustrate our findings.
+Finally, in Chapter 4, we discuss the framework that we have developed to distinguish decays of color singlets from those of color octects. We begin by describing eight high-level, color sensitive variables which can be measured at colliders. We proceed by describing our simulation of proton-proton collisions at 13 TeV, and the analysis used to extract these variables. We conclude by discussing the details of the architectures of the machine learning algorithms used to identify the two different color configurations, and illustrate our findings.
 
 \chapter{The Standard Model}
 \subfile{ch1}
@@ -87,13 +88,13 @@ Finally, in Chapter 4, we discuss the framework that we have developed to distin
 %Aggiungere Properties of the Higgs as measured at colliders
 %mass, width, ecc. 
 
-\chapter{A Study of Color Sensitive Observables}
+\chapter{A Study of Color Sensitive Variables}
 \subfile{ch4}
 
 \chapter*{Conclusions and Outlook}
 \addcontentsline{toc}{chapter}{Conclusions and Outlook} 
 
-In the framework, we have developed a machine learning based method capable of distinguishing decays originating from color singlets from those originating from color octects. Specifically, we have trained a Multilayer Perceptron and a Boosted Decision Tree on eight high-level, color-sensitive variables in order to develop a color tagger.
+In the framework, we have developed a machine learning based method capable of distinguishing decays originating from color singlets from those originating from color octects. Specifically, we have trained a Multilayer Perceptron and a Boosted Decision Tree on eight high-level, color sensitive variables in order to develop a color tagger.
 
 Given the high value of the area under the ROC found when using simulated particle-level data and simulated data including detector effects (about 0.82 in the first case and 0.77 in the second), we can conclude that the method is not only effective in theory, but also shows promising prospects for application to experiment. A paper summarizing the main results is under preparation.
 
