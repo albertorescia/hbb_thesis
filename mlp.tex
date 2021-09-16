@@ -32,9 +32,9 @@
 
 Machine learning is the generic term for a class of algorithms which are able to learn from a series of examples. 
 
-Specifically, in \emph{supervised} machine learning, the type dealt with in this thesis, a set of examples $\left\lbrace (\vec{x}_i, y_i)_{i = 1}^n \right\rbrace$ are provided. $\vec{x}_i$ represents the \emph{feature vector} of the $i$-th event, and $y_i$ is its label. The machine learning algorith is \emph{trained} on these examples. This training involves, in general, the minimization of some quantity. We can then test how well the algorithm performs using a subset of the provided dataset set aside before the training for this specific purpose. This subset is known as the \emph{test set}.
+Specifically, in \emph{supervised} machine learning, the type dealt with in this thesis, a set of examples $\left\lbrace (\vec{x}_i, y_i)_{i = 1}^n \right\rbrace$ are provided. $\vec{x}_i$ represents the \emph{feature vector} of the $i$-th event, and $y_i$ is its label. The machine learning algorithm is \emph{trained} on these examples. This training involves, in general, the minimization of some quantity. We can then test how well the algorithm performs using a subset of the provided dataset set aside before the training for this specific purpose. This subset is known as the \emph{test set}.
 
-The training is a delicate process. If, for example, the model is not trained on meaninful variables or when it is too simple, there is risk of underfitting. This means that, when presented with an event from the dataset on which it was trained, the model is not able to reliably assign the correct label to that event. On the other hand, if the model is too complex or there are too few training examples, we run the risk of overfitting. The difference between underfitting, a good fit, an overfitting is shown in Figure \ref{overfitting} . 
+The training is a delicate process. If, for example, the model is not trained on meaningful variables or when it is too simple, there is risk of underfitting. This means that, when presented with an event from the dataset on which it was trained, the model is not able to reliably assign the correct label to that event. On the other hand, if the model is too complex or there are too few training examples, we run the risk of overfitting. The difference between underfitting, a good fit, an overfitting is shown in Figure \ref{overfitting} . 
 
 \begin{figure}
 \centering
@@ -43,7 +43,7 @@ The training is a delicate process. If, for example, the model is not trained on
 \label{overfitting}
 \end{figure}
 
-Once we have developped a model, we must also be able to quantify its performance. Once way of doing so is by looking at the area under the ROC curve (AUC). The ROC curve, or Receiver Operating Charachteristic curve, can be used to assess the performance of classifiers, specifically those classifiers which assign a label with a certain probabilty. These curves are built by varying the threshold above which an event is classified as signal. We then plot the True Positive Rate (TPR) against the False Positive Rate (FPR), where these are defined as
+Once we have developed a model, we must also be able to quantify its performance. Once way of doing so is by looking at the area under the ROC curve (AUC). The ROC curve, or Receiver Operating Characteristic curve, can be used to assess the performance of classifiers, specifically those classifiers which assign a label with a certain probability. These curves are built by varying the threshold above which an event is classified as signal. We then plot the True Positive Rate (TPR) against the False Positive Rate (FPR), where these are defined as
 \begin{gather}
 TPR = \frac{TP}{TP + FN} \\
 FPR = \frac{FP}{FP + FN}
@@ -58,11 +58,12 @@ where $TP$ (true positive) stands for the number of events correctly classified 
 \end{figure}
 
 \section{Neural Networks}
-A neural network is a type of machine learning algorithm inspired by biology. The network is a web in which each node, called a neuron, receives an input from the neurons in the previous layer and transmits and output to those which succeed it. In the final layer, the neuron returns a number between $[0,1]$. If  a decision is made regarding the nature of the event which was given in input.  A schematic representation of a neural network is shown in Figure ... .
+A neural network is a type of machine learning algorithm inspired by biology. The network is a web in which each node, called a neuron, receives an input from the neurons in the previous layer and transmits and output to those which succeed it. In the final layer, the neuron returns a number between $[0,1]$. In this way, a decision is made regarding the nature of the event which was given in input.  A schematic representation of a neural network is shown in Figure \ref{nn image}.
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{Appendix/nn}
 \caption{The neurons composing an artificial neural network and the connections between them \cite{nn_image}.}
+\label{nn image}
 \end{figure}
 
 Formally, a neural network is a composite function. If the network contains $p$ layers, the function is of the form
@@ -75,7 +76,7 @@ Each function $\mathbf{f}_m$ is of the form
 \mathbf{f}_l (\vec{z}) = \mathbf{g}_l \left(\mathbf{W}_l\vec{z} + \vec{b}_l \right)
 \label{activation function}
 \end{equation}
-where $\mathbf{g}_l$ is an activation function, and $\mathbf{W}_l$ and $\vec{b}_l$ are a matrix and vector paramter, respectively, to be minimized as part of the backpropagation algorithm. We will describe both below. 
+where $\mathbf{g}_l$ is an activation function, and $\mathbf{W}_l$ and $\vec{b}_l$ are a matrix and vector parameter, respectively, to be minimized as part of the backpropagation algorithm. We will describe both below. 
 
 \subsection{Backpropagation}
 The neural network is trained to minimize the cost function. This is a function which measures how accurately the network predicts the label of an event belonging to the training set. This function can be minimized by optimizing the parameters $\mathbf{W}_l$ and $\vec{b}_l$. 
@@ -99,7 +100,7 @@ To do so, we must calculate the derivatives
 \end{cases}
 \label{partial derivatives}
 \end{equation}
-These are the components of the gradient of (\ref{activation function}). The gradient is a vector which points in the direction of maximal point of the function. We can follow it ``downhill'' to find a minimum. This process is known as gradient descent. 
+These are the components of the gradient of (\ref{activation function}). The gradient is a vector which points in the direction of maximum rate of change of a function. We can follow it ``downhill'' to find a minimum. This process is known as gradient descent. 
 
 The gradient descent algorithm proceeds in multiple iterations known as \emph{epochs}. At the first epoch, the parameters $W$ and $b$ must be initialized. We then calculate the partial derivatives (\ref{partial derivatives}) to find the gradient, and update the parameters accordingly:
 
@@ -111,7 +112,7 @@ b \rightarrow b - \alpha\frac{\partial C}{\partial b}
 \end{equation}
 where $\alpha$ is a parameter known as the \emph{learning rate} which determines how far downhill we want to go during each epoch.
 
-When dealing with gradient descent in multiple dimensions, we must simply apply the gradient descent algorithm on the singular components of the vectors. Since, in generale, we are dealing with a nested function of the form (\ref{NN equation}), we must apply the chain rule successively, leading to a product of partial derivatives. If these are exceedingly small, their product will be even smaller, leading to a low descent rate, a problem known as the \emph{vanishing gradient problem}. Exceedingly large gradients likewise lead to the \emph{exploding gradient problem}. 
+When dealing with gradient descent in multiple dimensions, we must simply apply the gradient descent algorithm on the singular components of the vectors. Since, in general, we are dealing with a nested function of the form (\ref{NN equation}), we must apply the chain rule successively, leading to a product of partial derivatives. If these are exceedingly small, their product will be even smaller, leading to a low descent rate, a problem known as the \emph{vanishing gradient problem}. Exceedingly large gradients likewise lead to the \emph{exploding gradient problem}. 
 
 \subsection{Activation Functions}
 The activation function is a nonlinear function which defines the output of the neuron. There are several functions to choose from, but common choices are:
@@ -132,7 +133,7 @@ z, \; \forall z > 0
 \end{cases}.
 \end{equation*}
 \end{enumerate} 
-These functions each have their own advantages and disadvantages. For example, the sigmoid and $\tanh$ functions are continuously differentiable, allowing for the use of methods such as gradient descent during backpropagation. On the other hand, $ReLU$ is both non-differentiable in $z = 0$ and has a step-function as a derivative, making the gradient descent unfeasbile. On the other hand, if the neural network is particularly deep, i.e.\ it contains multiple hidden layers between the input layer and the output layer, the sigmoid and $\tanh$ functions are subject to the \emph{vanishing gradient problem}. This occurs when the product of the repeated partial derivatives taken as part of the backpropagation algorithm become too small. Since $\frac{d}{dz}ReLU(z) = 1 \; \forall z > 0$, this problem is drastically reduced.
+These functions each have their own advantages and disadvantages. For example, the sigmoid and $\tanh$ functions are continuously differentiable, allowing for the use of methods such as gradient descent during backpropagation. On the other hand, $ReLU$ is both non-differentiable in $z = 0$ and has a step-function as a derivative, making the gradient descent unfeasible. On the other hand, if the neural network is particularly deep, i.e.\ it contains multiple hidden layers between the input layer and the output layer, the sigmoid and $\tanh$ functions are subject to the \emph{vanishing gradient problem}. This occurs when the product of the repeated partial derivatives taken as part of the backpropagation algorithm become too small. Since $\frac{d}{dz}ReLU(z) = 1 \; \forall z > 0$, this problem is drastically reduced.
 
 \section{Boosted Decision Trees}
 A Boosted Decision Tree (BDT) is a type of Decision Tree which makes use of a boosting algorithm to create a strong classifier by combining the results of several trees (weak learners). 
@@ -158,9 +159,9 @@ A search is run over all features $j = 1, \dots, D$ and all thresholds $t$, and 
 \begin{cases}
 \mathcal{S}_{-} \; \dot{=} \left\lbrace (\vec{x},y) \vert (\vec{x},y) \in \mathcal{S}, x^{(j)} < t \right\rbrace \\
 \mathcal{S}_{+} \; \dot{=} \left\lbrace (\vec{x},y) \vert (\vec{x},y) \in \mathcal{S}, x^{(j)} \geq t \right\rbrace
-\end{cases}.
+\end{cases},
 \end{equation}
-Each subset goes into a new new leaf, however it is necessary to find the optimal splitting. For all pairs $(j, t)$, the algorithm evaluates the optimization criterion. There are various possible criteria, but we will limit ourselves to illustrating two examples.
+and each subset goes into a new new leaf. To find the optimal splitting, the algorithm must evaluate an \emph{optimization criterion}. There are various possible criteria, but we will limit ourselves to illustrating two examples.
 
 \begin{enumerate}
 
@@ -176,7 +177,7 @@ When a node is split, the entropy of the split is simply given by the sum of the
 H(\mathcal{S}_{-}, S_+) \; \dot{=} \;\frac{\vert \mathcal{S}_{-}\vert }{\vert \mathcal{S}\vert}H(\mathcal{S}_{-}) +\frac{\vert \mathcal{S}_{+}\vert }{\vert \mathcal{S}\vert}H(\mathcal{S}_{+})
 \end{equation}
 
-Since entropy is maximized when all variables are equiprobable and minimized when the variable assumes just one value, by minimizing the node's entropy after the splitting we are guaranteed to find the optimal splitting.
+Since entropy is maximized when all variables are equiprobable and minimized when the variable assumes just one value, by minimizing the entropy of the node after the splitting, we are guaranteed to find the optimal splitting.
 
 \item \textbf{Gini Index}
 
@@ -201,17 +202,17 @@ Once the splitting has been optimized, the algorithm iterates until one of the f
 \item All examples have been correctly classified
 \item There is no attribute that can split the node
 \item The maximum depth of the tree has been reached
-\item The information gain produced by the splitting is less than some paramter $\varepsilon$.
+\item The information gain produced by the splitting is less than some parameter $\varepsilon$.
 \end{itemize}
 
 The decision to split a node is taken \emph{locally}, i.e.\ at the node itself. This makes a decision tree a weak classifier, since there is no guarantee to find an optimal solution. Several techniques, such as boosting, can be used to improve the model. 
 
 \subsection{Boosting}
-The boosting algorithm combines several weak learners to build a stronger predective model. The basic idea is to successively create models which reduce the errors of the previous model. 
+The boosting algorithm combines several weak learners to build a stronger predictive model. The basic idea is to successively create models which reduce the errors of the previous model. 
 
 AdaBoost, short for Adaptive Boosting \cite{Freund1996ExperimentsWA}, is one of the hottest boosting techniques on the market. In this treatment, we will assume that the Gini index is being used as the optimization criterion.
 
-Staring from the set of all labelled events $(\vec{x}_i, y_i)$, we assign a weight to each member of the training set. Initially, this weight is the same for all events
+Starting from the set of all labelled events $(\vec{x}_i, y_i)$, we assign a weight to each member of the training set. Initially, this weight is the same for all events
 \begin{equation}
 w = \frac{1}{N}.
 \end{equation}
@@ -222,7 +223,7 @@ err_m = \frac{\sum_{i= 1}^N w_i I(y_i \neq T_m(\vec{x}_i))}{\sum_{i =1}^N w_i}
 \label{error}
 \end{equation}
 where $T(\vec{x}_i) = \pm 1$ according to whether the feature vector $\vec{x}_i$ is classified as a signal or background event and the function $I$ depends on the accuracy of the prediction. $I(y_i \neq T_m(\vec{x}_i)) = 1$ if $y_i \neq T_m(\vec{x}_i)$ and $I(y_i \neq T_m(\vec{x}_i)) = 0$ if $y_i = T_m(\vec{x}_i)$.
-From here, and proceed to calculate the quantity
+From here, we proceed to calculate the quantity
 \begin{equation}
 \alpha_m = \beta \ln \left( \frac{1 - err_m}{err_m} \right)
 \end{equation}
