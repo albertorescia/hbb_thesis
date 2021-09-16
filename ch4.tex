@@ -25,10 +25,11 @@
 \begin{document}
 The $H\rightarrow b\overline{b}$ decay is fundamental to unveiling the properties of the Higgs coupling to fermions, especially thanks to its large branching ratio. In this chapter, we will describe a method that we have originally developed to discriminate b-jets originating from a color singlet, such as the Higgs boson, from those originating from a color octect. 
 
-We have used simulated data to train two different machine learning algorithms on high-level, color-sensitive variables which have been introduced in literature. We will first introduce these variables, and then go on to discuss the details of the simulation, the analysis of the simulated events, and our findings.
+We have used simulated data to train two different machine learning algorithms on high-level, color sensitive variables which have been introduced in literature. We will first introduce these variables, and then go on to discuss the details of the simulation, the analysis of the simulated events, and our findings.
+
 
 \section{The Observables}
-In total, this method makes use of 8 variables existing in literature and presented in \cite{Larkoski:2019fsm, Larkoski:2014gra, Buckley:2020kdp}. These are $t_{\parallel a}, t_{\perp a}, \theta_{pa}, t_{\parallel b}, t_{\perp b}, \theta_{pb}, D_2$ and the color ring $\mathcal{O}$.
+In total, this method makes use of eight variables existing in literature and presented in \cite{Larkoski:2019fsm, Larkoski:2014gra, Buckley:2020kdp}. These are $t_{\parallel a}, t_{\perp a}, \theta_{pa}, t_{\parallel b}, t_{\perp b}, \theta_{pb}, D_2$ and the color ring $\mathcal{O}$.
 \subsection{The Pull Variables}
 The first variables we will consider are related to the \emph{pull vector}. With reference to Figure \ref{Pull vector}, consider an event in which two jets, $J_a$ and $J_b$, with centers $(y_a, \phi_a)$ and $(y_b, \phi_b)$, respectively, are emitted.
 \begin{figure}
@@ -74,11 +75,13 @@ The pull vector is sensitive to the different color connections which are presen
 \end{figure}
 
 
-Of all the variables considered, the pull angle has been shown to be the most effective discriminator of the two different color configurations \cite{Gallicchio:2010sw}. However, there was a noticeable mismatch between theoretical predictions for $\theta_p$ and experimental measurements \cite{Larkoski:2019urm}. 
+Of all the variables considered, the pull angle has been shown to be one of the most effective discriminators of the two different color configurations \cite{Gallicchio:2010sw}. However, there was a noticeable mismatch between theoretical predictions for $\theta_p$ and experimental measurements \cite{Larkoski:2019urm}. 
 
 The theoretical difficulties in calculating $\theta_p$ stem from the fact that it is not an IRC safe variable. However, $t_\parallel$ and $t_\perp$ \emph{are} IRC safe observables. 
 
-Our method includes these two variables for this purpose. $\theta_p$ is also included since it can be measured at experiments, and its discrimination potential is still good. We consider these variables for both jets $J_a$ and $J_b$. 
+Our method includes these two variables for this purpose. Although it is not IRC safe, $\theta_p$ is also included. We are aware of a potential overlap in including both $t_\parallel$, $t_\perp$ and $\theta_p$. However, this is not an issue since the machine learning algorithms are robust against interdependence between input variables. 
+
+We consider these three variables for both jets $J_a$ and $J_b$. 
 
 \subsection{$D_2$}
 
@@ -184,7 +187,7 @@ Unfortunately, without any sort of momentum-weighting, (\ref{color ring}) cannot
 \section{Simulation}
 \label{Simulation}
 
-The aforementioned variables are implemented using information from event creation via Monte Carlo simulation. Using \code{MadGraph5\_aMC} v2.8.3.2 \cite{Alwall:2014hca}, we generated two hard processes:
+The aforementioned variables are measured on events produced via Monte Carlo simulation. Using \code{MadGraph5\_aMC} v2.8.3.2 \cite{Alwall:2014hca}, we generated two hard processes:
 \begin{gather}
 p p \rightarrow Z(\nu_\ell \overline{\nu}_\ell) H(b\overline{b}) \\
 p p \rightarrow b\overline{b} \nu_\ell \overline{\nu}_\ell.
@@ -195,25 +198,24 @@ The first process, hereby referred to as the \emph{signal}, represents the most 
 \begin{figure}
 \begin{subfigure}{.5\textwidth}
 \centering
-\includegraphics[scale=0.6]{ch4_images/zhbb}
+\includegraphics[width=\textwidth]{ch4_images/zhbb}
 \caption{}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \centering
-\includegraphics[scale=0.15]{ch4_images/gbb1}
+\includegraphics[width=\textwidth]{ch4_images/gbb1}
+\caption{}\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{ch4_images/gbb2}
 \caption{}
 \end{subfigure}
 \begin{subfigure}{.5\textwidth}
 \centering
-\includegraphics[scale=0.15]{ch4_images/gbb2}
+\includegraphics[width=\textwidth]{ch4_images/gbb3}
 \caption{}
 \end{subfigure}
-\begin{subfigure}{.5\textwidth}
-\centering
-\includegraphics[scale=0.15]{ch4_images/gbb3}
-\caption{}
-\end{subfigure}
-\caption{The Feynman diagrams constituting the signal (a) and background (b),(c),(d). \todo{mettere immagine migliore}.}
+\caption{The Feynman diagrams constituting the signal (a) and background (b)-(d).}
 \label{zhbb + gbb feynman diagrams}
 \end{figure}
 
@@ -230,7 +232,7 @@ In total, we simulated 1M signal and background events.
 
 We analyzed the simulated data in both the truth case and the reconstructed case. These cases differ in just one aspect: for the truth case, all stable particles with $p_T > 0.5$ GeV were clustered into jets. In the reconstructed case, the jets were clustered using the simulated calorimeter towers and tracks. All electromagnetic calorimeter towers with energy $E > 0.5$ GeV and significance $S > 2.0$ and all hadronic calorimeter towers with energy $E > 1.0$ GeV and significance $S > 2.0$ are considered. Tracks are required to have $p_T > 0.5$ GeV. The jets are clustered using \code{FastJet} v3.3.4 \cite{Cacciari:2011ma}.
 
-We can now discuss the details of the analysis. First, the constituents are clustered into Large Jets with radius $R=1.0$.  For  each  event,  we  choose  the jet with the highest $p_T$ as the Large Jet. We only accept the event if the jet has $p_T > 250$ GeV, $\vert y \vert < 1.5$, and invariant mass $m_J \in [0,500]$ GeV. The restriction on $y$ comes from experimental considerations: due to limitations related to the detector acceptance, b-tagging outside of this region comes with large errors. 
+We can now discuss the details of the analysis. First, the constituents are clustered into Large Jets with radius $R=1.0$.  For  each  event,  we  choose  the jet with the highest $p_T$ as the Large Jet. We only accept the event if the jet has $p_T > 250$ GeV and $\vert y \vert < 1.5$. The restriction on $y$ comes from experimental considerations: due to limitations related to the detector acceptance, b-tagging outside of this region comes with large errors. 
 
 We  also  cluster  the  constituents  into  smaller  jets with radius $R = 0.2$. We identify those jets which distance $\Delta R < 0.8$ from the selected Large Jet, and call these subjets. We then proceed to identify the b-subjets which originate from the b-partons, through a process known as \emph{b-labelling}. We do this by first identifying the b-partons originating from the hard scattering in the event record. For each b-parton, we find the closest subjet. If the b-parton has $p_T > 5.0$ GeV and the subjet is within $\Delta R = 0.2$ from the b-parton, we label the subjet as a b-subjet. 
 
@@ -273,7 +275,7 @@ Table \ref{Efficiencies table} shows the percentage of events which passed the s
     \label{Efficiencies table}
 \end{table}
 
-Figure \ref{sgn/bkg true} shows the distributions of the 8 variables for the truth case. In Figure \ref{sgn/bkg reco}, the same distributions are shown in the reconstructed case. In both cases, clear differences between signal and background allow for discrimination of the two.
+Figure \ref{sgn/bkg true} shows the distributions of the eight variables for the truth case. In Figure \ref{sgn/bkg reco}, the same distributions are shown in the reconstructed case. In both cases, clear differences between signal and background allow for discrimination of the two. These differences are especially noticeable for the $\mathcal{O}$ and $D_2$ variables. On the other hand, we can see how $\theta_{pa}$ and $\theta_{pb}$ are effective discriminators in the truth case, but less so in the reconstructed case.
 
 \begin{figure}
 \captionsetup[subfigure]{labelformat=empty}
@@ -317,7 +319,7 @@ Figure \ref{sgn/bkg true} shows the distributions of the 8 variables for the tru
 \includegraphics[scale=0.25]{truth/cr}
 \caption{$\mathcal{O}$}
 \end{subfigure}
-\caption{The distributions of the 8 variables after all selection cuts in the truth case together with the ratio between signal and background events.}
+\caption{The distributions of the eight variables after all selection cuts in the truth case together with the ratio between signal and background events.}
 \label{sgn/bkg true}
 \end{figure}
 
@@ -364,7 +366,7 @@ Figure \ref{sgn/bkg true} shows the distributions of the 8 variables for the tru
 \includegraphics[scale=0.25]{reco/cr}
 \caption{$\mathcal{O}$}
 \end{subfigure}
-\caption{The distributions of the 8 variables after all selection cuts in the reconstructed case together with the ratio between signal and background events.}
+\caption{The distributions of the eight variables after all selection cuts in the reconstructed case together with the ratio between signal and background events.}
 \label{sgn/bkg reco}
 \end{figure}
 
@@ -549,7 +551,7 @@ In Figure \ref{bdt with d2} we show how different cuts on the output of the BDT 
 \caption{The distribution of different cuts of the output of the BDT as a function of the invariant mass of the system with the inclusion of $D_2$ (a) and without the inclusion of $D_2$ (b)}
 \end{figure} 
 
-Given the fact that the $D_2$ observable is ranked as most important, the removal of this variable comes at the price of the efficiency of the algorithm. Focusing again on the truth case, Table \ref{AUC table} shows how AUCs of the MLP and BDT change when the algorithms are trained without the $D_2$ observable.
+Given the fact that the $D_2$ observable is ranked as most important, the removal of this variable comes at the price of the efficiency of the algorithm. Focusing again on the truth case, Table \ref{AUC table no d2} shows how AUCs of the MLP and BDT change when the algorithms are trained without the $D_2$ observable.
 
 \begin{table}[h!]
 \centering
@@ -563,7 +565,7 @@ MLP &  0.709\\
 \hline 
 \end{tabular}
 \caption{The values of the AUC when $D_2$ is not included.}
-\label{AUC table}
+\label{AUC table no d2}
 \end{table}
 
 In an attempt to reduce the mass bias while still training the algorithms with $D_2$, we generated 100k new events for the signal and artificially varied the mass of the Higgs. Specifically, we generated 20k events with mass $m_H = 25$ GeV, $m_H = 50$ GeV, $m_H = 75$, $m_H = 100$ GeV and $m_H = 125$ GeV and combined them into one file. After showering these events in \code{PYTHIA8} and running the analysis, we used the output to train the machine learning algorithms. For the training, 100k background events were also generated in the same manner as described in \ref{Simulation}.
@@ -612,7 +614,7 @@ We have been able to find the reason for the reduction of the AUC. Figure \ref{d
 
 \section{Conclusions}
 
-Overall, we can conclude that this method for distinguishing the different color configurations of the Higgs boson and the gluon is effective both before and after the inclusion of detector effects. Unfortunately, the machine learning algorithms trained for the purpose of this classification are in part sensitive to the mass of the decaying boson. We found that the elimination of this bias comes at significant the cost of classification efficiency. In the future, we hope to find other ways to eliminate the bias, either by another machine learning approach or by debiasing a posteriori, in order to obtain a pure color tagger.
+Overall, we can conclude that this method for distinguishing the different color configurations of the Higgs boson and the gluon is effective both before and after the inclusion of detector effects. Unfortunately, the machine learning algorithms trained for the purpose of this classification are in part sensitive to the mass of the decaying boson. We found that the elimination of this bias comes at significant the cost of classification efficiency. In the future, we hope to find other ways to eliminate the bias, either by another machine learning approach or by debiasing a posteriori, in order to obtain a pure color tagger \cite{Dolen:2016kst, Moult:2017okx}.
 
 A paper summarizing the results obtained is in preparation. We are also presenting the method described above to the ATLAS Hbb working group, as the experimental community could largely profit from it.
 
