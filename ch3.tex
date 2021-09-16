@@ -22,7 +22,7 @@
 \newcommand\todo[1]{\textcolor{red}{#1}}
 
 \begin{document}
-Over the past several decades, collider physics have allowed us to study and understand the Standard Model. At the turn of the century, only one piece of the puzzle was left: the Higgs boson, expected as the remaining degree of freedom from the Higgs mechanism described in Section \ref{Higgs section}. The LHC was tasked with finding this elusive particle, and succeeded in 2012 \cite{ATLAS:2012yve, CMS:2012qbp}.
+Over the past several decades, colliders have allowed us to study and understand the Standard Model. At the turn of the century, only one piece of the puzzle was left: the Higgs boson, expected as the remaining degree of freedom from the Higgs mechanism described in Section \ref{Higgs section}. The LHC was tasked with finding this elusive particle, and succeeded in 2012 \cite{ATLAS:2012yve, CMS:2012qbp}.
 
 The discovery of the Higgs boson ushered in a new era of physics. Since then, one of the main goals of the ATLAS and CMS programs has been to robustly test the Standard Model by studying the properties of the Higgs. This requires knowledge on the production and decay mechanisms of the Higgs. 
 
@@ -35,16 +35,16 @@ At the LHC, there are four different processes which can produce the Higgs. Thei
 \begin{figure}
 \centering
 \includegraphics[scale=0.6]{ch3_images/higgs_production}
-\caption{The cross sections of various Higgs production mechanisms as a function of $m_H$ at LHC energies. The thickness of the lines represent various theoretical uncertainties \cite{LHCHiggsCrossSectionWorkingGroup:2016ypw}.}
+\caption{The cross sections of various Higgs production mechanisms as a function of $m_H$ at current LHC energies. The thickness of the lines represent various theoretical uncertainties \cite{LHCHiggsCrossSectionWorkingGroup:2016ypw}.}
 \label{Higgs production}
 \end{figure}
 
 \subsubsection{Gluon-Gluon Fusion}
 Gluon-gluon fusion is the process which dominates Higgs production at the LHC.
-In the Standard Model, there is no direct coupling between the Higgs and the gluon, though an indirect coupling is possible through a virtual top quark loop, as shown in Figure \ref{production}a. The top quark loop is favored is due the high mass of the top, though there is a small contribution from the bottom.
+In the Standard Model, there is no direct coupling between the Higgs and the gluon, though an indirect coupling is possible through a virtual top quark loop, as shown in Figure \ref{production}a. The top quark loop is favored due the high mass of the top, though there is a small contribution from the bottom.
 
 \subsubsection{Vector Boson Fusion}
-Vector boson fusion is the second most important cross section, responsible for about 10\% of the total cross section. This process is interesting because it proceeds via a pure electroweak exchange. 
+Vector boson fusion is the second most production mechanism, responsible for about 10\% of the total cross section. This process is interesting because it proceeds via a pure electroweak exchange. 
 
 Figure \ref{production}b shows the Feynman diagram for the process. The initial-state quarks deviate only slightly from their initial direction, leading to two jets near the beam axis in opposite regions of the detector. This provides a typical experimental signature of the process. 
 
@@ -82,9 +82,9 @@ As opposed to the Higgs production mechanisms, which depend in part on the struc
 
 \subsubsection{$H\rightarrow b\overline{b}$}
 
-The decay of the Higgs to $b\overline{b}$ is by far the most important decay channel. Despite the fact that the Higgs couples more strongly to the top, the decay is would only be possible if $m_H$ were above $\sim300$ GeV because of conservation of energy. 
+The decay of the Higgs to $b\overline{b}$ is by far the most important decay channel. Despite the fact that the Higgs couples more strongly to the top, the decay would only be possible if $m_H$ were above $\sim300$ GeV because of conservation of energy. 
 
-The extremely large branching ratio means that, experimentally, it is of utmost importance to be able to observe these decays if we want to study the properties of the Higgs in detail. To this aim, flavor tagging algorithms are a fundamental tool in determining whether a jet originates from a b-quark, a c-quark, $\tau$, or a light-quark or gluon. 
+The extremely large branching ratio means that, experimentally, it is of utmost importance to be able to observe this channel if we want to study the properties of the Higgs in detail. To this aim, flavor tagging algorithms are a fundamental tool in determining whether a jet originates from a b-quark, a c-quark, $\tau$, or a light-quark or gluon. 
 
 A jet originating from a heavy quark can be identified based on some unique properties which stem from the high mass of the quark. For example, the relatively long lifetime of b-hadrons, of the order of 1.5 ps, combined with the high energies involved result in the formation of a secondary vertex, which can distance anywhere from a few hundred $\mu$m up to $\sim$1 cm from the primary vertex. This secondary vertex gives rise to displaced tracks with respect to the primary vertex, from which the secondary vertex can be recognized. It is also possible to measure the ``mass'' of the secondary vertex, which will be related to the mass of the b-hadron. The decay products of a b-hadron are characterized by a large transverse momentum with respect to jet axis when compared to other jet constituents. In addition to this, in about 20\% of cases, the decay of the b-hadron at the secondary vertex results in an soft electron or muon, whose properties allow for the selection of a pure sample of b-jets. The combination of this information is used as input to algorithms, which can either be classical or make use of machine learning techniques, in order to determine with what likelihood a given jet is a b-jet. Figure \ref{secondary vertex} illustrates the geometry of these secondary vertices.
 \begin{figure}
@@ -96,8 +96,8 @@ A jet originating from a heavy quark can be identified based on some unique prop
 
 Because these tagging techniques are general, similar considerations hold for $H \rightarrow \tau^+ \tau^-$ and $H \rightarrow c \overline{c}$. Although $H \rightarrow g g$ also leads to two jets, these cannot be effectively discriminated from the QCD background.
 
-\subsubsection{$\mathbf{H\rightarrow WW, H\rightarrow ZZ, H\rightarrow \gamma\gamma}$}
-The large QCD background is the foremost obstacle that physicists must contend with when make discoveries at the LHC. For this reason, the decay channels  
+\subsubsection{$H\rightarrow WW, H\rightarrow ZZ, H\rightarrow \gamma\gamma$}
+The large QCD background is the foremost obstacle that physicists must contend with when making discoveries at the LHC. For this reason, the decay channels  
 $H\rightarrow WW, H\rightarrow ZZ$ and $H\rightarrow \gamma\gamma$ were crucial in the discovery of the Higgs boson. These channels are characterized by a clean experimental signal, thanks to the possibility of leptonic decays and the ease with each photons can be identified. Specifically, the channels $H\rightarrow ZZ^{(*)}\rightarrow 4\ell$, $H\rightarrow\gamma\gamma$, $H\rightarrow WW^{(*)} \rightarrow e\nu\mu\nu$, when combined with data from the channels $H\rightarrow b\overline{b}$ and $H \rightarrow \tau^+ \tau^-$ allowed for the discovery of the Higgs in 2012 by the ATLAS and CMS collaborations. The infamous plot showing the discovery of the Higgs in the $\gamma\gamma$ channel is shown in Figure \ref{mgg}.
 
 \begin{figure}
@@ -114,7 +114,7 @@ New particles do not come with a label. How can we be certain that the particle 
 Several channels offer direct access to the mass of the Higgs. In particular, the $ZZ$ and $\gamma\gamma$ decay channels allow physicists to measure the mass with an error of just $0.5$ GeV. Using Run 1 data, ATLAS measured the Higgs mass to be $m_H = 125.37 \pm 0.37(\text{stat.}) \pm 0.18(\text{syst.})$ \cite{ATLAS:2014euz}, while CMS found $m_H = 125.02^{+0.26}_{-0.27}(\text{stat.})^{+0.14}_{-0.15}(\text{syst.})$ GeV \cite{CMS:2014fzn}. The combination of these measurements is $m_H = 125.09 \pm 0.21(\text{stat.})\pm 0.11(\text{syst.})$ GeV \cite{ATLAS:2015yey}.  There was no Standard Model prediction for the mass of the Higgs; this measurement represents a constraint for the model.
 
 \subsubsection{Width}
-The Higgs boson width is accessible from a number of measurements. One of the most recent measurements has been taken by the CMS collaboration. They looked at on-shell and off-shell H production and studied in particular the $4\ell$ final state to find a width of $3.2^{+2.8}_{2.2}$ MeV, assuming Standard Model couplings \cite{CMS:2019ekd}. This measurement is in agreement with the Monte Carlo prediction cited by the collaboration, $4.1^{+5.0}_{-4.0}$ MeV.
+The Higgs boson width is accessible from a number of measurements. One of the most recent measurements has been taken by the CMS collaboration. They looked at on-shell and off-shell $H$ production and studied in particular the $4\ell$ final state to find a width of $3.2^{+2.8}_{2.2}$ MeV, assuming Standard Model couplings \cite{CMS:2019ekd}. This measurement is in agreement with the Monte Carlo prediction cited by the collaboration, $4.1^{+5.0}_{-4.0}$ MeV.
 
 \subsubsection{Couplings}
 It is also of interest to measure the couplings of the Higgs bosons to the fermions and vector bosons. The Standard Model predicts the these to be proportion to $m_f$ and $m_{V}^2$, respectively. Loop decays play a special role in determining the fermionic couplings since the decay rate depends on the strength of the coupling. Otherwise, it is also possible to access the couplings to the vector bosons, specifically the $W$, through the branching ratios of $H \rightarrow WW$ decays and interference with $H \rightarrow \gamma\gamma$.
@@ -157,7 +157,7 @@ All observations are consistent with a particle with spin-parity consistent with
 
 \section{New Discoveries}
 
-Having confirmed the existence of the Higgs, physicists have begun to rigorously test all processes involving the Higgs and search for new, unknown ones. 
+Having confirmed the existence of the Higgs boson, physicists have begun to rigorously test all processes involving this particle and search for new, unknown ones. 
 
 \subsubsection{Double Higgs Production}
 
@@ -166,7 +166,7 @@ Within the field of precision physics, some Higgs couplings have yet to be teste
 Due to the small Higgs production cross section, double Higgs production is an incredibly rare event. However, it is expected that by the end of Run 3, this process should be observed \cite{Chen:2017khz}. 
 
 The process is of interest due to possible cosmological implications of a deviation from the Standard Model prediction, and because it is a probe of physics beyond the Standard Model. Specifically, there are models which predict 
-decays of spin-2 Kaluza-Klein gravitons or other, heavier Higgs bosons into a Higgs pair. Figure \ref{double Higgs} shows the leading order Feynman diagrams for two Higgs produced via gluon-gluon fusion.
+decays of spin-2 Kaluza-Klein gravitons or other, heavier Higgs bosons into a Higgs boson pair. Figure \ref{double Higgs} shows the leading order Feynman diagrams for two Higgs bosons produced via gluon-gluon fusion.
  
 Currently, ATLAS has placed limits on the scale factor $\kappa_H$ which measures the deviation from the expected Standard Model couplings. These limits come from constraints placed by single Higgs production. At a 95\% confidence level, $\kappa_H$ is limited to the range $-5.0 < \kappa_H < 12.0$ \cite{ATLAS:2019qdc}.
 
@@ -183,13 +183,13 @@ Over the past few decades, cosmological observations have led to the conclusion 
 
 We are sure of the existence of dark matter because we can see its gravitational influence. The gravitational interactions of dark matter are indicative of the fact that it has mass. There are several theories as to the nature of dark matter, but one of the leading hypotheses is the particle nature of dark matter.
 
-If dark matter is a massive particle, it is natural to assume that it gains mass via the Higgs mechanism. This idea has led to the search for production of unknown, invisible particles at colliders via their interaction with the Higgs. 
+If dark matter is a massive particle, it is natural to assume that it gains mass via the Higgs mechanism. This idea has led to the search for production of unknown, invisible particles at colliders via their interaction with the Higgs boson. 
 
 Without diving into too much detail, dark matter searches at colliders in general rely on the same principle as precision physics: precise measurements of known cross sections to search for any possible deviations from Standard Model predictions. Given how little we know about dark matter, these Higgs portals are one of the most promising avenues to find out more about the invisible universe \cite{Arcadi:2019lka}.
 
 \section{Conclusions}
-The discovery of the Higgs boson finally completed our understanding of the Standard Model. However, there are still many pieces of the puzzle that are missing, such as dark matter. To gain a full understanding of the model, we must be able to produce, reconstruct and detect the Higgs at current and future colliders. 
+The discovery of the Higgs boson finally completed our understanding of the Standard Model. However, there are still many pieces of the puzzle that are missing, such as dark matter. To gain a full understanding of the model, we must be able to produce, reconstruct and detect the Higgs boson at current and future colliders. 
 
-Detection of $H\rightarrow b\overline{b}$ decays is an important part of this mission, as it is the main decay channel of the Higgs. Due to the large QCD background of the process, it is hard to discern events containing the Higgs within the QCD haystack. In the next chapter, we will describe a framework which we have developed to help overcome this hurdle.
+Detection of $H\rightarrow b\overline{b}$ decays is an important part of this mission, as it is the main decay channel of the Higgs boson. Due to the large QCD background of the process, it is hard to discern events containing the Higgs boson within the QCD haystack. In the next chapter, we will describe a framework which we have developed to help overcome this hurdle.
 
 \end{document}
