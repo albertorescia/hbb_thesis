@@ -12,9 +12,11 @@
 \usepackage{bbold}
 \usepackage{stackengine}
 \usepackage{amsfonts}
+\usepackage{svg}
 \usepackage{amssymb}
 \usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{subcaption}
 \usepackage{pdfpages}
 \usepackage[numbers,sort&compress]{natbib}
 
@@ -38,18 +40,18 @@ Since 2009, the Large Hadron Collider (LHC) has been exploring particle physics 
 \section{An Overview of the Theory}
 %Delineo la struttura del modello standard
 %Scrivo la lagrangiana dell'interazione em e forte
-The Standard Model of particle physics is composed of two sectors: the matter fields and gauge fields. The matter fields are fermionic fields whose excitations lead to the particles which make up ordinary matter, i.e. quarks and leptons, and their corresponding antiparticles. The gauge fields, on the other hand, are bosonic fields which arise from symmetries of the model and describe the force-carrying particles, specifically the photon ($\gamma$), gluons (g), W$^{\pm}$ and Z, as well as the Higgs boson, H.
+The Standard Model of particle physics is composed of two sectors: the matter fields and gauge fields. The matter fields are fermionic fields whose excitations lead to the particles which make up ordinary matter, i.e. quarks and leptons, and their corresponding antiparticles. The gauge fields, on the other hand, are bosonic fields which arise from symmetries of the model and describe the force-carrying particles, specifically the photon ($\gamma$), gluons ($g$), $W^{\pm}$ and $Z$, as well as the Higgs boson, $H$.
 
 The matter fields are organized in three generations, as shown in Figure \ref{Standard Model particles}.
 \begin{figure}
 \centering
-\includegraphics[scale=0.3]{ch1_images/standard_model}
+\includegraphics[width=\textwidth]{ch1_images/standard_model.pdf}
 \caption{The ``Periodic Table'' of the Standard Model, showing the division between matter fields and gauge bosons, as well as the three different generations of the matter fields. Properties such as mass, charge and spin are also shown \cite{sm_particles}.}
 \label{Standard Model particles}
 \end{figure}
 The particles in the three generations all have the same properties, with the sole exception of mass which increases with each generation. Neutrinos might be the exception to this rule, since their masses are not yet known to a useful degree of precision. 
 
-The properties of the matter fields determine the interactions in which they participate. All fermions can interact via the weak force. The electrically charged particles participate in electromagnetic interactions, and quarks, the only particles carrying color charge, can also interact via the strong nuclear force. The interactions with these forces are mediated by the exchange of the gauge bosons. Photons are responsible for electromagnetic interactions, gluons for strong interactions, and the W$^\pm$ and Z for weak interactions. 
+The properties of the matter fields determine the interactions in which they participate. All fermions can interact via the weak force. The electrically charged particles participate in electromagnetic interactions, and quarks, the only particles carrying color charge, can also interact via the strong nuclear force. The interactions with these forces are mediated by the exchange of the gauge bosons. Photons are responsible for electromagnetic interactions, gluons for strong interactions, and the $W^\pm$ and $Z$ for weak interactions. 
 
 The strength of the interactions are determined by the value of the coupling constants, $\alpha$ for electromagnetic interactions, $\alpha_W$ for weak interactions and $\alpha_S$ for strong interactions. Despite their name, the coupling constants are known to run, i.e. they depend on the energy scale $Q^2$ of the process. Figure \ref{running coupling constants} shows how the coupling constants vary with energy. As can be seen, $\alpha$ and $\alpha_W$ increase as $Q^2$ increases, while $\alpha_S$ decreases with increasing energy, a property known as asymptotic freedom. 
 
@@ -341,10 +343,10 @@ The fields $W^1_\mu(x), W^2_\mu(x),$ and $W^3_\mu(x)$ in their raw form are not 
 \label{W pm}
 W^\pm_\mu = \frac{1}{\sqrt{2}}\left(W_\mu^1 \mp i W^2_\mu \right)
 \end{equation}
-we obtain charged currents which describe the transition from upper and lower components of the weak-isospin doublet observed in nature. Naturally, one would then attempt to identify $W^3_\mu$ with the $Z^0$, however $W^3_\mu$ only couples to left-handed particles or right-handed anti-particles, in contrast to what is observed for the physical $Z^0$. 
+we obtain charged currents which describe the transition from upper and lower components of the weak-isospin doublet observed in nature. Naturally, one would then attempt to identify $W^3_\mu$ with the $Z$, however $W^3_\mu$ only couples to left-handed particles or right-handed anti-particles, in contrast to what is observed for the physical $Z$. 
 
 \subsection{Electroweak Unification}
-A more complete description is thus required to match the theory to the physical reality. The $Z^0$ boson is not the only neutral boson observed in nature: there is also the $\gamma$. We can therefore attempt to include electromagnetic interactions in our description of weak interactions and derive the $Z^0$ and $\gamma$ fields from two neutral fields.
+A more complete description is thus required to match the theory to the physical reality. The $Z$ boson is not the only neutral boson observed in nature: there is also the $\gamma$. We can therefore attempt to include electromagnetic interactions in our description of weak interactions and derive the $Z$ and $\gamma$ fields from two neutral fields.
 
 To this aim, we start by introducing \emph{hypercharge}, defined as
 \begin{equation}
@@ -367,7 +369,7 @@ D_\mu \ell_R = \left[\partial_\mu ig^\prime \frac{y_2}{2} B_\mu(x)\right]\ell_R(
 \end{gather}
 where $g$ and $g^\prime$ are the two coupling constants, in general different from one another.
 
-We now have four different gauge bosons, $W^j_\mu(x)$ and $B(x)$, which must be identified with the physical gauge bosons $W^\pm$, $Z^0$ and $\gamma$. The physical W bosons can be identified through the relation in (\ref{W pm}). The mapping from $W^3_\mu$ and $B_\mu$ to $Z_\mu$ and $A_\mu$ can be achieved through a rotation in the neutral sector of the gauge bosons
+We now have four different gauge bosons, $W^j_\mu(x)$ and $B(x)$, which must be identified with the physical gauge bosons $W^\pm$, $Z$ and $\gamma$. The physical $W$ bosons can be identified through the relation in (\ref{W pm}). The mapping from $W^3_\mu$ and $B_\mu$ to $Z_\mu$ and $A_\mu$ can be achieved through a rotation in the neutral sector of the gauge bosons
 \begin{equation}
 \label{mapping}
 \begin{bmatrix}
@@ -468,7 +470,7 @@ a_e = I^{(3)}_W (e_L)
 \end{equation}
 are the vector and axial components, respectively. 
 
-Thus, we correctly find that the interaction with the Z can involve both $e_L$ and $e_R$ and that the interaction is of the type V-A, with different coupling constants for the two chiral states of the electron. 
+Thus, we correctly find that the interaction with the $Z$ can involve both $e_L$ and $e_R$ and that the interaction is of the type V-A, with different coupling constants for the two chiral states of the electron. 
 
 The full Lagrangian for electroweak interactions can thus be written as
 
@@ -533,9 +535,15 @@ If $m^2 > 0$ and $\lambda > 0$, the minimum occurs when $\phi = 0$. However, if 
 \end{equation}
 
 \begin{figure}
+\begin{subfigure}{.5\textwidth}
 \centering
-\includegraphics[scale=0.1]{ch1_images/sombrero}
-\caption{The ``Mexican hat'' Higgs Potential for an abelian gauge theory.}
+\includegraphics[width=\textwidth]{ch1_images/higgs_real}
+\end{subfigure}
+\begin{subfigure}{.5\textwidth}
+\centering
+\includegraphics[width=\textwidth]{ch1_images/sombrero}
+\end{subfigure}
+\caption{The ``Mexican hat'' Higgs potential.}
 \label{Higgs Potential}
 \end{figure}
 The quantum vacuum has thus shifted, as represented in Figure \ref{Higgs Potential}. The vacuum is \emph{degenerate} since there are infinite values of $\phi^\dagger\phi$ which minimize $V$. The gauge symmetry is said to be spontaneously broken, the choice of parameters causes the vacuum state and the Lagrangian to no longer share the same symmetry. Since $\lambda$ is an adimensional quantity, it has the dimensions of energy.
@@ -610,7 +618,7 @@ We can then follow the same logic as in that used to derive the unified Electrow
 \begin{equation}
 \frac{1}{8}(g^2 + g^{\prime 2})(v + H)^2 Z_\mu Z^\mu
 \end{equation}
-and we can see that there is no mass term for $A_\mu$, no interaction term involving the Higgs field $H(x)$ and $A_\mu$, and that the Z acquires the mass $M^2_Z = \frac{v^2}{4}(g^2 + g^{\prime 2})$. We can also see that the coupling of the Higgs boson to the other bosons is proportional the bosons' masses. 
+and we can see that there is no mass term for $A_\mu$, no interaction term involving the Higgs field $H(x)$ and $A_\mu$, and that the $Z$ acquires the mass $M^2_Z = \frac{v^2}{4}(g^2 + g^{\prime 2})$. We can also see that the coupling of the Higgs boson to the other bosons is proportional the bosons' masses. 
 
 We have succeeded in giving mass to the three weak gauge bosons. The choice of parameters $\lambda$ and $m^2$ spontaneously breaks the gauge symmetry, and the interaction of the field $\phi$ with the potential generates would-be Goldstone bosons which manifest as ghosts. The choice of unitary gauge allows for the gauge bosons to eat the ghosts, thus gaining mass. The energy scale at which the gauge symmetry is spontaneously broken, known as the vacuum expectation value, is given by $v$, which in numerical terms corresponds to 246 GeV. Above this energy, the electromagnetic force and the weak nuclear force become one unified electroweak force. 
 
