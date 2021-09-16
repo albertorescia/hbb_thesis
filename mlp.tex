@@ -32,7 +32,7 @@
 
 Machine learning is the generic term for a class of algorithms which are able to learn from a series of examples. 
 
-Specifically, in \emph{supervised} machine learning, the type dealt with in this thesis, a set of examples $\left\lbrace (\vec{x}_i, y_i)_{i = 1}^n \right\rbrace$ are provided. $\vec{x}_i$ represents the \emph{feature vector} of the $i$-th event, and $y_i$ is its label. The machine learning algorithm is \emph{trained} on these examples. This training involves, in general, the minimization of some quantity. We can then test how well the algorithm performs using a subset of the provided dataset set aside before the training for this specific purpose. This subset is known as the \emph{test set}.
+Specifically, in \emph{supervised} machine learning, the type dealt with in this thesis, a set of examples $\left\lbrace (\vec{x}_i, y_i)\right\rbrace_{i = 1}^n$ are provided. $\vec{x}_i$ represents the \emph{feature vector} of the $i$-th event, and $y_i$ is its label. The machine learning algorithm is \emph{trained} on these examples. This training involves, in general, the minimization of some quantity. We can then test how well the algorithm performs using a subset of the provided dataset set aside before the training for this specific purpose. This subset is known as the \emph{test set}.
 
 The training is a delicate process. If, for example, the model is not trained on meaningful variables or when it is too simple, there is risk of underfitting. This means that, when presented with an event from the dataset on which it was trained, the model is not able to reliably assign the correct label to that event. On the other hand, if the model is too complex or there are too few training examples, we run the risk of overfitting. The difference between underfitting, a good fit, an overfitting is shown in Figure \ref{overfitting} . 
 
@@ -43,12 +43,12 @@ The training is a delicate process. If, for example, the model is not trained on
 \label{overfitting}
 \end{figure}
 
-Once we have developed a model, we must also be able to quantify its performance. Once way of doing so is by looking at the area under the ROC curve (AUC). The ROC curve, or Receiver Operating Characteristic curve, can be used to assess the performance of classifiers, specifically those classifiers which assign a label with a certain probability. These curves are built by varying the threshold above which an event is classified as signal. We then plot the True Positive Rate (TPR) against the False Positive Rate (FPR), where these are defined as
+Once we have developed a model, we must also be able to quantify its performance. Once way of doing so is by looking at the area under the ROC curve (AUC). The ROC curve, or Receiver Operating Characteristic curve, can be used to assess the performance of classifiers, specifically those classifiers which assign a label with a certain probability. These curves are built by varying the threshold above which an event is classified as signal. We then plot the True Positive Rate ($TPR$) against the False Positive Rate ($FPR$), where these are defined as
 \begin{gather}
 TPR = \frac{TP}{TP + FN} \\
 FPR = \frac{FP}{FP + FN}
 \end{gather}
-where $TP$ (true positive) stands for the number of events correctly classified as signal, $FP$ (false positive) the number of events correctly classified as background, and $FN$ (false negative) the number of events incorrectly classified as background. The area under the curve built in this manner measures how well the model performs. An example of a ROC curve is shown in Figure \ref{roc example}. A perfect model would have an $AUC = 1$ since, for all possible thresholds, the $TPR = 1$ and $FPR = 0$. On the other hand, a model which guesses randomly would be placed on the diagonal, and the resulting ROC curve would have $AUC = 1/2$.
+where $TP$ (true positive) stands for the number of events correctly classified as signal, $FP$ (false positive) the number of events correctly classified as background, and $FN$ (false negative) the number of events incorrectly classified as background. The area under the curve built in this manner measures how well the model performs. An example of a ROC curve is shown in Figure \ref{roc example}. A perfect model would have an $AUC = 1$ since, for all possible thresholds, $TPR = 1$ and $FPR = 0$. On the other hand, a model which guesses randomly would be placed on the diagonal, and the resulting ROC curve would have $AUC = 1/2$.
 
 \begin{figure}
 \centering
@@ -58,7 +58,7 @@ where $TP$ (true positive) stands for the number of events correctly classified 
 \end{figure}
 
 \section{Neural Networks}
-A neural network is a type of machine learning algorithm inspired by biology. The network is a web in which each node, called a neuron, receives an input from the neurons in the previous layer and transmits and output to those which succeed it. In the final layer, the neuron returns a number between $[0,1]$. In this way, a decision is made regarding the nature of the event which was given in input.  A schematic representation of a neural network is shown in Figure \ref{nn image}.
+A neural network is a type of machine learning algorithm inspired by biology. The network is a web in which each node, called a neuron, receives an input from the neurons in the previous layer and transmits an output to those which succeed it. In the final layer, the neuron returns a number between $[0,1]$. In this way, a decision is made regarding the nature of the event which was given in input.  A schematic representation of a neural network is shown in Figure \ref{nn image}.
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth]{Appendix/nn}
@@ -133,10 +133,10 @@ z, \; \forall z > 0
 \end{cases}.
 \end{equation*}
 \end{enumerate} 
-These functions each have their own advantages and disadvantages. For example, the sigmoid and $\tanh$ functions are continuously differentiable, allowing for the use of methods such as gradient descent during backpropagation. On the other hand, $ReLU$ is both non-differentiable in $z = 0$ and has a step-function as a derivative, making the gradient descent unfeasible. On the other hand, if the neural network is particularly deep, i.e.\ it contains multiple hidden layers between the input layer and the output layer, the sigmoid and $\tanh$ functions are subject to the \emph{vanishing gradient problem}. This occurs when the product of the repeated partial derivatives taken as part of the backpropagation algorithm become too small. Since $\frac{d}{dz}ReLU(z) = 1 \; \forall z > 0$, this problem is drastically reduced.
+These functions each have their own advantages and disadvantages. For example, the sigmoid and $\tanh$ functions are continuously differentiable, allowing for the use of methods such as gradient descent during backpropagation. On the other hand, $ReLU$ is both non-differentiable in $z = 0$ and has a step-function as a derivative, making the gradient descent unfeasible without regularizing modifications. On the other hand, if the neural network is particularly deep, i.e.\ it contains multiple hidden layers between the input layer and the output layer, the sigmoid and $\tanh$ functions are subject to the \emph{vanishing gradient problem}. This occurs when the product of the repeated partial derivatives taken as part of the backpropagation algorithm become too small. Since $\frac{d}{dz}ReLU(z) = 1 \; \forall z > 0$, this problem is drastically reduced.
 
 \section{Boosted Decision Trees}
-A Boosted Decision Tree (BDT) is a type of Decision Tree which makes use of a boosting algorithm to create a strong classifier by combining the results of several trees (weak learners). 
+A boosted decision tree (BDT) is a type of decision tree which makes use of a boosting algorithm to create a strong classifier by combining the results of several trees (weak learners). 
 
 \subsection{Decision Trees}
 A decision tree relies on successive ramifications to classify an event as signal or background, as shown in Figure \ref{tree}. At each node, the data is split based on a specific criterion. At a terminal node, known as a leaf, a decision is taken regarding the nature of the event.
@@ -210,7 +210,7 @@ The decision to split a node is taken \emph{locally}, i.e.\ at the node itself. 
 \subsection{Boosting}
 The boosting algorithm combines several weak learners to build a stronger predictive model. The basic idea is to successively create models which reduce the errors of the previous model. 
 
-AdaBoost, short for Adaptive Boosting \cite{Freund1996ExperimentsWA}, is one of the hottest boosting techniques on the market. In this treatment, we will assume that the Gini index is being used as the optimization criterion.
+AdaBoost, short for Adaptive Boosting \cite{Freund1996ExperimentsWA}, is one of the most widely used boosting techniques. In this treatment, we will assume that the Gini index is being used as the optimization criterion.
 
 Starting from the set of all labelled events $(\vec{x}_i, y_i)$, we assign a weight to each member of the training set. Initially, this weight is the same for all events
 \begin{equation}
